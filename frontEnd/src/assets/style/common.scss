@@ -1,0 +1,75 @@
+$primaryWhite: #f3f;
+$primaryBlue: #53B3FF;
+$primaryDeepBlue: #26318b;
+$primaryGreen: #34D0B2;
+$primaryDeepBlue: #258F67;
+
+
+//自定义函数
+@mixin disFlex ($row, $col) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $row;
+    align-items: $col;
+}
+
+@mixin posiAR($AR, $top, $left) {
+    position: $AR;
+    top: $top;
+    left: $left;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $primaryWhite;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    html {
+        font-size: 12px;
+    }
+}

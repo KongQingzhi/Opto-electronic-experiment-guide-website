@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: 1024px;
+            padding: 50px;
+            background-color: rgb(253, 250, 246);
+            margin: auto;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+</body>
+<script>
+    const json = {
+        "basicInformation": {
+            "id": "1",
+            "name": "孔庆志",
+            "content": {
+                "left": [
+                    {
+                        "infoName": "年龄",
+                        "infoContent": "22岁"
+                    },
+                    {
+                        "infoName": "学历",
+                        "infoContent": "本科"
+                    },
+                    {
+                        "infoName": "政治面貌",
+                        "infoContent": "中共党员"
+                    },
+                    {
+                        "infoName": "电话",
+                        "infoContent": "156 5375 4746"
+                    },
+                    {
+                        "infoName": "邮箱",
+                        "infoContent": "1428390162@qq.com"
+                    },
+                    {
+                        "infoName": "计算机等级",
+                        "infoContent": "三级数据库技术"
+                    }
+                ],
+                "right": "https://www.zhuiguang.shop/upload/1669871324918%E5%AD%94%E5%BA%86%E5%BF%97.jpg"
+            }
+        },
+        "professionalSkill": {
+            "id": "3",
+            "name": "专业技能",
+            "content": [
+                "熟练掌握HTML5、CSS3，擅长响应式页面布局，熟悉移动端的适配自适应开发，熟练使用 Sass预编译器。",
+                "熟悉JavaScript、ES6高级语法、Promise、闭包及原生的DOM和BOM操作，熟练使用 jQuery库。",
+                "熟练使用Bootstrap、Layui、Element-Plus、Ant-Design 等前端UI框架。",
+                "熟悉Node.js后端语言，熟练使用Egg.js框架进行后端开发。",
+                "熟悉Ajax 原生网络请求和 Axios.js 技术，熟悉 CORS、JSONP、Proxy 等跨域技术。",
+                "熟悉Vue.js，熟练使用 Vite、Vuex、Vue-cli、Vue-Router等，具备组件化思维。",
+                "熟悉TypeScript语言，熟悉元组、枚举、接口、泛型、类型断言、类、面向对象编程等。",
+                "熟练使用npm包管理工具、webpack打包工具、git代码仓库管理工具。",
+                "熟悉MySQL数据库，能够实现对数据的基本管理。",
+                "了解网络通信协议、状态码、三次握手等基本网络知识。"
+            ]
+        },
+        "projectExperience": {
+            "id": "4",
+            "name": "项目经验",
+            "content": [
+                {
+                    "name": "Passionate",
+                    "content": [
+                        {
+                            "name": "项目描述",
+                            "content": "Passionate是一个社交服务网站，用户可以发布自己的照片或文字来记录自己的生活及想法。"
+                        },
+                        {
+                            "name": "技术路线",
+                            "content": "Vue.js TypeScript Vite Vue-router Vue-axios Vuex Node.js Egg.js MySQL"
+                        },
+                        {
+                            "name": "项目实现",
+                            "content": [
+                                "使用rem+媒体查询来构建网页，解决了网页适配问题。",
+                                "使用页面懒加载，解决网页卡顿的问题，减少服务器的负载。",
+                                "使用Vue-axios向后端API接口发送异步请求，使用Proxy解决跨域访问的问题。",
+                                "使用Vuex对公共状态进行管理，存储用户信息及各个分类的加载数量。",
+                                "使用Vue-router实现了多视图的单页Web。",
+                                "使用路由守卫，解决了用户未登录而进入主页面的问题。"
+                            ]
+                        },
+                        {
+                            "name": "访问地址",
+                            "content": "hppts://www.zhuiguang.shop"
+                        },
+                        {
+                            "name": "开源地址",
+                            "content": "hppts://github.com/KongQingzhi/Passionate"
+                        }
+                    ]
+                },
+                {
+                    "name": "大学生社团管理系统",
+                    "content": [
+                        {
+                            "name": "项目描述",
+                            "content": "大学生社团管理系统是一个管理校园社团、社团成员及社团活动的平台。"
+                        },
+                        {
+                            "name": "技术路线",
+                            "content": "Node.js Egg.js MySQL Axios.js JQuery Bootstrap"
+                        },
+                        {
+                            "name": "项目实现",
+                            "content": [
+                                "使用摹客RP软件，实现网站原型图的绘制。",
+                                "使用egg-cors插件，解决了跨域问题。",
+                                "使用egg-mysql对数据库的数据进行管理。",
+                                "使用nodemailer完成用户的邮箱验证，提高了网站的安全性。"
+                            ]
+                        },
+                        {
+                            "name": "开源地址",
+                            "content": "hppts://github.com/KongQingzhi/Passionate"
+                        }
+                    ]
+                }
+
+            ]
+        },
+        "certificateHonor": {
+            "id": "5",
+            "name": "荣誉证书",
+            "content": [
+                "2022 年 以第一作者的身份在核心期刊发表论文《人脸识别预警消毒机器人的设计及应用》",
+                "2022 年 获得第一届“徕卡杯”贵州省金相技能大赛三等奖",
+                "2021 年 确立大学生创新创业竞赛省级项目",
+                "2020 年 获得第十一届“蓝桥杯”全国大学生软件信息专业人才大赛省级三等奖",
+                "2022 年 获得“互联网 +”大赛校级银奖",
+                "2022 年 获得校级一等奖学金",
+                "2022 年 获得校级三好学生",
+                "2021 年 获得校级三等奖学金",
+                "2021 年 获得校级三好学生",
+                "2020 年 获得校级优秀共青团干部",
+                "2019 年 获得校级优秀共青团员"
+            ]
+        },
+        "educationalBackground": {
+            "id": "6",
+            "name": "教育背景",
+            "school": "贵州师范学院-光电信息科学与工程",
+            "duration": "2019.09 - 2023.07",
+            "content": "大学成绩良好，无任何挂科，专业排名7%，主修课程：C语言程序设计、Python语言程序设计、Linux 操作系统、Web设计基础、单片机原理、Matlab 技术及其应用、数字电路基础、模拟电路基础、物理光学、激光原理。"
+        },
+        "selfAssessment": {
+            "id": "7",
+            "name": "自我评价",
+            "content": "本人乐观开朗，适应能力强。有良好的设计和编码品味，并且热爱写代码。具备良好的沟通能力和高度的团队合作意识，能快速融入团队。学习能力好，喜欢钻研，有着强烈的责任心，能保持不断进取的精神，有高度的执行力。"
+        }
+    }
+    const layoutStr = "--[1|1]--";
+    function generPaper(layoutStr, json) {
+        let flag = 0;
+        const container = document.querySelector('.container');
+        layoutStr = layoutStr.replace(/\]/g, "").replace(/\[|\|/g, '').split('');
+        let sum = 0;
+        let part = 0;
+        for (let index = 0; index < layoutStr.length; index++) {
+            if (!isNaN(layoutStr[index])) {
+                sum += Number(layoutStr[index]);
+            }
+        }
+        part = (100 / sum).toFixed(2) - 0.1;//容错
+        for (let index = 0; index < layoutStr.length; index++) {
+            if (!isNaN(layoutStr[index])) {
+                layoutStr[index] = part * layoutStr[index] + '%';
+            } else {
+                layoutStr[index] = '100%';
+            }
+        }
+
+        console.log(layoutStr);
+
+        for (key in json) {
+            const div = document.createElement("div");
+            const h1 = document.createElement("h1");
+            div.style.width = layoutStr[flag];
+            h1.innerHTML = json[key].name;
+            div.append(h1);
+            if (json[key].school != undefined) {
+                const edu = span(json[key].school, json[key].duration);
+                div.append(edu);
+            }
+            const ele = containerLayout(json[key].content);
+            div.append(ele);
+            container.appendChild(div);
+            flag++;
+        }
+    }
+
+    function containerLayout(container) {
+        const div = document.createElement("div");
+        if (typeof container === 'string') {
+            div.innerHTML = container;
+        } else if (Array.isArray(container)) {
+            const ul = document.createElement("ul");
+            for (let index = 0; index < container.length; index++) {
+                if (typeof container[index] === 'string') {
+                    const li = document.createElement("li");
+                    li.innerHTML = container[index];
+                    li.style.margin = '5px'
+                    ul.appendChild(li);
+                    div.appendChild(ul);
+                } else {
+                    const eles = recursion(container[index]);
+                    div.appendChild(eles);
+                }
+            }
+        } else {
+            if (container.left != undefined) {
+                const info = span(container.left, container.right);
+                div.appendChild(info);
+            }
+        }
+        return div;
+    }
+
+    function span(left, right) {
+        const div = document.createElement("div");
+        const div1 = document.createElement("div");
+        const div2 = document.createElement("div");
+        if (typeof left === 'string' && typeof right === 'string') {
+            div1.innerHTML = left;
+            div2.innerHTML = right;
+            div1.style.padding = '10px 0'
+            div2.style.padding = '10px 0'
+            div1.style.fontWeight = '700'
+            div2.style.fontWeight = '700'
+        } else {
+            const ul = document.createElement("ul");
+            left.forEach(element => {
+                const li = document.createElement("li");
+                li.innerHTML = element.infoName + ':' + element.infoContent;
+                li.style.margin = '10px'
+                ul.append(li);
+            });
+            div1.append(ul);
+            const img = document.createElement('img');
+            img.src = right;
+            img.width = '150';
+            div2.append(img);
+        }
+        div.append(div1);
+        div.append(div2);
+        div.style.display = 'flex';
+        div.style.justifyContent = 'space-between';
+        return div;
+    }
+
+    function recursion(obj) {
+        const div = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.innerHTML = obj.name;
+        div.append(h3);
+        const div3 = document.createElement('div');
+        if (Array.isArray(obj.content)) {
+            for (let index = 0; index < obj.content.length; index++) {
+                const div5 = document.createElement('div');
+                const element = obj.content[index];
+                const h4 = document.createElement('h4');
+                h4.innerHTML = element.name;
+                div5.append(h4);
+                div.append(div5);
+                if (Array.isArray(element.content)) {
+                    const ul = document.createElement('ul');
+                    for (let index = 0; index < element.content.length; index++) {
+                        const li = document.createElement('li');
+                        const elements = element.content[index];
+                        li.innerHTML = elements;
+                        li.style.margin = '5px'
+                        ul.append(li)
+                    }
+                    div.append(ul)
+                } else {
+                    const div3 = document.createElement('div');
+                    div3.innerHTML = element.content;
+                    div.append(div3);
+                }
+            }
+        } else {
+            div.innerHTML = obj.content;
+            div.append(div3);
+        }
+        return div;
+    }
+    generPaper(layoutStr, json); 
+</script>
+
+</html>

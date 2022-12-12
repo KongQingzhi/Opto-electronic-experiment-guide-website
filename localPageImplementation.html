@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="//db.onlinewebfonts.com/c/9b1fcbb153b177699adb642183745401?family=Alte+DIN+1451+Mittelschrift"
+        rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 1024;
+            background-color: #e5e5e5;
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            min-width: 1024px;
+        }
+
+        .container {
+            position: relative;
+            width: 1366px;
+            height: 326px;
+            margin: 100px auto;
+            background-color: #f4f5f8;
+        }
+
+
+
+        .client,
+        .area,
+        .configuration,
+        .client,
+        .price,
+        .time,
+        .method,
+        .price {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: #ABB6BA;
+        }
+
+
+
+        .client {
+            position: absolute;
+            width: 71px;
+            height: 18px;
+            left: 230px;
+            top: 51px;
+        }
+
+        .area {
+            position: absolute;
+            width: 56px;
+            height: 18px;
+            right: 821px;
+            top: 51px;
+        }
+
+        .time {
+            position: absolute;
+            width: 85px;
+            height: 18px;
+            right: 690px;
+            top: 51px;
+        }
+
+        .configuration {
+            position: absolute;
+            width: 28px;
+            height: 18px;
+            right: 584px;
+            top: 51px;
+        }
+
+        .method {
+            position: absolute;
+            width: 71px;
+            height: 18px;
+            right: 436px;
+            top: 51px;
+        }
+
+        .price {
+            position: absolute;
+            width: 28px;
+            height: 18px;
+            right: 343px;
+            top: 51px;
+        }
+
+        .row1 {
+            position: relative;
+            width: 1236px;
+            height: 60px;
+            left: 65px;
+            top: 80px;
+        }
+
+        .reactangle {
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 0%;
+            background: #FFFFFF;
+            border-radius: 3px;
+        }
+
+        .offer {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            left: 0px;
+            top: 5px;
+
+        }
+
+        .reactangle38 {
+            width: 150px;
+            height: 50px;
+            background: #E9ECFC;
+            border-radius: 0px 3px 3px 0px;
+        }
+
+        .icon {
+            position: absolute;
+            left: 5.33%;
+            right: 73.33%;
+            top: 18%;
+            bottom: 18%;
+            width: 32px;
+            height: 32px;
+            background-image: url('./icon.productType01@2x.png');
+            background-size: cover;
+        }
+
+        .icon3 {
+            position: absolute;
+            left: 5.33%;
+            right: 73.33%;
+            top: 18%;
+            bottom: 18%;
+            width: 32px;
+            height: 32px;
+            background-image: url('./icon.productType02@2x.png');
+            background-size: cover;
+        }
+
+        .wan {
+            position: absolute;
+            left: 30%;
+            right: 52.67%;
+            top: 14%;
+            bottom: 52%;
+            font-size: 13px;
+            line-height: 17px;
+            color: #4A565A;
+        }
+
+        .xin {
+            position: absolute;
+            left: 50.67%;
+            right: 33.33%;
+            top: 16%;
+            bottom: 52%;
+
+            font-size: 12px;
+            line-height: 16px;
+            /* identical to box height */
+
+            text-align: center;
+
+            color: #465ED8;
+        }
+
+        .plus {
+            position: absolute;
+            left: 69.33%;
+            right: 24%;
+            top: 24%;
+            bottom: 56%;
+            width: 10px;
+            /* height: 10px; */
+            background-image: url('./icon.new@2x.png');
+            background-size: cover;
+        }
+
+        .bottomText {
+            position: absolute;
+            left: 30%;
+            right: 6%;
+            top: 54%;
+            bottom: 14%;
+            font-size: 12px;
+            line-height: 16px;
+            color: #ABB6BA;
+        }
+
+        .clientId {
+            position: absolute;
+            width: 107px;
+            height: 16px;
+            left: 165px;
+            top: 9px;
+            font-size: 12px;
+            line-height: 16px;
+            color: #ABB6BA;
+        }
+
+        .company {
+            position: absolute;
+            width: 182px;
+            height: 18px;
+            left: 165px;
+            top: 31px;
+            font-size: 14px;
+            line-height: 18px;
+            color: #020E1D;
+        }
+
+        .reactangle71 {
+            position: absolute;
+            width: 70px;
+            right: 745px;
+            top: 28.33%;
+            bottom: 28.33%;
+            background: #EDF9FC;
+            border: 1px solid #FFFFFF;
+            border-radius: 0px 1px 1px 0px;
+        }
+
+        .reactangle72 {
+            position: absolute;
+            width: 2px;
+            right: 813px;
+            top: 28.33%;
+            bottom: 28.33%;
+            background: #0DAADE;
+            opacity: 0.5;
+        }
+
+        .reactangle71Text {
+            position: absolute;
+            width: 52px;
+            right: 754px;
+            top: 35%;
+            bottom: 36.67%;
+            font-size: 13px;
+            line-height: 17px;
+            color: #4A565A;
+        }
+
+        .date {
+            position: absolute;
+            width: 110px;
+            right: 605px;
+            top: 56.67%;
+            bottom: 15%;
+            font-size: 13px;
+            line-height: 17px;
+            color: #ABB6BA;
+        }
+
+        .username {
+            position: absolute;
+            width: 39px;
+            right: 676px;
+            top: 20%;
+            bottom: 51.67%;
+
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 17px;
+
+            /* TextSecondary */
+
+            color: #4A565A;
+        }
+
+        .userIcon {
+            position: absolute;
+            width: 16px;
+            right: 657px;
+            top: 21.67%;
+            bottom: 51.67%;
+            background: url('./icon.user@2x.png');
+            background-size: cover;
+        }
+
+        .fu {
+            position: absolute;
+            left: 53.56%;
+            right: 43.53%;
+            top: 56.67%;
+            bottom: 16.67%;
+            width: 36px;
+            height: 16px;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: right;
+            color: #ABB6BA;
+        }
+
+        .dian {
+            position: absolute;
+            left: 54.53%;
+            right: 43.53%;
+            top: 18.33%;
+            bottom: 55%;
+            width: 24px;
+            height: 16px;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: right;
+            color: #ABB6BA;
+        }
+
+        .dianNum {
+            position: absolute;
+            left: 56.88%;
+            right: 39.97%;
+            top: 20%;
+            bottom: 53.33%;
+            width: 39px;
+            height: 16px;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: right;
+            color: #4A565A;
+        }
+
+        .fuNum {
+            position: absolute;
+            left: 56.88%;
+            right: 42.48%;
+            top: 58.33%;
+            bottom: 15%;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: right;
+            color: #4A565A;
+        }
+
+        .buytype {
+            position: absolute;
+            width: 100px;
+            height: 36px;
+            right: 346px;
+            top: 12px;
+
+        }
+
+        .reactangle37 {
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 0%;
+            width: 100px;
+            height: 36px;
+            background: #F9FAFB;
+            border-radius: 3px;
+        }
+
+        .annan {
+            position: absolute;
+            left: 10%;
+            right: 64%;
+            top: 25%;
+            bottom: 27.78%;
+            font-size: 13px;
+            line-height: 17px;
+            color: #020E1D;
+        }
+
+        .vector {
+            position: absolute;
+            left: 52.5%;
+            right: 47.5%;
+            top: 16.67%;
+            bottom: 16.67%;
+            opacity: 0.1;
+            border: 1px solid #046281;
+        }
+
+        .buyNum {
+            position: absolute;
+            left: 66%;
+            right: 26%;
+            top: 27.78%;
+            bottom: 25%;
+            font-family: 'DIN';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: right;
+            color: #020E1D;
+        }
+
+        .buynian {
+            position: absolute;
+            left: 78%;
+            right: 10%;
+            top: 30.56%;
+            bottom: 25%;
+            font-size: 12px;
+            line-height: 16px;
+            color: #ABB6BA;
+        }
+
+        .priceProduct {
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            right: 191px;
+            top: 10px;
+        }
+
+        .product {
+            position: absolute;
+            left: 0.83%;
+            right: 69.17%;
+            top: 30%;
+            bottom: 30%;
+            font-size: 12px;
+            line-height: 16px;
+            color: #ABB6BA;
+        }
+
+        .symbol {
+            position: absolute;
+            left: 40.83%;
+            right: 49.17%;
+            top: 30%;
+            bottom: 30%;
+            font-size: 12px;
+            line-height: 16px;
+            color: #4A565A;
+        }
+
+        .productPrice {
+            position: absolute;
+            left: 51.67%;
+            right: 0%;
+            top: 25%;
+            bottom: 32.5%;
+            font-family: 'Alte DIN 1451 Mittelschrift';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 17px;
+            text-align: right;
+            color: #4A565A;
+        }
+
+        .grounp20 {
+            position: absolute;
+            width: 123.5px;
+            height: 40px;
+            left: 1057.5px;
+            top: 10px;
+        }
+
+        .grounp20Price {
+            position: absolute;
+            width: 84px;
+            right: 55px;
+            top: 28.33%;
+            bottom: 33.33%;
+            font-family: 'Alte DIN 1451 Mittelschrift';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+            text-align: right;
+            color: #0DAADE;
+        }
+
+        .grounp20Symbol {
+            position: absolute;
+            width: 16px;
+            right: 141px;
+            top: 31.67%;
+            bottom: 33.33%;
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 21px;
+            color: #0DAADE;
+        }
+
+        .grounp20vector {
+            position: absolute;
+            width: 0px;
+            height: 40px;
+            right: 178.5px;
+            top: 10px;
+            opacity: 0.1;
+            border: 1px solid #046281;
+        }
+
+        .action {
+            position: absolute;
+            width: 28px;
+            right: 12px;
+            top: 26.67%;
+            bottom: 26.67%;
+        }
+
+        .actionvector1,
+        .actionvector2,
+        .actionvector3 {
+            position: absolute;
+            top: 42.86%;
+            bottom: 46.43%;
+            background: #ABB6BA;
+            border-radius: 50%;
+        }
+
+
+
+        .actionvector1 {
+            left: 25%;
+            right: 64.29%;
+        }
+
+        .actionvector2 {
+            left: 46.43%;
+            right: 42.86%;
+        }
+
+        .actionvector3 {
+            left: 67.86%;
+            right: 21.43%;
+        }
+
+        .row2 {
+            position: absolute;
+            width: 1236px;
+            height: 60px;
+            left: 65px;
+            top: 143px;
+        }
+
+        .row3 {
+            position: absolute;
+            width: 1236px;
+            height: 60px;
+            left: 65px;
+            top: 206px;
+            background-color: #edf9fc;
+        }
+
+        .up {
+            position: absolute;
+            left: 69.33%;
+            right: 24%;
+            top: 24%;
+            bottom: 56%;
+            width: 10px;
+            height: 13px;
+            background-image: url('./icon.extend@2x.png');
+            background-size: cover;
+        }
+
+        .offer2 {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            left: 0px;
+            top: 5px;
+        }
+
+        .mycolor {
+            background: #DEF7EA;
+        }
+
+        .myGreen {
+            color: #209355;
+        }
+
+        .product12 {
+            position: absolute;
+            left: 0.83%;
+            right: 69.17%;
+            top: 2.5%;
+            bottom: 57.5%;
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #ABB6BA;
+        }
+
+        .product22 {
+            position: absolute;
+            left: 0.83%;
+            right: 69.17%;
+            top: 60%;
+            bottom: 0%;
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #ABB6BA;
+        }
+
+        .symbol12 {
+            position: absolute;
+            left: 40.83%;
+            right: 49.17%;
+            top: 5%;
+            bottom: 55%;
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #4A565A;
+        }
+
+        .symbol22 {
+            position: absolute;
+            left: 40.83%;
+            right: 49.17%;
+            top: 62.5%;
+            bottom: -2.5%;
+            font-family: 'Microsoft YaHei';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #4A565A;
+        }
+
+        .productPrice12 {
+            position: absolute;
+            left: 51.67%;
+            right: 0%;
+            top: 0%;
+            bottom: 57.5%;
+            font-family: 'Alte DIN 1451 Mittelschrift';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 17px;
+            text-align: right;
+            color: #4A565A;
+        }
+
+        .productPrice22 {
+            position: absolute;
+            left: 51.67%;
+            right: 0%;
+            top: 57.5%;
+            bottom: 0%;
+            font-family: 'Alte DIN 1451 Mittelschrift';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 17px;
+            text-align: right;
+            color: #4A565A;
+        }
+
+        .priceProduct2 {
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            right: 191px;
+            top: 10px;
+        }
+
+        .row3Color {
+            background-color: #edf9fc;
+            border: 1px solid #BFE9F8;
+            border-radius: 3px;
+        }
+
+        .actionRow3 {
+            background: #0DAADE;
+            border-radius: 3px;
+        }
+
+        .actionRow3 .actionvector1,
+        .actionRow3 .actionvector2,
+        .actionRow3 .actionvector3 {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="client">编号 / 客户</div>
+        <div class="area">所属区域</div>
+        <div class="time">报价人 / 时间</div>
+        <div class="configuration">配置</div>
+        <div class="method">方式 / 年限</div>
+        <div class="price">价格</div>
+        <div class="row1">
+            <div class="reactangle">
+                <div class="offer">
+                    <div class="reactangle38">
+                        <div class="icon"></div>
+                        <div class="wan">万相</div>
+                        <div class="xin">新购</div>
+                        <div class="plus"></div>
+                        <div class="bottomText">运营商行业标准版</div>
+                    </div>
+                </div>
+                <div class="clientId">QT-202012220156</div>
+                <div class="company">
+                    新东方教育科技集团有限公司
+                </div>
+                <div class="reactangle71">
+                </div>
+                <div class="reactangle72">
+                </div>
+                <div class="reactangle71Text">东区金融</div>
+                <div class="date">
+                    2020-12-15 13:26
+                </div>
+                <div class="username">祝延彬</div>
+                <div class="userIcon"></div>
+                <div class="dian">点数</div>
+                <div class="dianNum">50,000</div>
+                <div class="fu">服务端</div>
+                <div class="fuNum">5</div>
+                <div class="buytype">
+                    <div class="reactangle37"></div>
+                    <div class="annan">按年</div>
+                    <div class="vector"></div>
+                    <div class="buyNum">3</div>
+                    <div class="buynian">年</div>
+                </div>
+                <div class="priceProduct">
+                    <div class="product">产品价</div>
+                    <div class="symbol">￥</div>
+                    <div class="productPrice">9,850,000</div>
+                </div>
+                <div class="grounp20"></div>
+
+                <div class="grounp20Price">128,05,000</div>
+                <div class="grounp20Symbol">￥</div>
+                <div class="grounp20vector"></div>
+                <div class="action">
+                    <div class="actionvector1"></div>
+                    <div class="actionvector2"></div>
+                    <div class="actionvector3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="reactangle">
+                <div class="offer2">
+                    <div class="reactangle38 mycolor">
+                        <div class="icon"></div>
+                        <div class="wan">万相</div>
+                        <div class="xin myGreen">扩容</div>
+                        <div class="up"></div>
+                        <div class="bottomText">标准版</div>
+                    </div>
+                </div>
+                <div class="clientId">QT-202012220156</div>
+                <div class="company">
+                    新东方教育科技集团有限公司
+                </div>
+                <div class="reactangle71">
+                </div>
+                <div class="reactangle72">
+                </div>
+                <div class="reactangle71Text">东区金融</div>
+                <div class="date">
+                    2020-12-15 13:26
+                </div>
+                <div class="username">祝延彬</div>
+                <div class="userIcon"></div>
+                <div class="dian">点数</div>
+                <div class="dianNum">50,000</div>
+                <div class="fu">服务端</div>
+                <div class="fuNum">5</div>
+                <div class="buytype">
+                    <div class="reactangle37"></div>
+                    <div class="annan">买断</div>
+                    <div class="vector"></div>
+                    <div class="buyNum">1</div>
+                    <div class="buynian">年</div>
+                </div>
+                <div class="priceProduct2">
+                    <div class="product12">产品价</div>
+                    <div class="symbol12">￥</div>
+                    <div class="productPrice12">9,850,000</div>
+                    <div class="product22">维保价</div>
+                    <div class="symbol22">￥</div>
+                    <div class="productPrice22">2,955,000</div>
+                </div>
+                <div class="grounp20"></div>
+
+                <div class="grounp20Price">128,05,000</div>
+                <div class="grounp20Symbol">￥</div>
+                <div class="grounp20vector"></div>
+                <div class="action">
+                    <div class="actionvector1"></div>
+                    <div class="actionvector2"></div>
+                    <div class="actionvector3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row3">
+            <div class="reactangle row3Color">
+                <div class="offer">
+                    <div class="reactangle38">
+                        <div class="icon3"></div>
+                        <div class="wan">万相</div>
+                        <div class="xin">新购</div>
+                        <div class="plus"></div>
+                        <div class="bottomText">高级版</div>
+                    </div>
+                </div>
+                <div class="clientId">QT-202012220156</div>
+                <div class="company">
+                    新东方教育科技集团有限公司
+                </div>
+                <div class="reactangle71">
+                </div>
+                <div class="reactangle72">
+                </div>
+                <div class="reactangle71Text">东区金融</div>
+                <div class="date">
+                    2020-12-15 13:26
+                </div>
+                <div class="username">祝延彬</div>
+                <div class="userIcon"></div>
+                <div class="dian">点数</div>
+                <div class="dianNum">50,000</div>
+                <div class="fu">服务端</div>
+                <div class="fuNum">5</div>
+                <div class="buytype">
+                    <div class="reactangle37"></div>
+                    <div class="annan">SaaS</div>
+                    <div class="vector"></div>
+                    <div class="buyNum">1</div>
+                    <div class="buynian">年</div>
+                </div>
+                <div class="priceProduct">
+                    <div class="product">产品价</div>
+                    <div class="symbol">￥</div>
+                    <div class="productPrice">9,850,000</div>
+                </div>
+                <div class="grounp20"></div>
+
+                <div class="grounp20Price">128,05,000</div>
+                <div class="grounp20Symbol">￥</div>
+                <div class="grounp20vector"></div>
+                <div class="action actionRow3">
+                    <div class="actionvector1"></div>
+                    <div class="actionvector2"></div>
+                    <div class="actionvector3"></div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
