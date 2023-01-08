@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #f3f;
+  background-color: #fff;
 }
 
 li {
@@ -19,6 +19,12 @@ a {
 input {
   outline: none;
   border: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (max-width: 1200px) {

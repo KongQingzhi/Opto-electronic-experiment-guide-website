@@ -1,4 +1,4 @@
-$primaryWhite: #f3f;
+$primaryWhite:#fff;
 $primaryBlue: #53B3FF;
 $primaryDeepBlue: #26318b;
 $primaryGreen: #34D0B2;
@@ -43,6 +43,11 @@ input {
     border: none;
 }
 
+@media only screen and (min-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+}
 
 @media only screen and (max-width: 1200px) {
     html {
