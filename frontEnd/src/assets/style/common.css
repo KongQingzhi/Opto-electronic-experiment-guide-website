@@ -19,6 +19,13 @@ a {
 input {
   outline: none;
   border: none;
+  padding: 0.5rem 1rem;
+}
+
+button {
+  outline: none;
+  border: none;
+  text-align: center;
 }
 
 @media only screen and (min-width: 1200px) {

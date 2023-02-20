@@ -1,23 +1,9 @@
-$primaryWhite:#fff;
+// 颜色
+$primaryWhite: #fff;
 $primaryBlue: #53B3FF;
 $primaryDeepBlue: #26318b;
 $primaryGreen: #34D0B2;
 $primaryDeepBlue: #258F67;
-
-
-//自定义函数
-@mixin disFlex ($row, $col) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: $row;
-    align-items: $col;
-}
-
-@mixin posiAR($AR, $top, $left) {
-    position: $AR;
-    top: $top;
-    left: $left;
-}
 
 
 * {
@@ -41,8 +27,37 @@ a {
 input {
     outline: none;
     border: none;
+    padding: 0.5rem 1rem;
 }
 
+button {
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+
+
+//自定义函数
+@mixin disFlex ($row, $col) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $row;
+    align-items: $col;
+}
+
+@mixin posiAR($AR, $top, $left) {
+    position: $AR;
+    top: $top;
+    left: $left;
+}
+
+@mixin fontSW($size, $weight) {
+    font-size: $size;
+    font-weight: $weight;
+}
+
+// 媒体查询
 @media only screen and (min-width: 1200px) {
     html {
         font-size: 16px;
