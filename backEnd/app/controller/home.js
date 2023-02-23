@@ -5,7 +5,9 @@ const { Controller } = require('egg');
 class HomeController extends Controller {
   async index() {
     const { ctx } = this;
-    ctx.body = 'hi, egg';
+    const str = await ctx.service.home.index();
+    console.log(str);
+    ctx.body = str;
   }
 }
 
