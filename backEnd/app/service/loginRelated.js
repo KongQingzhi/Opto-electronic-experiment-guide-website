@@ -9,8 +9,7 @@ class LoginRelated extends Service {
         } else {
             Table = 'teachers'
         }
-        const sql = `select * from ${Table} where s_no = ${UserNo} and s_password = ${UserPassword}`
-        const res = await app.mysql.query(sql);
+        const res = await app.mysql.select(Table, { where: { s_no: UserNo, s_password: UserPassword } });
         return res
     }
 }

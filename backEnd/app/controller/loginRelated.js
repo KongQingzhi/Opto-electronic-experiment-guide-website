@@ -17,10 +17,7 @@ class LoginRelated extends Controller {
         const { ctx } = this;
         const query = ctx.query;
         const res = await ctx.service.loginRelated.login(query)
-        ctx.body = {
-            state: 200,
-            data: res
-        };
+        ctx.body = res;
     }
 }
 module.exports = LoginRelated;
