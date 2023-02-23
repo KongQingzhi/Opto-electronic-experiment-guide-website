@@ -1,13 +1,13 @@
 <template>
     <div>
-
+        <router-view></router-view>
     </div>
 </template>
 
 <script lang="ts">
 export default {
-    setup() {
-
+    setup () {
+         
 
         return {}
     }
@@ -15,6 +15,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 
 </style>

@@ -1,5 +1,7 @@
 <template>
-    <div class="App"></div>
+    <div class="App">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -9,11 +11,12 @@
 
 
 <style lang="scss" scoped>
-.App {
-    height: 20rem;
-    background-color: blueviolet;
-    margin: 0 auto;
-}
+
+// .App {
+//     height: 20rem;
+//     background-color: blueviolet;
+//     margin: 0 auto;
+// }
 @media only screen and (min-width: 1200px) {
     .App {
         width: 75rem;
