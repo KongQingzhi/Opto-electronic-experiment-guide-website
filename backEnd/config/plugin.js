@@ -8,10 +8,14 @@ module.exports = {
   // static: {
   //   enable: true,
   // }
-  mysql : {
+  mysql: {
     enable: true,
     package: 'egg-mysql',
+  },
+
+  cors: {
+    enable: true,
+    package: 'egg-cors',
   }
 
-  
 };
