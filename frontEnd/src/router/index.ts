@@ -5,7 +5,7 @@ import Show from './show';
 import User from './user';
 import Home from './home';
 //2.创建路由表
-const routes = [
+const routes:any = [
     {
         path: '/',
         name: 'root',

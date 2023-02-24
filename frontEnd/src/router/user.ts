@@ -1,5 +1,5 @@
 import UserVue from '../views/user/User.vue';
-import LoginVue from '../views/user/login/login.vue';
+import LoginVue from '../views/user/login/Login.vue';
 export default {
     path: '/user',
     name: 'user',
