@@ -11,7 +11,7 @@
  Target Server Version : 80032
  File Encoding         : 65001
 
- Date: 22/02/2023 13:04:38
+ Date: 22/02/2023 21:54:47
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `classes`  (
   `c_id` int(0) NOT NULL AUTO_INCREMENT,
   `c_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`c_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of classes
@@ -35,6 +35,21 @@ INSERT INTO `classes` VALUES (2, '2020级光电信息科学与工程班');
 INSERT INTO `classes` VALUES (3, '2021级光电信息科学与工程班');
 INSERT INTO `classes` VALUES (4, '2022级光电信息科学与工程班');
 INSERT INTO `classes` VALUES (5, '2023级光电信息科学与工程班');
+
+-- ----------------------------
+-- Table structure for clt
+-- ----------------------------
+DROP TABLE IF EXISTS `clt`;
+CREATE TABLE `clt`  (
+  `c_id` int(0) NOT NULL,
+  `l_id` int(0) NULL DEFAULT NULL,
+  `t_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`c_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of clt
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for el
@@ -49,6 +64,39 @@ CREATE TABLE `el`  (
 
 -- ----------------------------
 -- Records of el
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for eq
+-- ----------------------------
+DROP TABLE IF EXISTS `eq`;
+CREATE TABLE `eq`  (
+  `e_id` int(0) NOT NULL,
+  `q_id` int(0) NULL DEFAULT NULL,
+  `s_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `eq_grade` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`e_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of eq
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for eqs
+-- ----------------------------
+DROP TABLE IF EXISTS `eqs`;
+CREATE TABLE `eqs`  (
+  `e_id` int(0) NOT NULL,
+  `e_do` int(0) NULL DEFAULT NULL,
+  `q_grade` int(0) NULL DEFAULT NULL,
+  `s_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `es_grade` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`e_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of eqs
 -- ----------------------------
 
 -- ----------------------------
@@ -77,12 +125,14 @@ CREATE TABLE `experiments`  (
   `e_content` varchar(5000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `e_files` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `r_id` int(0) NULL DEFAULT NULL,
+  `t_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`e_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of experiments
 -- ----------------------------
+INSERT INTO `experiments` VALUES (2, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for lessons
@@ -122,6 +172,7 @@ CREATE TABLE `ls`  (
   `ls_id` int(0) NOT NULL AUTO_INCREMENT,
   `l_id` int(0) NULL DEFAULT NULL,
   `s_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ls_grade` int(0) NULL DEFAULT NULL,
   PRIMARY KEY (`ls_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
@@ -152,7 +203,7 @@ CREATE TABLE `rooms`  (
   `r_id` int(0) NOT NULL AUTO_INCREMENT,
   `r_addr` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`r_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rooms
