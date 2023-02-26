@@ -12,11 +12,9 @@
 
 <style lang="scss" scoped>
 
-// .App {
-//     height: 20rem;
-//     background-color: blueviolet;
-//     margin: 0 auto;
-// }
+.App {
+    margin: 0 auto;
+}
 @media only screen and (min-width: 1200px) {
     .App {
         width: 75rem;
@@ -31,7 +29,7 @@
 
 @media only screen and (max-width: 992px) {
     .App {
-        width: 50rem;
+        width: 51rem;
     }
 }
 
@@ -43,7 +41,7 @@
 
 @media only screen and (max-width: 520px) {
     .App {
-        width: 30rem;
+        width: 32rem;
     }
 }
 
