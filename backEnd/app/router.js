@@ -21,9 +21,25 @@ module.exports = app => {
   /**
    * 学生有关的接口
    */
-  
+
   // 查询所有班级
   router.get('/api/getAllClass', controller.studentRelated.getAllClass);
   // 绑定班级
   router.post('/api/bindClass', controller.studentRelated.bindClass);
+  // 查询用户班级
+  router.get('/api/getClassByStudent', controller.studentRelated.getClassByStudent);
+  // 查询所有课程
+  router.get('/api/getAllLessons', controller.studentRelated.getAllLessons);
+
+
+  /**
+   * 教师有关
+   */
+
+  // 添加课程
+  router.post('/api/addLessons', controller.teacherRelated.addLessons);
+  // 发布实验
+  router.post('/api/publishExperiment', controller.teacherRelated.publishExperiment);
+  // 实验课程绑定
+  router.post('/api/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
 };
