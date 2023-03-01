@@ -23,6 +23,17 @@ class teacherRelated extends Service {
         }
     }
 
+    async selectELBind(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.select('el', { where: param });
+            return res.length;
+        } catch (e) {
+            console.log(e);
+            return '查询课程实验绑定失败！'
+        }
+    }
+
     async bindExperimentLessons(param) {
         const { app } = this;
         try {
@@ -33,6 +44,7 @@ class teacherRelated extends Service {
             return '实验与课程绑定失败！'
         }
     }
+
 
 
 }

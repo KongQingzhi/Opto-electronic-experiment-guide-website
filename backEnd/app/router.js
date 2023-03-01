@@ -40,6 +40,8 @@ module.exports = app => {
   router.post('/api/addLessons', controller.teacherRelated.addLessons);
   // 发布实验
   router.post('/api/publishExperiment', controller.teacherRelated.publishExperiment);
+  // 查询课程与实验的绑定情况
+  router.get('/api/selectELBind', controller.teacherRelated.selectELBind);
   // 实验课程绑定
   router.post('/api/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
 };
