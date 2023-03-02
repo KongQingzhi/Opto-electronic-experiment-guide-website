@@ -1,22 +1,18 @@
-const { Controller } = require('egg');
 const nodemailer = require('nodemailer');
-class LoginRelated extends Controller {
+const Send = require('../utils/sendRequest');
+class LoginRelated extends Send {
     // get请求获取参数
     // const query = ctx.query;
     // post请求获取参数
     // const query = ctx.request.body;
     async login() {
-        const { ctx } = this;
-        const query = ctx.query;
-        const res = await ctx.service.loginRelated.login(query)
-        ctx.body = res;
+        const res = await this.sendRequest('GET', 'loginRelated', 'login')
+        this.ctx.body = res;
     }
 
     async register() {
-        const { ctx } = this;
-        const query = ctx.request.body;
-        const res = await ctx.service.loginRelated.register(query)
-        ctx.body = res;
+        const res = await this.sendRequest('GET', 'loginRelated', 'register')
+        this.ctx.body = res;
     }
 
     async verify() {
@@ -54,10 +50,8 @@ class LoginRelated extends Controller {
     }
 
     async retrievePassword() {
-        const { ctx } = this;
-        const query = ctx.request.body;
-        const res = await ctx.service.loginRelated.retrievePassword(query);
-        ctx.body = res
+        const res = await this.sendRequest('GET', 'loginRelated', 'retrievePassword')
+        this.ctx.body = res;
     }
 
 }

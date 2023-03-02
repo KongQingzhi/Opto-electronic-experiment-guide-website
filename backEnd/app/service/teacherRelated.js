@@ -45,6 +45,28 @@ class teacherRelated extends Service {
         }
     }
 
+    async selectClass(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.select('classes', { where: param });
+            return res.length;
+        } catch (e) {
+            console.log(e);
+            return '查询班级失败！'
+        }
+    }
+
+    async createClass(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.insert('classes', param);
+            return res.affectedRows;
+        } catch (e) {
+            console.log(e);
+            return '添加班级失败，班级已存在！'
+        }
+    }
+
 
 
 }

@@ -44,4 +44,9 @@ module.exports = app => {
   router.get('/api/selectELBind', controller.teacherRelated.selectELBind);
   // 实验课程绑定
   router.post('/api/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
+  // 查看班级
+  router.get('/api/getClass', controller.teacherRelated.selectClass);
+  // 创建班级
+  router.post('/api/createClass', controller.teacherRelated.createClass);
+
 };

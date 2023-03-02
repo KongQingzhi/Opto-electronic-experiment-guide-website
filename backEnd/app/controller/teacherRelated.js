@@ -1,4 +1,3 @@
-const { Controller } = require('egg');
 const Send = require('../utils/sendRequest');
 class teacherRelated extends Send {
     async addLessons() {
@@ -18,7 +17,7 @@ class teacherRelated extends Send {
     }
 
     async bindExperimentLessons() {
-        const flag = this.selectELBind();
+        const flag = await this.selectELBind();
         if (!flag) {
             const res = await this.sendRequest('GET', 'teacherRelated', 'bindExperimentLessons')
             this.ctx.body = res;
@@ -27,6 +26,21 @@ class teacherRelated extends Send {
         }
     }
 
+    async selectClass() {
+        const res = await this.sendRequest('GET', 'teacherRelated', 'selectClass')
+        this.ctx.body = res;
+        return res;
+    }
+
+    async createClass() {
+        const flag = await this.selectClass();
+        if (!flag) {
+            const res = await this.sendRequest('POST', 'teacherRelated', 'createClass')
+            this.ctx.body = res;
+        } else {
+            this.ctx.body = '班级已存在，请勿重复操作！';
+        }
+    }
 
 
 
