@@ -11,7 +11,7 @@ class teacherRelated extends Send {
     }
 
     async selectELBind() {
-        const res = await this.sendRequest('GET', 'teacherRelated', 'selectELBind')
+        const res = await this.sendRequest('POST', 'teacherRelated', 'selectELBind')
         this.ctx.body = res;
         return res;
     }
@@ -19,7 +19,7 @@ class teacherRelated extends Send {
     async bindExperimentLessons() {
         const flag = await this.selectELBind();
         if (!flag) {
-            const res = await this.sendRequest('GET', 'teacherRelated', 'bindExperimentLessons')
+            const res = await this.sendRequest('POST', 'teacherRelated', 'bindExperimentLessons')
             this.ctx.body = res;
         } else {
             this.ctx.body = '课程与实验已绑定，请勿重复操作！';
@@ -27,7 +27,7 @@ class teacherRelated extends Send {
     }
 
     async selectClass() {
-        const res = await this.sendRequest('GET', 'teacherRelated', 'selectClass')
+        const res = await this.sendRequest('POST', 'teacherRelated', 'selectClass')
         this.ctx.body = res;
         return res;
     }

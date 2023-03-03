@@ -1,6 +1,6 @@
 const { Controller } = require('egg');
-class Send extends Controller{
-    async sendRequest(method,serviceName,methodName) {
+class Send extends Controller {
+    async sendRequest(method, serviceName, methodName) {
         const { ctx } = this;
         let query = {};
         if (method == 'GET') {

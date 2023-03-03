@@ -24,10 +24,12 @@ module.exports = app => {
 
   // 查询所有班级
   router.get('/api/getAllClass', controller.studentRelated.getAllClass);
-  // 绑定班级
-  router.post('/api/bindClass', controller.studentRelated.bindClass);
   // 查询用户班级
   router.get('/api/getClassByStudent', controller.studentRelated.getClassByStudent);
+  // 查询是否绑定班级
+  router.post('/api/selectBindClass', controller.studentRelated.selectBindClass);
+  // 绑定班级
+  router.post('/api/bindClass', controller.studentRelated.bindClass);
   // 查询所有课程
   router.get('/api/getAllLessons', controller.studentRelated.getAllLessons);
 
@@ -41,11 +43,11 @@ module.exports = app => {
   // 发布实验
   router.post('/api/publishExperiment', controller.teacherRelated.publishExperiment);
   // 查询课程与实验的绑定情况
-  router.get('/api/selectELBind', controller.teacherRelated.selectELBind);
+  router.post('/api/selectELBind', controller.teacherRelated.selectELBind);
   // 实验课程绑定
   router.post('/api/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
   // 查看班级
-  router.get('/api/getClass', controller.teacherRelated.selectClass);
+  router.post('/api/selectClass', controller.teacherRelated.selectClass);
   // 创建班级
   router.post('/api/createClass', controller.teacherRelated.createClass);
 

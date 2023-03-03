@@ -12,18 +12,6 @@ class studentRelated extends Service {
         }
     }
 
-    async bindClass(param) {
-        const { app } = this;
-        const { s_no, c_id } = param;
-        try {
-            const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
-            return res.affectedRows
-        } catch (e) {
-            console.log(e);
-            return "绑定班级失败"
-        }
-    }
-
     async getClassByStudent(param) {
         const { app } = this;
         try {
@@ -38,6 +26,29 @@ class studentRelated extends Service {
         } catch (e) {
             console.log(e);
             return "未绑定班级!"
+        }
+    }
+
+    async selectBindClass(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.select('students', { where: param });
+            return res.length;
+        } catch (e) {
+            console.log(e);
+            return '查询绑定班级失败！'
+        }
+    }
+
+    async bindClass(param) {
+        const { app } = this;
+        const { s_no, c_id } = param;
+        try {
+            const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
+            return res.affectedRows;
+        } catch (e) {
+            console.log(e);
+            return "绑定班级失败"
         }
     }
 
