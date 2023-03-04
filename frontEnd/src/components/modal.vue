@@ -1,20 +1,15 @@
 <template>
-    <div id="Modal" class="border-radius-sm text-center">
-        {{ content }}
+    <div id="Modal" class="text-center border-radius-sm" :class="modalType">
+        <span class="title-sm">{{ modalContent }}</span>
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-
-
-const props = defineProps({
-    content: String,
-    borderWidth: String,
+const prop = defineProps({
+    modalContent: String,
     modalType: String
-});
-const { borderWidth, modalType } = props;
-
+})
+const a = 11;
 
 </script>
 
@@ -22,7 +17,18 @@ const { borderWidth, modalType } = props;
 @import '../assets/style/common.scss';
 
 #Modal {
-    padding: 0.3rem;
+    padding: 0 0.3rem;
+}
 
+.info{
+    color: skyblue;
+}
+
+.waring {
+    color: yellow;
+}
+
+.error{
+    color: red;;
 }
 </style>

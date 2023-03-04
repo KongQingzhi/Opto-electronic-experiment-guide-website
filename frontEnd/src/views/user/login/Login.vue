@@ -2,8 +2,8 @@
     <div class="Login px-2 py-2">
         <input class="border-gray border-radius-sm my-1" type="text" placeholder="请输入账号">
         <input class="border-gray border-radius-sm my-1" type="text" placeholder="请输入密码">
-        <modalVue borderWidth="5px" modalType="warning" content="123456"></modalVue>
-        <buttonVue class="" style="margin:2rem auto" content="电脑" propsClass="" :propsFn="fn"></buttonVue>
+        <modalVue  modal-type="info" modal-content="123456"></modalVue>
+        <buttonVue class="" style="margin:2rem auto" content="电脑" propsClass="" propsFn=""></buttonVue>
     </div>
 </template>
 
@@ -11,10 +11,7 @@
 import buttonVue from '../../../components/button.vue';
 import modalVue from '../../../components/modal.vue';
 
-function fn() {
-    console.log(123546);
 
-}
 
 </script>
 

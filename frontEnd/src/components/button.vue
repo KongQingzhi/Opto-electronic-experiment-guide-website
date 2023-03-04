@@ -1,5 +1,5 @@
 <template>
-    <div id="Button" class="border-radius-lg text-center" :class="propsClass" :style="propsStyle" @click="propsFn">
+    <div id="Button" class="border-radius-lg text-center" :class="propsClass" :style="propsStyle" @click="$emit('propsFn',index)">
         {{ content }}
     </div>
 </template>
@@ -9,8 +9,13 @@ const props = defineProps([
     "content",
     "propsClass",
     "propsStyle",
-    "propsFn"
 ])
+const emit = defineEmits({
+    propsFn:(n: number): void=>{
+        
+    }
+})
+const index = 0;
 </script>
 
 <style lang="scss" scoped>
