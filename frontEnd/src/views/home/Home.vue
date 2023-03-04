@@ -4,14 +4,8 @@
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    setup() {
+<script setup lang="ts">
 
-
-        return {}
-    }
-}
 </script>
 
 <style lang="scss" scoped>

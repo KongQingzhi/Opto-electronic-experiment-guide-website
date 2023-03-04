@@ -57,6 +57,10 @@ button {
     font-weight: $weight;
 }
 
+@mixin border($width,$bgc){
+    border: $width solid $bgc;
+}
+
 // 媒体查询
 @media only screen and (min-width: 1200px) {
     html {

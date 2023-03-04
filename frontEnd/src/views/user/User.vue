@@ -10,18 +10,9 @@
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    setup() {
-        const inputBoxTitle: String[] = ['登录', "注册", "找回密码"];
-        const index: number = 0;
-
-        return {
-            inputBoxTitle,
-            index
-        }
-    }
-}
+<script setup lang="ts">
+    const inputBoxTitle: String[] = ['登录', "注册", "找回密码"];
+    const index: number = 0;
 </script>
 
 <style lang="scss" scoped>
