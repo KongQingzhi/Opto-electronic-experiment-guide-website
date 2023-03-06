@@ -10,13 +10,15 @@ module.exports = app => {
    */
 
   // 登录
-  router.get('/api/login', controller.loginRelated.login);
+  router.post('/api/login', controller.loginRelated.login);
+  // 检测是否存在账号
+  router.post('/api/accountExists', controller.loginRelated.accountExists)
   // 注册
   router.post('/api/register', controller.loginRelated.register);
-  // 验证
+  // 验证码
   router.post('/api/verify', controller.loginRelated.verify);
   // 找回密码
-  router.post('/api/retrievePassword', controller.loginRelated.retrievePassword)
+  router.post('/api/retrievePassword', controller.loginRelated.retrievePassword);
 
   /**
    * 学生有关的接口
@@ -38,8 +40,12 @@ module.exports = app => {
    * 教师有关
    */
 
+  // 查看课程是否存在
+  router.post('/api/lessonExists', controller.teacherRelated.lessonExists);
   // 添加课程
   router.post('/api/addLessons', controller.teacherRelated.addLessons);
+  // 查询实验是否存在
+  router.post('/api/experimentExists', controller.teacherRelated.experimentExists);
   // 发布实验
   router.post('/api/publishExperiment', controller.teacherRelated.publishExperiment);
   // 查询课程与实验的绑定情况

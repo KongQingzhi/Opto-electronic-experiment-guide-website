@@ -21,11 +21,11 @@ class studentRelated extends Service {
             } else {
                 const { c_id } = classList[0];
                 const res = await app.mysql.select('classes', { where: { c_id }, columns: ['c_name'] })
-                return res[0].c_name;
+                return res;
             }
         } catch (e) {
             console.log(e);
-            return "未绑定班级!"
+            return [];
         }
     }
 
@@ -33,10 +33,10 @@ class studentRelated extends Service {
         const { app } = this;
         try {
             const res = await app.mysql.select('students', { where: param });
-            return res.length;
+            return res;
         } catch (e) {
             console.log(e);
-            return '查询绑定班级失败！'
+            return [];
         }
     }
 
@@ -48,7 +48,7 @@ class studentRelated extends Service {
             return res.affectedRows;
         } catch (e) {
             console.log(e);
-            return "绑定班级失败"
+            return 0;
         }
     }
 

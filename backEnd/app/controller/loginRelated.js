@@ -6,13 +6,71 @@ class LoginRelated extends Send {
     // post请求获取参数
     // const query = ctx.request.body;
     async login() {
-        const res = await this.sendRequest('GET', 'loginRelated', 'login')
-        this.ctx.body = res;
+        const res = await this.sendRequest('POST', 'loginRelated', 'login');
+        let json = null;
+        if (res.length) {
+            json = {
+                "status": 1,
+                "msg": "登陆成功！",
+                "data": res
+            }
+        } else {
+            json = {
+                "status": 0,
+                "msg": "登陆失败",
+                "data": [],
+            }
+        }
+        this.ctx.body = json;
+    }
+
+    async accountExists() {
+        const res = await this.sendRequest('POST', 'loginRelated', 'accountExists');
+        let json = null;
+        if (res.length) {
+            json = {
+                "status": 1,
+                "msg": "账号已存在",
+                "data": res
+            }
+        } else {
+            json = {
+                "status": 0,
+                "msg": "账号不存在",
+                "data": [],
+            }
+        }
+        this.ctx.body = json;
+        return json;
     }
 
     async register() {
-        const res = await this.sendRequest('GET', 'loginRelated', 'register')
-        this.ctx.body = res;
+        const flag = await this.accountExists();
+        let json = null;
+        if (flag.status) {
+            json = {
+                "status": 0,
+                "msg": "账号已存在，请勿重复注册！",
+                "data": []
+            }
+            this.ctx.body = json;
+        } else {
+            const res = await this.sendRequest('POST', 'loginRelated', 'register')
+            if (res) {
+                json = {
+                    "status": 1,
+                    "msg": "注册成功！",
+                    "data": []
+                }
+            } else {
+                json = {
+                    "status": 0,
+                    "msg": "注册失败！",
+                    "data": []
+                }
+            }
+            this.ctx.body = json;
+        }
     }
 
     async verify() {
@@ -50,8 +108,34 @@ class LoginRelated extends Send {
     }
 
     async retrievePassword() {
-        const res = await this.sendRequest('GET', 'loginRelated', 'retrievePassword')
-        this.ctx.body = res;
+        const flag = await this.accountExists();
+        let json = null;
+        if (flag.status) {
+            const res = await this.sendRequest('POST', 'loginRelated', 'retrievePassword');
+            if (res) {
+                json = {
+                    "status": 1,
+                    "msg": "修改密码成功！",
+                    "data": []
+                }
+            } else {
+                json = {
+                    "status": 0,
+                    "msg": "修改密码失败！",
+                    "data": []
+                }
+            }
+            this.ctx.body = json;
+            this.ctx.body = res;
+        } else {
+            json = {
+                "status": 0,
+                "msg": "账号不存在，请注册！",
+                "data": []
+            }
+            this.ctx.body = json;
+        }
+
     }
 
 }

@@ -1,6 +1,16 @@
 const { Service } = require('egg');
 
 class teacherRelated extends Service {
+    async lessonExists(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.select('lessons', { where: param });
+            return res;
+        } catch (e) {
+            console.log(e);
+            return [];
+        }
+    }
     async addLessons(param) {
         const { app } = this;
         try {
@@ -8,7 +18,18 @@ class teacherRelated extends Service {
             return res.affectedRows;
         } catch (e) {
             console.log(e);
-            return '添加课程失败！'
+            return 0;
+        }
+    }
+
+    async experimentExists(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.select('experiments', { where: { e_name: param.e_name } });
+            return res;
+        } catch (e) {
+            console.log(e);
+            return [];
         }
     }
 
@@ -19,7 +40,7 @@ class teacherRelated extends Service {
             return res.affectedRows;
         } catch (e) {
             console.log(e);
-            return '添加实验失败！'
+            return 0
         }
     }
 
@@ -27,10 +48,10 @@ class teacherRelated extends Service {
         const { app } = this;
         try {
             const res = await app.mysql.select('el', { where: param });
-            return res.length;
+            return res;
         } catch (e) {
             console.log(e);
-            return '查询课程实验绑定失败！'
+            return [];
         }
     }
 
@@ -49,10 +70,10 @@ class teacherRelated extends Service {
         const { app } = this;
         try {
             const res = await app.mysql.select('classes', { where: param });
-            return res.length;
+            return res;
         } catch (e) {
             console.log(e);
-            return '查询班级失败！'
+            return [];
         }
     }
 
@@ -63,7 +84,7 @@ class teacherRelated extends Service {
             return res.affectedRows;
         } catch (e) {
             console.log(e);
-            return '添加班级失败，班级已存在！'
+            return 0;
         }
     }
 

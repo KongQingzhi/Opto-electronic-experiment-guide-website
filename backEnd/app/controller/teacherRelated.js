@@ -1,45 +1,195 @@
 const Send = require('../utils/sendRequest');
 class teacherRelated extends Send {
+    async lessonExists() {
+        const res = await this.sendRequest('POST', 'teacherRelated', 'lessonExists')
+        let json = null;
+        if (res.length) {
+            json = {
+                "status": 1,
+                "msg": "课程已存在！",
+                "data": res,
+            }
+        } else {
+            json = {
+                "status": 0,
+                "msg": "课程不存在",
+                "data": [],
+            }
+        }
+        this.ctx.body = json;
+        return json;
+    }
     async addLessons() {
-        const res = await this.sendRequest('POST', 'teacherRelated', 'addLessons')
-        this.ctx.body = res;
+        const flag = await this.lessonExists();
+        let json = null;
+        if (flag.status) {
+            json = {
+                "status": 0,
+                "msg": "添加失败,课程已存在！",
+                "data": [],
+            }
+        } else {
+            const res = await this.sendRequest('POST', 'teacherRelated', 'addLessons')
+            if (res) {
+                json = {
+                    "status": 1,
+                    "msg": "添加成功！",
+                    "data": []
+                }
+            } else {
+                json = {
+                    "status": 0,
+                    "msg": "添加失败",
+                    "data": [],
+                }
+            }
+        }
+        this.ctx.body = json;
+    }
+
+    async experimentExists() {
+        const res = await this.sendRequest('POST', 'teacherRelated', 'experimentExists')
+        let json = null;
+        if (res.length) {
+            json = {
+                "status": 1,
+                "msg": "实验已存在！",
+                "data": res,
+            }
+        } else {
+            json = {
+                "status": 0,
+                "msg": "实验不存在",
+                "data": [],
+            }
+        }
+        this.ctx.body = json;
+        return json;
     }
 
     async publishExperiment() {
-        const res = await this.sendRequest('POST', 'teacherRelated', 'publishExperiment')
-        this.ctx.body = res;
+        const flag = await this.experimentExists();
+        let json = null;
+        if (flag.status) {
+            json = {
+                "status": 0,
+                "msg": "添加失败,实验已存在！",
+                "data": [],
+            }
+        } else {
+            const res = await this.sendRequest('POST', 'teacherRelated', 'publishExperiment')
+            if (res) {
+                json = {
+                    "status": 1,
+                    "msg": "添加成功！",
+                    "data": []
+                }
+            } else {
+                json = {
+                    "status": 0,
+                    "msg": "添加失败",
+                    "data": [],
+                }
+            }
+        }
+        this.ctx.body = json;
     }
 
     async selectELBind() {
         const res = await this.sendRequest('POST', 'teacherRelated', 'selectELBind')
-        this.ctx.body = res;
-        return res;
+        let json = null;
+        if (res.length) {
+            json = {
+                "status": 1,
+                "msg": "实验与课程已绑定！",
+                "data": res,
+            }
+        } else {
+            json = {
+                "status": 0,
+                "msg": "实验与课程未绑定！",
+                "data": [],
+            }
+        }
+        this.ctx.body = json;
+        return json;
     }
 
     async bindExperimentLessons() {
         const flag = await this.selectELBind();
-        if (!flag) {
-            const res = await this.sendRequest('POST', 'teacherRelated', 'bindExperimentLessons')
-            this.ctx.body = res;
+        let json = null;
+        if (flag.status) {
+            json = {
+                "status": 0,
+                "msg": "课程与实验已绑定，请勿重复操作！",
+                "data": [],
+            }
         } else {
-            this.ctx.body = '课程与实验已绑定，请勿重复操作！';
+            const res = await this.sendRequest('POST', 'teacherRelated', 'bindExperimentLessons');
+            if (res) {
+                json = {
+                    "status": 1,
+                    "msg": "绑定成功！",
+                    "data": []
+                }
+            } else {
+                json = {
+                    "status": 0,
+                    "msg": "绑定失败",
+                    "data": [],
+                }
+            }
         }
+        this.ctx.body = json;
     }
 
     async selectClass() {
         const res = await this.sendRequest('POST', 'teacherRelated', 'selectClass')
-        this.ctx.body = res;
-        return res;
+        let json = null;
+        if (res.length) {
+            json = {
+                "status": 1,
+                "msg": "班级已存在",
+                "data": res,
+            }
+        } else {
+            json = {
+                "status": 0,
+                "msg": "班级不存在",
+                "data": [],
+            }
+        }
+        this.ctx.body = json;
+        return json;
     }
 
     async createClass() {
         const flag = await this.selectClass();
-        if (!flag) {
-            const res = await this.sendRequest('POST', 'teacherRelated', 'createClass')
-            this.ctx.body = res;
+        let json = null;
+        if (flag.status) {
+            json = {
+                "status": 0,
+                "msg": "班级已存在，请勿重复添加！",
+                "data": [],
+            }
         } else {
-            this.ctx.body = '班级已存在，请勿重复操作！';
+            const res = await this.sendRequest('POST', 'teacherRelated', 'createClass');
+            if (res) {
+                json = {
+                    "status": 1,
+                    "msg": "添加成功！",
+                    "data": []
+                }
+            } else {
+                json = {
+                    "status": 0,
+                    "msg": "添加失败",
+                    "data": [],
+                }
+            }
         }
+        this.ctx.body = json;
+
     }
 
 
