@@ -62,6 +62,18 @@ class studentRelated extends Service {
             return []
         }
     }
+
+    async selectExperiments(param) {
+        const { app } = this;
+        try {
+            const res = await app.mysql.select('experiments', { where: param });
+            return res
+        } catch (e) {
+            console.log(e);
+            return []
+        }
+    }
+
 }
 
 module.exports = studentRelated

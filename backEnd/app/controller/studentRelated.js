@@ -62,7 +62,6 @@ class studentRelated extends Send {
   async bindClass() {
     const flag = await this.selectBindClass();
     let json = null;
-    console.log(flag.status);
     if (flag.status) {
       json = {
         "status": 0,
@@ -90,6 +89,25 @@ class studentRelated extends Send {
 
   async getAllLessons() {
     const res = await this.sendRequest('GET', 'studentRelated', 'getAllLessons')
+    let json = null;
+    if (res.length) {
+      json = {
+        "status": 1,
+        "msg": "查询成功！",
+        "data": res
+      }
+    } else {
+      json = {
+        "status": 0,
+        "msg": "查询失败",
+        "data": [],
+      }
+    }
+    this.ctx.body = json;
+  }
+
+  async selectExperiments() {
+    const res = await this.sendRequest('GET', 'studentRelated', 'selectExperiments')
     let json = null;
     if (res.length) {
       json = {

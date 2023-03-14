@@ -34,7 +34,8 @@ module.exports = app => {
   router.post('/api/bindClass', controller.studentRelated.bindClass);
   // 查询所有课程
   router.get('/api/getAllLessons', controller.studentRelated.getAllLessons);
-
+  // 查看实验
+  router.get('/api/selectExperiments', controller.studentRelated.selectExperiments);
 
   /**
    * 教师有关

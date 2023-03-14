@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #fff;
+  background-color: #fbfbfb;
 }
 
 li {
@@ -64,12 +64,16 @@ button {
   }
 }
 
-.border-radius-lg {
+.border-radius-sm {
+  border-radius: 0.4rem;
+}
+
+.border-radius-md {
   border-radius: 0.8rem;
 }
 
-.border-radius-sm {
-  border-radius: 0.4rem;
+.border-radius-lg {
+  border-radius: 1.2rem;
 }
 
 .float-l {
@@ -84,7 +88,7 @@ button {
   box-shadow: 0.1rem 0.1rem 2rem 0.1rem rgba(0, 0, 0, 0.05);
 }
 
-.border-gray {
+.border-grey {
   border: 0.1rem solid #d1dbf1;
 }
 
@@ -154,4 +158,12 @@ button {
 
 .text-center {
   text-align: center;
+}
+
+.text-grey {
+  color: #999999;
+}
+
+.position-relative {
+  position: relative;
 }

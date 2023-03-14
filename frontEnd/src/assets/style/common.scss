@@ -1,9 +1,9 @@
 // 颜色
-$primaryWhite: #fff;
+$primaryWhite: #fbfbfb;
 $primaryBlue: #53B3FF;
 $primaryDeepBlue: #26318b;
 $primaryGreen: #34D0B2;
-$primaryDeepBlue: #258F67;
+$primaryDeepGreen: #258F67;
 
 
 * {
@@ -99,12 +99,17 @@ button {
 }
 
 // 类名
-.border-radius-lg {
-    border-radius: 0.8rem;
-}
 
 .border-radius-sm {
     border-radius: 0.4rem;
+}
+
+.border-radius-md {
+    border-radius: 0.8rem;
+}
+
+.border-radius-lg {
+    border-radius: 1.2rem;
 }
 
 .float-l {
@@ -113,14 +118,13 @@ button {
 
 .float-r {
     float: right;
-    ;
 }
 
 .box-shadow {
     box-shadow: 0.1rem 0.1rem 2rem 0.1rem rgba($color: #000000, $alpha: 0.05);
 }
 
-.border-gray {
+.border-grey {
     border: 0.1rem solid #d1dbf1;
 }
 
@@ -190,4 +194,12 @@ button {
 
 .text-center {
     text-align: center;
+}
+
+.text-grey{
+    color: #999999;
+}
+
+.position-relative{
+    position: relative;
 }
