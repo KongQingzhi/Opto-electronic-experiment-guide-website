@@ -167,3 +167,11 @@ button {
 .position-relative {
   position: relative;
 }
+
+.circle {
+  border-radius: 50%;
+}
+
+.hidden {
+  overflow: hidden;
+}

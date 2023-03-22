@@ -57,7 +57,7 @@ button {
     font-weight: $weight;
 }
 
-@mixin border($width,$bgc){
+@mixin border($width, $bgc) {
     border: $width solid $bgc;
 }
 
@@ -196,10 +196,17 @@ button {
     text-align: center;
 }
 
-.text-grey{
+.text-grey {
     color: #999999;
 }
 
-.position-relative{
+.position-relative {
     position: relative;
+}
+
+.circle {
+    border-radius: 50%;
+}
+.hidden{
+    overflow: hidden;
 }
