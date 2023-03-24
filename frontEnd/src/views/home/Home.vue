@@ -3,14 +3,36 @@
         <div class="head hidden box-shadow">
             <Heard></Heard>
         </div>
-        <div class="container box-shadow border-radius-lg py-2 px-2">
-            <router-view></router-view>
+        <div class="container box-shadow border-radius-lg">
+            <div class="img border-radius-lg hidden">
+                <el-carousel>
+                    <el-carousel-item v-for="item in 8" :key="item">
+                        <img src="https://cn.bing.com/th?id=OHR.OludenizTurkey_ZH-CN3467496108_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp"
+                            alt="">
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+            <div class="content">
+                <Aside></Aside>
+                <router-view></router-view>
+            </div>
+
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import Heard from './heard.vue';
+import Aside from './aside.vue';
+import { ref, Ref, onBeforeMount } from 'vue';
+import { ElCarousel, ElCarouselItem } from 'element-plus';
+import { getBingImage } from '../../api/home';
+const srcList: Ref<string[]> = ref(['']);
+onBeforeMount(() => {
+
+})
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -28,7 +50,18 @@ import Heard from './heard.vue';
     .container {
         height: calc(100vh - 10rem);
         background-color: #fff;
-        @include disFlex(space-between, center)
+
+        .img {
+            width: 100%;
+            height: 15rem;
+            margin-bottom: 2rem;
+
+            img {
+                width: 100%;
+                height: 15rem;
+                object-fit: cover;
+            }
+        }
     }
 }
 </style>
