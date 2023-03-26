@@ -9,9 +9,8 @@
                 </div>
                 <ButtonVue btn-icon="icon-sousuo" :btn-content="buttonContent.btnText" @btn-fn="buttonContent.btnFn">
                 </ButtonVue>
-
             </div>
-            <div class="form-box px-2">
+            <div class="form-box">
                 <router-view></router-view>
             </div>
         </div>
@@ -107,8 +106,6 @@ onMounted(() => {
     @include disFlex(center, center);
     height: 100vh;
 
-
-
     .user-box {
         @include disFlex(center, center);
         width: 60rem;
@@ -130,7 +127,10 @@ onMounted(() => {
         }
 
         .form-box {
+            padding: 0 6rem;
             width: 28rem;
+            display: flex;
+            justify-content: center;
         }
     }
 }

@@ -6,7 +6,7 @@
                 <div v-if="item.role === 0" style="display: flex;">
                     <div @click="listIndex = index" class="iconDiv" :class="listIndex == index ? 'active' : ''"
                         style="padding:0.4rem 0.7rem;">
-                        <i style="font-size:1.5rem;" :class="item.icon"></i>
+                        <i style="font-size:1.5rem;line-height: 2rem;" :class="item.icon"></i>
                     </div>
                     <transition name="toLeft">
                         <div v-if="isExpand" style="font-size:1rem;line-height: 3rem;" class="mx-1">{{ item.title }}</div>
@@ -21,7 +21,7 @@
 import { ref } from 'vue'
 const menuList = [{
     icon: 'iconfont icon-yonghuguanli',
-    title: '绑定班级',
+    title: '我的信息',
     role: 0
 }, {
     icon: 'iconfont icon-jiangzhang',
@@ -110,6 +110,7 @@ const listIndex = ref(-1);
 
 #Aside {
     transition: all 0.3s;
+    background-color: #fff;
 
     ul {
         li {

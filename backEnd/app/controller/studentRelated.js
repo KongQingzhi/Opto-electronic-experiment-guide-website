@@ -2,58 +2,58 @@ const Send = require('../utils/sendRequest');
 
 class studentRelated extends Send {
   async getAllClass() {
-    const res = await this.sendRequest('GET', 'studentRelated', 'getAllClass')
+    const res = await this.sendRequest('GET', 'studentRelated', 'getAllClass');
     let json = null;
     if (res.length) {
       json = {
-        "status": 1,
-        "msg": "查询成功！",
-        "data": res
-      }
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
     } else {
       json = {
-        "status": 0,
-        "msg": "查询失败",
-        "data": [],
-      }
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
     }
     this.ctx.body = json;
   }
 
   async getClassByStudent() {
-    const res = await this.sendRequest('GET', 'studentRelated', 'getClassByStudent')
+    const res = await this.sendRequest('GET', 'studentRelated', 'getClassByStudent');
     let json = null;
     if (res.length) {
       json = {
-        "status": 1,
-        "msg": "查询成功！",
-        "data": res
-      }
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
     } else {
       json = {
-        "status": 0,
-        "msg": "查询失败",
-        "data": [],
-      }
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
     }
     this.ctx.body = json;
   }
 
   async selectBindClass() {
-    const res = await this.sendRequest('POST', 'studentRelated', 'selectBindClass')
+    const res = await this.sendRequest('POST', 'studentRelated', 'selectBindClass');
     let json = null;
     if (res.length) {
       json = {
-        "status": 1,
-        "msg": "已绑定！",
-        "data": res
-      }
+        status: 1,
+        msg: '已绑定！',
+        data: res,
+      };
     } else {
       json = {
-        "status": 0,
-        "msg": "未绑定",
-        "data": [],
-      }
+        status: 0,
+        msg: '未绑定',
+        data: [],
+      };
     }
     this.ctx.body = json;
     return json;
@@ -64,63 +64,63 @@ class studentRelated extends Send {
     let json = null;
     if (flag.status) {
       json = {
-        "status": 0,
-        "msg": "已绑定班级，请勿重复绑定",
-        "data": [],
-      }
+        status: 0,
+        msg: '已绑定班级，请勿重复绑定',
+        data: [],
+      };
     } else {
-      const res = await this.sendRequest('POST', 'studentRelated', 'bindClass')
+      const res = await this.sendRequest('POST', 'studentRelated', 'bindClass');
       if (res) {
         json = {
-          "status": 1,
-          "msg": "绑定成功！",
-          "data": [],
-        }
+          status: 1,
+          msg: '绑定成功！',
+          data: [],
+        };
       } else {
         json = {
-          "status": 0,
-          "msg": "绑定失败！",
-          "data": [],
-        }
+          status: 0,
+          msg: '绑定失败！',
+          data: [],
+        };
       }
     }
     this.ctx.body = json;
   }
 
   async getAllLessons() {
-    const res = await this.sendRequest('GET', 'studentRelated', 'getAllLessons')
+    const res = await this.sendRequest('GET', 'studentRelated', 'getAllLessons');
     let json = null;
     if (res.length) {
       json = {
-        "status": 1,
-        "msg": "查询成功！",
-        "data": res
-      }
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
     } else {
       json = {
-        "status": 0,
-        "msg": "查询失败",
-        "data": [],
-      }
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
     }
     this.ctx.body = json;
   }
 
   async selectExperiments() {
-    const res = await this.sendRequest('GET', 'studentRelated', 'selectExperiments')
+    const res = await this.sendRequest('GET', 'studentRelated', 'selectExperiments');
     let json = null;
     if (res.length) {
       json = {
-        "status": 1,
-        "msg": "查询成功！",
-        "data": res
-      }
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
     } else {
       json = {
-        "status": 0,
-        "msg": "查询失败",
-        "data": [],
-      }
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
     }
     this.ctx.body = json;
   }

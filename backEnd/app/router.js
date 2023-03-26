@@ -12,7 +12,7 @@ module.exports = app => {
   // 登录
   router.post('/api/login', controller.loginRelated.login);
   // 检测是否存在账号
-  router.post('/api/accountExists', controller.loginRelated.accountExists)
+  router.post('/api/accountExists', controller.loginRelated.accountExists);
   // 注册
   router.post('/api/register', controller.loginRelated.register);
   // 验证码

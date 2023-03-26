@@ -3,7 +3,7 @@
         <div class="head hidden box-shadow">
             <Heard></Heard>
         </div>
-        <div class="container box-shadow border-radius-lg">
+        <div class="container border-radius-lg">
             <div class="img border-radius-lg hidden">
                 <el-carousel>
                     <el-carousel-item v-for="item in 8" :key="item">
@@ -14,9 +14,8 @@
             </div>
             <div class="content">
                 <Aside></Aside>
-                <router-view></router-view>
+                <router-view class="contentItem border-radius-lg box-shadow hidden px-2 py-2"></router-view>
             </div>
-
         </div>
     </div>
 </template>
@@ -49,7 +48,6 @@ onBeforeMount(() => {
 
     .container {
         height: calc(100vh - 10rem);
-        background-color: #fff;
 
         .img {
             width: 100%;
@@ -60,6 +58,15 @@ onBeforeMount(() => {
                 width: 100%;
                 height: 15rem;
                 object-fit: cover;
+            }
+        }
+        .content{
+            display: flex;
+            // @include disFlex(space-between,center);
+            .contentItem{
+                flex: 1;
+                margin-left: 2rem;
+                background-color: #fff;
             }
         }
     }

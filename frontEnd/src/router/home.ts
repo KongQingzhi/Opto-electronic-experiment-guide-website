@@ -1,24 +1,20 @@
 import homeVue from "../views/home/home.vue"
+import myinfoVue from "../views/home/myinfo.vue"
 export default {
     path: '/home',
     name: 'home',
     component: homeVue,
-    // children: [
-    //     {
-    //         path: '/login',
-    //         name: 'login',
-    //         component: LoginVue
-    //     },
-    //     {
-    //         path: '/register',
-    //         name: 'register',
-    //         component: RegisterVue
-    //     },
-    //     {
-    //         path: '/findPassword',
-    //         name: 'findPassword',
-    //         component: findPasswordVue
-    //     }
-    // ]
+    children: [
+        {
+            path: 'myinfo',
+            name: 'myinfo',
+            component: myinfoVue
+        },
+        // {
+        //     path: '/findPassword',
+        //     name: 'findPassword',
+        //     component: findPasswordVue
+        // }
+    ]
 }
 
