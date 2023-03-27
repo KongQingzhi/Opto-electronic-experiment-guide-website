@@ -50,8 +50,8 @@ const onLogin = async (formEl: FormInstance | undefined) => {
                     })
                     router.push({
                         name: 'home',
-                        query: data[0]
                     })
+                    sessionStorage.setItem('user', JSON.stringify(data[0]));
                 } else {
                     ElMessage({
                         message: msg,

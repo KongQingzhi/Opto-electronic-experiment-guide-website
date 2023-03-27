@@ -57,5 +57,12 @@ module.exports = app => {
   router.post('/api/selectClass', controller.teacherRelated.selectClass);
   // 创建班级
   router.post('/api/createClass', controller.teacherRelated.createClass);
+  // 删除班级
+  router.post('/api/deleteClass', controller.teacherRelated.deleteClass);
 
+  /**
+   * 公共部分
+   */
+  // 更新信息
+  router.post('/api/updateUserInfo', controller.publicRelated.updateUserInfo);
 };

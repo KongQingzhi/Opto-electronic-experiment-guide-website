@@ -189,10 +189,26 @@ class teacherRelated extends Send {
       }
     }
     this.ctx.body = json;
-
   }
-
-
+  async deleteClass() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteClass');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+    return json;
+  }
 }
 
 module.exports = teacherRelated;

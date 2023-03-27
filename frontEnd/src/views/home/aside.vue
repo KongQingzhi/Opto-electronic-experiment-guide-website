@@ -4,7 +4,7 @@
         <ul class="px-1 py-1">
             <li v-for="item, index in menuList" :key="index" class="hidden" style="height: 3rem;margin: 0.2rem 0;">
                 <div v-if="item.role === 0" style="display: flex;">
-                    <div @click="listIndex = index" class="iconDiv" :class="listIndex == index ? 'active' : ''"
+                    <div @click="toRoute(index)" class="iconDiv" :class="listIndex == index ? 'active' : ''"
                         style="padding:0.4rem 0.7rem;">
                         <i style="font-size:1.5rem;line-height: 2rem;" :class="item.icon"></i>
                     </div>
@@ -12,20 +12,23 @@
                         <div v-if="isExpand" style="font-size:1rem;line-height: 3rem;" class="mx-1">{{ item.title }}</div>
                     </transition>
                 </div>
-            </li>             
+            </li>
         </ul>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router';
+const router = useRouter();
+const route = useRoute();
 const menuList = [{
     icon: 'iconfont icon-yonghuguanli',
     title: '我的信息',
     role: 0
 }, {
     icon: 'iconfont icon-jiangzhang',
-    title: 2,
+    title: '创建班级',
     role: 0
 }, {
     icon: 'iconfont icon-daka',
@@ -69,7 +72,14 @@ const menuList = [{
     role: 0
 }];
 const isExpand = ref(true);
-const listIndex = ref(-1);
+const listIndex = ref(0);
+const routeList = ['/home/myinfo', '/home/createClass']
+const toRoute = (index: number) => {
+    listIndex.value = index;
+    router.push({
+        path: routeList[index],
+    })
+}
 </script>
 
 <style lang="scss">

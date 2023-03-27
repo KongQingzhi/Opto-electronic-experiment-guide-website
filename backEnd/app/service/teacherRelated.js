@@ -88,6 +88,17 @@ class teacherRelated extends Service {
     }
   }
 
+  async deleteClass(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.delete('classes', { c_id: param.c_id });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
 
 }
 
