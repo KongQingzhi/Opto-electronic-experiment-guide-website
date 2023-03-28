@@ -44,6 +44,18 @@ class teacherRelated extends Service {
     }
   }
 
+  async selectExperimentsByClass(param) {
+    const { app } = this;
+    const { c_id } = param;
+    try {
+      const res = await app.mysql.select('classes');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+
   async selectELBind(param) {
     const { app } = this;
     try {

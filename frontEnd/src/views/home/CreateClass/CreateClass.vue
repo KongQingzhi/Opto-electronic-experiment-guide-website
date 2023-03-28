@@ -128,5 +128,4 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 // @import '../../assets/style/common.scss';
-#CreateClass {}
 </style>

@@ -32,7 +32,7 @@ const menuList = [{
     role: 0
 }, {
     icon: 'iconfont icon-daka',
-    title: 3,
+    title: '实验',
     role: 0
 }, {
     icon: 'iconfont icon-biaoqian',
@@ -73,7 +73,7 @@ const menuList = [{
 }];
 const isExpand = ref(true);
 const listIndex = ref(0);
-const routeList = ['/home/myinfo', '/home/createClass']
+const routeList = ['/home/myinfo', '/home/createClass','/home/experimentsList']
 const toRoute = (index: number) => {
     listIndex.value = index;
     router.push({

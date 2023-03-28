@@ -45,6 +45,8 @@ module.exports = app => {
   router.post('/api/lessonExists', controller.teacherRelated.lessonExists);
   // 添加课程
   router.post('/api/addLessons', controller.teacherRelated.addLessons);
+  // 通过班级查找实验
+  router.post('/api/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
   // 查询实验是否存在
   router.post('/api/experimentExists', controller.teacherRelated.experimentExists);
   // 发布实验

@@ -175,3 +175,11 @@ button {
 .hidden {
   overflow: hidden;
 }
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

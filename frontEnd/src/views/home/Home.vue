@@ -14,7 +14,9 @@
             </div>
             <div class="content">
                 <Aside></Aside>
-                <router-view class="contentItem border-radius-lg box-shadow hidden px-2 py-2"></router-view>
+                <div class="contentItem border-radius-lg box-shadow hidden px-2 py-2">
+                    <router-view></router-view>
+                </div>
             </div>
         </div>
     </div>
@@ -25,7 +27,7 @@ import Heard from './heard.vue';
 import Aside from './aside.vue';
 import { ref, Ref, onBeforeMount } from 'vue';
 import { ElCarousel, ElCarouselItem } from 'element-plus';
-import { getBingImage } from '../../api/home';
+// import { getBingImage } from '../../api/home';
 const srcList: Ref<string[]> = ref(['']);
 onBeforeMount(() => {
 
@@ -60,10 +62,12 @@ onBeforeMount(() => {
                 object-fit: cover;
             }
         }
-        .content{
+
+        .content {
             display: flex;
+
             // @include disFlex(space-between,center);
-            .contentItem{
+            .contentItem {
                 flex: 1;
                 margin-left: 2rem;
                 background-color: #fff;

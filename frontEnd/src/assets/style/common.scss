@@ -207,6 +207,15 @@ button {
 .circle {
     border-radius: 50%;
 }
-.hidden{
+
+.hidden {
     overflow: hidden;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
 }

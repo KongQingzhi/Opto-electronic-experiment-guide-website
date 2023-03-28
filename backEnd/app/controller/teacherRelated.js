@@ -67,6 +67,25 @@ class teacherRelated extends Send {
     return json;
   }
 
+  async selectExperimentsByClass() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'selectExperimentsByClass');
+    let json = null;
+    if (res.length) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
   async publishExperiment() {
     const flag = await this.experimentExists();
     let json = null;
