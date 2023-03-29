@@ -66,6 +66,7 @@ onBeforeMount(() => {
         .content {
             display: flex;
 
+
             // @include disFlex(space-between,center);
             .contentItem {
                 flex: 1;

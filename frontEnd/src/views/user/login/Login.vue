@@ -52,6 +52,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
                         name: 'home',
                     })
                     sessionStorage.setItem('user', JSON.stringify(data[0]));
+                    sessionStorage.setItem('role', JSON.stringify(ruleForm.Role));
                 } else {
                     ElMessage({
                         message: msg,
