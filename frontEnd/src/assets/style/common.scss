@@ -184,6 +184,10 @@ button {
     font-size: 1.5rem;
 }
 
+.title-5 {
+    font-size: 1.2rem;
+}
+
 .title-sm {
     font-size: 0.5rem;
 }
@@ -216,6 +220,10 @@ button {
     display: flex;
 }
 
-.flex-wrap{
+.flex-wrap {
     flex-wrap: wrap;
+}
+
+.justify-between {
+    justify-content: space-between;
 }

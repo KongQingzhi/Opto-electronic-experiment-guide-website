@@ -1,7 +1,7 @@
 <template>
     <div id="Head">
         <div class="logo-title">
-            <img src="../../assets/image/faviorate.ico" alt="">
+            <img src="../../../assets/image/faviorate.ico" alt="">
             <div class="mx-1 title-4 font-weight">基于Vue.js的光电实验指导网</div>
         </div>
         <div class="menu">
@@ -9,7 +9,7 @@
                 {{ item }}
             </div>
             <el-dropdown class="my-menu circle hidden mx-2" size="large">
-                <img src="../../assets/image/faviorate.ico" alt="">
+                <img src="../../../assets/image/faviorate.ico" alt="">
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item v-for="item in myMenu">
@@ -42,7 +42,7 @@ const myMenu = [
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/common.scss';
+@import '../../../assets/style/common.scss';
 
 .active {
     background-color: $primaryBlue;

@@ -2,7 +2,7 @@
     <div id="Aside" class="box-shadow border-radius-lg" :class="isExpand ? 'isExpandWidth' : 'unExpandWidth'">
         <button @click="isExpand = !isExpand">click</button>
         <ul class="px-1 py-1">
-            <li v-for="item, index in menuList" :key="index" class="hidden" style="height: 3rem;margin: 0.2rem 0;">
+            <li v-for="(item, index) in menuList" :key="index" class="hidden" style="height: 3rem;margin: 0.2rem 0;">
                 <div v-if="item.role === 0" style="display: flex;">
                     <div @click="toRoute(index)" class="iconDiv" :class="listIndex == index ? 'active' : ''"
                         style="padding:0.4rem 0.7rem;">
@@ -32,15 +32,15 @@ const menuList = [{
     role: 0
 }, {
     icon: 'iconfont icon-daka',
-    title: '实验',
+    title: '查看实验',
     role: 0
 }, {
     icon: 'iconfont icon-biaoqian',
-    title: 4,
+    title: '发布实验',
     role: 0
 }, {
     icon: 'iconfont icon-yonghuguanli',
-    title: '绑定班级',
+    title: '实验评分',
     role: 0
 }, {
     icon: 'iconfont icon-jiangzhang',
@@ -73,7 +73,7 @@ const menuList = [{
 }];
 const isExpand = ref(true);
 const listIndex = ref(0);
-const routeList = ['/home/myinfo', '/home/createClass','/home/experimentsList']
+const routeList = ['/home/myinfo', '/home/createClass', '/home/experimentsList', '/home/experimentsRelease','/home/experimentsScore']
 const toRoute = (index: number) => {
     listIndex.value = index;
     router.push({
@@ -83,7 +83,7 @@ const toRoute = (index: number) => {
 </script>
 
 <style lang="scss">
-@import '../../assets/style/common.scss';
+@import '../../../assets/style/common.scss';
 
 .isExpandWidth {
     width: 12rem;

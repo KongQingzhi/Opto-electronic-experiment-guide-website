@@ -1,7 +1,8 @@
 <template>
     <div id="Home">
         <div class="head hidden box-shadow">
-            <Heard></Heard>
+
+            <Head></Head>
         </div>
         <div class="container border-radius-lg">
             <div class="img border-radius-lg hidden">
@@ -23,21 +24,18 @@
 </template>
 
 <script setup lang="ts">
-import Heard from './heard.vue';
-import Aside from './aside.vue';
+import Aside from './Aside.vue';
+import Head from './Head.vue';
 import { ref, Ref, onBeforeMount } from 'vue';
 import { ElCarousel, ElCarouselItem } from 'element-plus';
-// import { getBingImage } from '../../api/home';
 const srcList: Ref<string[]> = ref(['']);
 onBeforeMount(() => {
 
 })
-
-
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/common.scss';
+@import '../../../assets/style/common.scss';
 
 #Home {
     width: 100%;
@@ -65,7 +63,6 @@ onBeforeMount(() => {
 
         .content {
             display: flex;
-
 
             // @include disFlex(space-between,center);
             .contentItem {

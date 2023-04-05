@@ -32,7 +32,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { ElForm, ElFormItem, ElSelect, ElMessage, ElOption, ElButton, ElRadio, ElRadioGroup, ElInput } from 'element-plus'
 import { useRouter, useRoute } from 'vue-router';
 import type { FormInstance, FormRules } from 'element-plus';
-import { updateUserInfo } from '../../../api/home';
+import { updateUserInfo } from '../../../../api/home';
 const router = useRouter();
 const route = useRoute();
 const ruleForm = ref(JSON.parse(sessionStorage.getItem('user') as string))
@@ -42,6 +42,8 @@ const rules = reactive<FormRules>({
     s_email: [{ required: true, message: '请输入密码', trigger: 'blur' }],
     s_gender: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 })
+// 缺少绑定班级
+// 先查询是否绑定，是，禁用，否，查询班级
 const onUpdate = async (formEl: FormInstance | undefined) => {
     if (!formEl) return;
     await formEl.validate((valid, fields) => {
@@ -74,5 +76,5 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 // @import '../../assets/style/common.scss';
-#MyInfo {}
+// #MyInfo {}
 </style>
