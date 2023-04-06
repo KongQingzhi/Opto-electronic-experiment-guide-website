@@ -20,9 +20,7 @@
 import { ElButton } from 'element-plus';
 </script>
 
-<style lang="scss">
-@import '../../../../assets/style/common.scss';
-
+<style lang="scss" scoped>
 .questions-card {
     width: 13rem;
     height: 15rem;

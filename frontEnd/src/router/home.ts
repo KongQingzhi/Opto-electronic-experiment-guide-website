@@ -9,6 +9,7 @@ import selectQuestionsVue from "../views/home/Students/SelectQuestions/SelectQue
 import questionsContentVue from "../views/home/Students/SelectQuestions/QuestionsContent.vue"
 import selectExperimentsScoreVue from "../views/home/Students/SelectExperimentsScore/SelectExperimentsScore.vue"
 import experimentsScoreContentVue from "../views/home/Students/SelectExperimentsScore/ExperimentsScoreContent.vue";
+import selectLessonsScoreVue from "../views/home/Students/SelectLessonsScore/SelectLessonsScore.vue";
 
 // import experimentsListVue from "../views/home/ExperimentsList/ExperimentsList.vue";
 // import experimentsReleaseVue from "../views/home/ExperimentsRelease/ExperimentsRelease.vue";
@@ -53,6 +54,11 @@ const students = {
             name: 'experimentsScoreContent',
             component: experimentsScoreContentVue
         },
+        {
+            path: 'selectLessonsScore',
+            name: 'selectLessonsScore',
+            component: selectLessonsScoreVue
+        },
     ]
 }
 
@@ -68,36 +74,6 @@ const teachers = {
         },
     ]
 }
-
-// {
-//             path: 'myinfo',
-//             name: 'myinfo',
-//             component: myinfoVue
-//         },
-//         {
-//             path: 'createClass',
-//             name: 'createClass',
-//             component: createClass
-//         },
-//         {
-//             path: 'experimentsList',
-//             name: 'experimentsList',
-//             component: experimentsListVue
-//         }, {
-//             path: 'experimentsContent',
-//             name: 'experimentsContent',
-//             component: experimentsContentVue
-//         },
-//         {
-//             path: 'experimentsRelease',
-//             name: 'experimentsRelease',
-//             component: experimentsReleaseVue
-//         },
-//         {
-//             path: 'experimentsScore',
-//             name: 'experimentsScore',
-//             component: ExperimentsScoreVue
-//         },
 export default {
     path: '/home',
     name: 'home',

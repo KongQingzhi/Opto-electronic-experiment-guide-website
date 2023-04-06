@@ -45,8 +45,4 @@ const data = [
 <style lang="scss" scoped>
 @import '../../../../assets/style/common.scss';
 
-#experimentsList {
-    height: calc(100vh - 40rem);
-    overflow-y: scroll;
-}
 </style>

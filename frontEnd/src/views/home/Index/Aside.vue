@@ -4,7 +4,7 @@
         <ul class="px-1 py-1">
             <li v-for="(item, index) in menuList" :key="index" class="hidden" style="height: 3rem;margin: 0.2rem 0;">
                 <div v-if="item.role === 0" style="display: flex;">
-                    <div @click="toRoute(index)" class="iconDiv" :class="listIndex == index ? 'active' : ''"
+                    <div @click="toRoute(item)" class="iconDiv" :class="listIndex == index ? 'active' : ''"
                         style="padding:0.4rem 0.7rem;">
                         <i style="font-size:1.5rem;line-height: 2rem;" :class="item.icon"></i>
                     </div>
@@ -25,59 +25,64 @@ const route = useRoute();
 const menuList = [{
     icon: 'iconfont icon-yonghuguanli',
     title: '我的信息',
+    name: 'myInfo',
     role: 0
 }, {
     icon: 'iconfont icon-jiangzhang',
-    title: '创建班级',
+    title: '查询实验',
+    name: 'selectExperiments',
     role: 0
 }, {
     icon: 'iconfont icon-daka',
-    title: '查看实验',
+    title: '查询试卷',
+    name: 'selectQuestions',
     role: 0
 }, {
     icon: 'iconfont icon-biaoqian',
-    title: '发布实验',
+    title: '实验成绩',
+    name: 'selectExperimentsScore',
     role: 0
 }, {
     icon: 'iconfont icon-yonghuguanli',
-    title: '实验评分',
+    title: '课程成绩',
+    name: 'selectLessonsScore',
     role: 0
 }, {
     icon: 'iconfont icon-jiangzhang',
     title: 2,
-    role: 0
+    role: 1
 }, {
     icon: 'iconfont icon-daka',
     title: 3,
-    role: 0
+    role: 1
 }, {
     icon: 'iconfont icon-biaoqian',
     title: 4,
-    role: 0
+    role: 1
 }, {
     icon: 'iconfont icon-yonghuguanli',
     title: '绑定班级',
-    role: 0
+    role: 1
 }, {
     icon: 'iconfont icon-jiangzhang',
     title: 2,
-    role: 0
+    role: 1
 }, {
     icon: 'iconfont icon-daka',
     title: 3,
-    role: 0
+    role: 1
 }, {
     icon: 'iconfont icon-biaoqian',
     title: 4,
-    role: 0
+    role: 1
 }];
 const isExpand = ref(true);
 const listIndex = ref(0);
-const routeList = ['/home/myinfo', '/home/createClass', '/home/experimentsList', '/home/experimentsRelease','/home/experimentsScore']
-const toRoute = (index: number) => {
-    listIndex.value = index;
+const studentsRouteList = ['/home/students/myInfo', '/home/students/selectExperiments', '/home/students/selectQuestions', '/home/students/selectExperimentsScore', '/home/students/selectLessonsScore']
+const teachersRouteList = ['/home/students/myInfo', '/home/students/selectExperiments', '/home/students/selectQuestions', '/home/students/selectExperimentsScore', '/home/students/selectLessonsScore']
+const toRoute = (item) => {
     router.push({
-        path: routeList[index],
+        path: item.name,
     })
 }
 </script>

@@ -15,9 +15,9 @@
             </div>
             <div class="content">
                 <Aside></Aside>
-                <div class="contentItem border-radius-lg box-shadow hidden px-2 py-2">
+                <ElScrollbar class="contentItem border-radius-lg box-shadow hidden px-2 py-1">
                     <router-view></router-view>
-                </div>
+                </ElScrollbar>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
 import Aside from './Aside.vue';
 import Head from './Head.vue';
 import { ref, Ref, onBeforeMount } from 'vue';
-import { ElCarousel, ElCarouselItem } from 'element-plus';
+import { ElCarousel, ElScrollbar, ElCarouselItem } from 'element-plus';
 const srcList: Ref<string[]> = ref(['']);
 onBeforeMount(() => {
 
@@ -47,8 +47,7 @@ onBeforeMount(() => {
     }
 
     .container {
-        height: calc(100vh - 10rem);
-
+        height: calc(100vh - 20rem);
         .img {
             width: 100%;
             height: 15rem;
@@ -63,10 +62,10 @@ onBeforeMount(() => {
 
         .content {
             display: flex;
-
             // @include disFlex(space-between,center);
             .contentItem {
                 flex: 1;
+                height: calc(100vh - 40rem);
                 margin-left: 2rem;
                 background-color: #fff;
             }

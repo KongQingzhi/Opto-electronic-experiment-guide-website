@@ -29,7 +29,6 @@ const toExperimentsDetails = () => {
 const role = JSON.parse(sessionStorage.getItem('user') as string);
 </script>
 <style lang="scss" scoped>
-// @import '../../../assets/style/common.scss';
 
 .experiment-card {
     width: 15rem;
