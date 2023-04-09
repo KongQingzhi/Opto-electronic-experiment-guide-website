@@ -23,7 +23,7 @@ class LoginRelated extends Service {
       return res;
     } catch (e) {
       console.log(e);
-      return [];
+      return 0;
     }
   }
 
@@ -48,7 +48,7 @@ class LoginRelated extends Service {
       return res;
     } catch (e) {
       console.log(e);
-      return [];
+      return 0;
     }
   }
 

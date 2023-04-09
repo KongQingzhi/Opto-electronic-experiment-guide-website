@@ -8,34 +8,47 @@ module.exports = app => {
   /**
    * 登陆相关的接口
    */
-
   // 登录
-  router.post('/api/login', controller.loginRelated.login);
+  router.post('/api/user/login', controller.loginRelated.login);
   // 检测是否存在账号
-  router.post('/api/accountExists', controller.loginRelated.accountExists);
+  router.post('/api/user/accountExists', controller.loginRelated.accountExists);
   // 注册
-  router.post('/api/register', controller.loginRelated.register);
+  router.post('/api/user/register', controller.loginRelated.register);
   // 验证码
-  router.post('/api/verify', controller.loginRelated.verify);
+  router.post('/api/user/verify', controller.loginRelated.verify);
   // 找回密码
-  router.post('/api/retrievePassword', controller.loginRelated.retrievePassword);
+  router.post('/api/user/retrievePassword', controller.loginRelated.retrievePassword);
 
   /**
    * 学生有关的接口
    */
-
-  // 查询所有班级
-  router.get('/api/getAllClass', controller.studentRelated.getAllClass);
-  // 查询用户班级
-  router.get('/api/getClassByStudent', controller.studentRelated.getClassByStudent);
-  // 查询是否绑定班级
-  router.post('/api/selectBindClass', controller.studentRelated.selectBindClass);
+  // 查询用户信息
+  router.get('/api/students/selectUserInfo', controller.studentRelated.selectUserInfo);
+  // 更新信息
+  router.post('/api/students/updateUserInfo', controller.studentRelated.updateUserInfo);
   // 绑定班级
-  router.post('/api/bindClass', controller.studentRelated.bindClass);
-  // 查询所有课程
-  router.get('/api/getAllLessons', controller.studentRelated.getAllLessons);
+  router.post('/api/students/bindClass', controller.studentRelated.bindClass);
   // 查看实验
-  router.get('/api/selectExperiments', controller.studentRelated.selectExperiments);
+  router.get('/api/students/selectExperiments', controller.studentRelated.selectExperiments);
+  // 查看实验内容
+  router.get('/api/students/experimentsContent', controller.studentRelated.experimentsContent);
+  // 查看答题
+  router.get('/api/students/selectQuestions', controller.studentRelated.selectQuestions);
+  // 查看答题内容
+  router.get('/api/students/questionsContent', controller.studentRelated.questionsContent);
+  // 查看实验成绩
+  router.get('/api/students/selectExperimentsScore', controller.studentRelated.selectExperimentsScore);
+  // 查看课程成绩
+  router.get('/api/students/selectLessonsScore', controller.studentRelated.selectLessonsScore);
+
+
+  // 查询用户班级
+  router.get('/api/students/getClassByStudent', controller.studentRelated.getClassByStudent);
+  // 查询是否绑定班级
+  router.post('/api/students/selectBindClass', controller.studentRelated.selectBindClass);
+  // 查询所有课程
+  router.get('/api/students/getAllLessons', controller.studentRelated.getAllLessons);
+
 
   /**
    * 教师有关
@@ -65,6 +78,8 @@ module.exports = app => {
   /**
    * 公共部分
    */
-  // 更新信息
-  router.post('/api/updateUserInfo', controller.publicRelated.updateUserInfo);
+  // 查询所有班级
+  router.get('/api/public/selectAllClass', controller.publicRelated.selectAllClass);
+  router.post('/api/public/updateQuestionsContent', controller.publicRelated.updateQuestionsContent);
+
 };

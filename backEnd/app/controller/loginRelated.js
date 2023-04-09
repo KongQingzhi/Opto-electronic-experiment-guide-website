@@ -8,7 +8,7 @@ class LoginRelated extends Send {
   async login() {
     const res = await this.sendRequest('POST', 'loginRelated', 'login');
     let json = null;
-    if (res.length) {
+    if (res) {
       json = {
         status: 1,
         msg: '登陆成功！',
@@ -27,7 +27,7 @@ class LoginRelated extends Send {
   async accountExists() {
     const res = await this.sendRequest('POST', 'loginRelated', 'accountExists');
     let json = null;
-    if (res.length) {
+    if (res) {
       json = {
         status: 1,
         msg: '账号已存在',

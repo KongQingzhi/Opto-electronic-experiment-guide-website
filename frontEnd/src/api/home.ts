@@ -3,7 +3,7 @@ import request from "./index";
 export function updateUserInfo(data: any) {
     return request({
         method: "post",
-        url: "/api/updateUserInfo",
+        url: "/api/students/updateUserInfo",
         data: data,
     });
 }

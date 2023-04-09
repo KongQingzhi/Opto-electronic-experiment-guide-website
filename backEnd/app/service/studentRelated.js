@@ -1,16 +1,135 @@
 const { Service } = require('egg');
 
 class studentRelated extends Service {
-  async getAllClass() {
+  async selectUserInfo(param) {
     const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { s_no } = param;
     try {
-      const res = await app.mysql.select('classes');
+      const res = await app.mysql.query('SELECT s_no, s_email, s_name, s_tel, s_gender, s.c_id, c_name FROM students s LEFT JOIN classes c on s.c_id = c.c_id WHERE s.s_no = ?', [ s_no ]);
       return res;
     } catch (e) {
       console.log(e);
-      return [];
+      return 0;
     }
   }
+
+  async updateUserInfo(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { s_no } = param;
+    try {
+      const res = await app.mysql.update('students', param, { where: { s_no } });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async bindClass(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { s_no, c_id } = param;
+    try {
+      const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async selectExperiments(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    try {
+      const res = await app.mysql.query('SELECT l_name, l_time, e_name, e_content, e_files, e_time, t_name, t_tel, t_pro, r_buid, r_no  FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id WHERE s.s_no=?', [ param.s_no ]);
+      return res;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async experimentsContent(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    try {
+      const res = await app.mysql.query('SELECT e_name, e_content, e_time, e_files, t_name, t_tel, t_pro, r_buid, r_no  FROM  experiments e LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id WHERE e.e_id = ?', [ param.e_id ]);
+      return res;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async selectQuestions(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    try {
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id RIGHT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no = ?', [ param.s_no ]);
+      return res;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async questionsContent(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    try {
+      const res = await app.mysql.query('SELECT q_content, q_reply, q_reserve, q_finish, q_grade  from questions q LEFT JOIN qs ON q.q_id = qs.q_id WHERE s_no = ? AND q.q_id = ?', [ param.s_no, param.q_id ]);
+      return res;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async selectExperimentsScore(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    try {
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, e.e_id, es.e_grade, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN es ON e.e_id = es.e_id LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no = ?', [ param.s_no ]);
+      return res;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async selectLessonsScore(param) {
+    const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    try {
+      const res = await app.mysql.query('SELECT l_name, l_time, ls_grade, e.e_name, e.e_id, es.e_grade, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN ls ON l.l_id = ls.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN es ON e.e_id = es.e_id LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no = ?', [ param.s_no ]);
+      return res;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
 
   async getClassByStudent(param) {
     const { app } = this;
@@ -40,33 +159,10 @@ class studentRelated extends Service {
     }
   }
 
-  async bindClass(param) {
-    const { app } = this;
-    const { s_no, c_id } = param;
-    try {
-      const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
-      return res.affectedRows;
-    } catch (e) {
-      console.log(e);
-      return 0;
-    }
-  }
-
   async getAllLessons() {
     const { app } = this;
     try {
       const res = await app.mysql.select('lessons');
-      return res;
-    } catch (e) {
-      console.log(e);
-      return [];
-    }
-  }
-
-  async selectExperiments(param) {
-    const { app } = this;
-    try {
-      const res = await app.mysql.select('experiments', { where: param });
       return res;
     } catch (e) {
       console.log(e);
