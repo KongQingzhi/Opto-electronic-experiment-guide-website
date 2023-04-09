@@ -8,7 +8,7 @@
             <div v-for="item in menuList" class="menu-item font-weight text-grey border-radius-sm mx-1">
                 {{ item }}
             </div>
-            <el-dropdown class="my-menu circle hidden mx-2" size="large">
+            <el-dropdown class="my-menu circle mx-2" size="large">
                 <img src="../../../assets/image/faviorate.ico" alt="">
                 <template #dropdown>
                     <el-dropdown-menu>
@@ -42,10 +42,8 @@ const myMenu = [
 </script>
 
 <style lang="scss" scoped>
-@import '../../../assets/style/common.scss';
-
 .active {
-    background-color: $primaryBlue;
+    background-color: blue;
     color: #fff;
     position: relative;
 
@@ -90,70 +88,70 @@ const myMenu = [
         .my-menu {
             width: 3rem;
             height: 3rem;
-            color: $primaryBlue;
+            color: blue;
         }
     }
 }
 
-@media only screen and (min-width: 1200px) {
-    #Head {
-        @include disFlex(space-between, center);
+// @media only screen and (min-width: 1200px) {
+//     #Head {
+//         @include disFlex(space-between, center);
 
-        .logo-title {
-            @include disFlex(center, center);
-        }
+//         .logo-title {
+//             @include disFlex(center, center);
+//         }
 
-        .menu {
-            @include disFlex(center, center);
-        }
-    }
-}
+//         .menu {
+//             @include disFlex(center, center);
+//         }
+//     }
+// }
 
-@media only screen and (max-width: 1200px) {
-    #Head {
-        @include disFlex(space-between, center);
+// @media only screen and (max-width: 1200px) {
+//     #Head {
+//         @include disFlex(space-between, center);
 
-        .logo-title {
-            @include disFlex(center, center);
-        }
+//         .logo-title {
+//             @include disFlex(center, center);
+//         }
 
-        .menu {
-            @include disFlex(center, center);
-        }
-    }
-}
+//         .menu {
+//             @include disFlex(center, center);
+//         }
+//     }
+// }
 
-@media only screen and (max-width: 992px) {
-    #Head {
-        @include disFlex(center, center);
+// @media only screen and (max-width: 992px) {
+//     #Head {
+//         @include disFlex(center, center);
 
-        .logo-title {
-            width: 100%;
-            @include disFlex(space-between, center);
-        }
+//         .logo-title {
+//             width: 100%;
+//             @include disFlex(space-between, center);
+//         }
 
-        .menu {
-            width: 100%;
-            @include disFlex(center, center);
-        }
-    }
-}
+//         .menu {
+//             width: 100%;
+//             @include disFlex(center, center);
+//         }
+//     }
+// }
 
-@media only screen and (max-width: 768px) {
-    .App {
-        width: 37rem;
-    }
-}
+// @media only screen and (max-width: 768px) {
+//     .App {
+//         width: 37rem;
+//     }
+// }
 
-@media only screen and (max-width: 520px) {
-    .App {
-        width: 32rem;
-    }
-}
+// @media only screen and (max-width: 520px) {
+//     .App {
+//         width: 32rem;
+//     }
+// }
 
-@media only screen and (max-width: 420px) {
-    .App {
-        width: 100%;
-    }
-}
+// @media only screen and (max-width: 420px) {
+//     .App {
+//         width: 100%;
+//     }
+// }
 </style>

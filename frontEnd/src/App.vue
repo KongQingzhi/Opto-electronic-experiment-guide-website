@@ -11,10 +11,8 @@
 
 
 <style lang="scss" scoped>
-@import './assets/style/common.scss';
 .App {
     margin: 0 auto;
-    background-color: $primaryWhite;
 }
 @media only screen and (min-width: 1200px) {
     .App {

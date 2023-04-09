@@ -1,4 +1,6 @@
 import { createApp } from 'vue';
+import './style.css';
+import "tailwindcss/tailwind.css"
 import ElementPlus from 'element-plus';
 import * as echarts from "echarts";
 import 'element-plus/dist/index.css'

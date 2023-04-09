@@ -1,5 +1,5 @@
 <template>
-    <div class="questions-card position-relative border-radius-sm my-1 mx-1 hidden">
+    <div class="questions-card position-relative border-radius-sm my-1 mx-1">
         <div class="content-card position-relative">
             <div class="mask"></div>
             <div class="content">

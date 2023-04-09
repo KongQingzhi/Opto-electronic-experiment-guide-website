@@ -2,7 +2,7 @@
     <div id="Aside" class="box-shadow border-radius-lg" :class="isExpand ? 'isExpandWidth' : 'unExpandWidth'">
         <button @click="isExpand = !isExpand">click</button>
         <ul class="px-1 py-1">
-            <li v-for="(item, index) in menuList" :key="index" class="hidden" style="height: 3rem;margin: 0.2rem 0;">
+            <li v-for="(item, index) in menuList" :key="index" class="" style="height: 3rem;margin: 0.2rem 0;">
                 <div v-if="item.role === 0" style="display: flex;">
                     <div @click="toRoute(item)" class="iconDiv" :class="listIndex == index ? 'active' : ''"
                         style="padding:0.4rem 0.7rem;">
@@ -80,7 +80,7 @@ const isExpand = ref(true);
 const listIndex = ref(0);
 const studentsRouteList = ['/home/students/myInfo', '/home/students/selectExperiments', '/home/students/selectQuestions', '/home/students/selectExperimentsScore', '/home/students/selectLessonsScore']
 const teachersRouteList = ['/home/students/myInfo', '/home/students/selectExperiments', '/home/students/selectQuestions', '/home/students/selectExperimentsScore', '/home/students/selectLessonsScore']
-const toRoute = (item) => {
+const toRoute = (item:any) => {
     router.push({
         path: item.name,
     })
@@ -88,7 +88,6 @@ const toRoute = (item) => {
 </script>
 
 <style lang="scss">
-@import '../../../assets/style/common.scss';
 
 .isExpandWidth {
     width: 12rem;
@@ -116,10 +115,10 @@ const toRoute = (item) => {
 }
 
 .active {
-    background-color: $primaryBlue;
+    background-color: blue;
 
     i {
-        color: $primaryWhite !important;
+        color: white !important;
     }
 }
 
@@ -133,7 +132,7 @@ const toRoute = (item) => {
                 border-radius: 50%;
 
                 i {
-                    color: $primaryBlue;
+                    color: blue;
                 }
             }
         }

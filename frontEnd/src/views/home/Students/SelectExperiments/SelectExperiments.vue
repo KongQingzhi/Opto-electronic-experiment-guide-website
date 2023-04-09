@@ -43,6 +43,5 @@ const data = [
 ]
 </script>
 <style lang="scss" scoped>
-@import '../../../../assets/style/common.scss';
 
 </style>

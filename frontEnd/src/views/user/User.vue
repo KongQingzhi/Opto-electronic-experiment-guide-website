@@ -90,7 +90,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/common.scss';
 
 .user-enter-active,
 .user-leave-active {
@@ -103,16 +102,16 @@ onMounted(() => {
 }
 
 #User {
-    @include disFlex(center, center);
+    // @include disFlex(center, center);
     height: 100vh;
 
     .user-box {
-        @include disFlex(center, center);
+        // @include disFlex(center, center);
         width: 60rem;
         background-color: #fff;
 
         .img-box {
-            @include disFlex(center, center);
+            // @include disFlex(center, center);
             width: 28rem;
 
             img {
@@ -121,7 +120,7 @@ onMounted(() => {
             }
 
             .text-box {
-                @include disFlex(center, center);
+                // @include disFlex(center, center);
                 width: 28rem;
             }
         }
