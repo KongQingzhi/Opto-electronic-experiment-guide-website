@@ -1,25 +1,6 @@
 const Send = require('../utils/sendRequest');
 
 class studentRelated extends Send {
-  async selectUserInfo() {
-    let json = null;
-    const res = await this.sendRequest('GET', 'studentRelated', 'selectUserInfo');
-    if (res) {
-      json = {
-        status: 1,
-        msg: '查询成功！',
-        data: res,
-      };
-    } else {
-      json = {
-        status: 0,
-        msg: '查询失败！',
-        data: [],
-      };
-    }
-    this.ctx.body = json;
-  }
-
   async updateUserInfo() {
     const res = await this.sendRequest('POST', 'studentRelated', 'updateUserInfo');
     let json = null;

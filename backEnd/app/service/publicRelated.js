@@ -1,14 +1,34 @@
 const { Service } = require('egg');
 
 class publicRelated extends Service {
-  async selectAllClass() {
+  async selectUserInfo(param) {
     const { app } = this;
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { UserNo, Role } = param;
+    let table = '';
+    let query = null;
+    if (Role === 'true') {
+      table = 'teachers';
+      query = {
+        t_no: UserNo,
+      };
+    } else {
+      table = 'students';
+      query = {
+        s_no: UserNo,
+      };
+    }
     try {
-      const res = await app.mysql.select('classes');
-      return res;
+      const res = await app.mysql.select(table, { where: query });
+      if (res.length) {
+        return res;
+      }
+      return 0;
     } catch (e) {
       console.log(e);
-      return [];
+      return 0;
     }
   }
 
@@ -27,6 +47,16 @@ class publicRelated extends Service {
     }
   }
 
+  async selectAllClass() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.select('classes');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
 }
 
 module.exports = publicRelated;

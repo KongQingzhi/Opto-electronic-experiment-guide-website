@@ -1,9 +1,74 @@
 const Send = require('../utils/sendRequest');
 class teacherRelated extends Send {
-  async lessonExists() {
-    const res = await this.sendRequest('POST', 'teacherRelated', 'lessonExists');
+  async selectClassExists() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'selectClassExists');
     let json = null;
-    if (res.length) {
+    if (res) {
+      json = {
+        status: 1,
+        msg: '班级已存在',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '班级不存在',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+    return json;
+  }
+
+  async createClass() {
+    const flag = await this.selectClassExists();
+    let json = null;
+    if (flag.status) {
+      json = {
+        status: 0,
+        msg: '班级已存在，请勿重复添加！',
+        data: [],
+      };
+    } else {
+      const res = await this.sendRequest('POST', 'teacherRelated', 'createClass');
+      if (res) {
+        json = {
+          status: 1,
+          msg: '添加成功！',
+          data: [],
+        };
+      } else {
+        json = {
+          status: 0,
+          msg: '添加失败',
+          data: [],
+        };
+      }
+    }
+    this.ctx.body = json;
+  }
+  async deleteClass() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteClass');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+  async selectLessonExists() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'selectLessonExists');
+    let json = null;
+    if (res) {
       json = {
         status: 1,
         msg: '课程已存在！',
@@ -19,8 +84,8 @@ class teacherRelated extends Send {
     this.ctx.body = json;
     return json;
   }
-  async addLessons() {
-    const flag = await this.lessonExists();
+  async createLesson() {
+    const flag = await this.selectLessonExists();
     let json = null;
     if (flag.status) {
       json = {
@@ -29,7 +94,7 @@ class teacherRelated extends Send {
         data: [],
       };
     } else {
-      const res = await this.sendRequest('POST', 'teacherRelated', 'addLessons');
+      const res = await this.sendRequest('POST', 'teacherRelated', 'createLesson');
       if (res) {
         json = {
           status: 1,
@@ -47,6 +112,74 @@ class teacherRelated extends Send {
     this.ctx.body = json;
   }
 
+  async deleteLesson() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteLesson');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async isbindClassAndLesson() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'isbindClassAndLesson');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '课程已绑定！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '课程未绑定',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+    return json;
+  }
+
+  async bindClassAndLesson() {
+    const flag = await this.isbindClassAndLesson();
+    let json = null;
+    if (flag.status) {
+      json = {
+        status: 0,
+        msg: '绑定失败,班级与课程已绑定！',
+        data: [],
+      };
+    } else {
+      const res = await this.sendRequest('POST', 'teacherRelated', 'bindClassAndLesson');
+      if (res) {
+        json = {
+          status: 1,
+          msg: '绑定成功！',
+          data: res,
+        };
+      } else {
+        json = {
+          status: 0,
+          msg: '绑定失败',
+          data: [],
+        };
+      }
+    }
+    this.ctx.body = json;
+  }
+
+  // 待续。。。
   async experimentExists() {
     const res = await this.sendRequest('POST', 'teacherRelated', 'experimentExists');
     let json = null;
@@ -162,72 +295,6 @@ class teacherRelated extends Send {
     this.ctx.body = json;
   }
 
-  async selectClass() {
-    const res = await this.sendRequest('POST', 'teacherRelated', 'selectClass');
-    let json = null;
-    if (res.length) {
-      json = {
-        status: 1,
-        msg: '班级已存在',
-        data: res,
-      };
-    } else {
-      json = {
-        status: 0,
-        msg: '班级不存在',
-        data: [],
-      };
-    }
-    this.ctx.body = json;
-    return json;
-  }
-
-  async createClass() {
-    const flag = await this.selectClass();
-    let json = null;
-    if (flag.status) {
-      json = {
-        status: 0,
-        msg: '班级已存在，请勿重复添加！',
-        data: [],
-      };
-    } else {
-      const res = await this.sendRequest('POST', 'teacherRelated', 'createClass');
-      if (res) {
-        json = {
-          status: 1,
-          msg: '添加成功！',
-          data: [],
-        };
-      } else {
-        json = {
-          status: 0,
-          msg: '添加失败',
-          data: [],
-        };
-      }
-    }
-    this.ctx.body = json;
-  }
-  async deleteClass() {
-    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteClass');
-    let json = null;
-    if (res) {
-      json = {
-        status: 1,
-        msg: '删除成功！',
-        data: res,
-      };
-    } else {
-      json = {
-        status: 0,
-        msg: '删除失败',
-        data: [],
-      };
-    }
-    this.ctx.body = json;
-    return json;
-  }
 }
 
 module.exports = teacherRelated;

@@ -1,10 +1,10 @@
 const Send = require('../utils/sendRequest');
 
 class publicRelated extends Send {
-  async selectAllClass() {
-    const res = await this.sendRequest('GET', 'publicRelated', 'selectAllClass');
+  async selectUserInfo() {
     let json = null;
-    if (res.length) {
+    const res = await this.sendRequest('GET', 'publicRelated', 'selectUserInfo');
+    if (res) {
       json = {
         status: 1,
         msg: '查询成功！',
@@ -13,7 +13,7 @@ class publicRelated extends Send {
     } else {
       json = {
         status: 0,
-        msg: '查询失败',
+        msg: '查询失败！',
         data: [],
       };
     }
@@ -33,6 +33,25 @@ class publicRelated extends Send {
       json = {
         status: 0,
         msg: '更新失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async selectAllClass() {
+    const res = await this.sendRequest('GET', 'publicRelated', 'selectAllClass');
+    let json = null;
+    if (res.length) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
         data: [],
       };
     }

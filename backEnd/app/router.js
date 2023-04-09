@@ -22,8 +22,6 @@ module.exports = app => {
   /**
    * 学生有关的接口
    */
-  // 查询用户信息
-  router.get('/api/students/selectUserInfo', controller.studentRelated.selectUserInfo);
   // 更新信息
   router.post('/api/students/updateUserInfo', controller.studentRelated.updateUserInfo);
   // 绑定班级
@@ -41,7 +39,7 @@ module.exports = app => {
   // 查看课程成绩
   router.get('/api/students/selectLessonsScore', controller.studentRelated.selectLessonsScore);
 
-
+  // 暂定
   // 查询用户班级
   router.get('/api/students/getClassByStudent', controller.studentRelated.getClassByStudent);
   // 查询是否绑定班级
@@ -53,33 +51,44 @@ module.exports = app => {
   /**
    * 教师有关
    */
-
-  // 查看课程是否存在
-  router.post('/api/lessonExists', controller.teacherRelated.lessonExists);
-  // 添加课程
-  router.post('/api/addLessons', controller.teacherRelated.addLessons);
-  // 通过班级查找实验
-  router.post('/api/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
-  // 查询实验是否存在
-  router.post('/api/experimentExists', controller.teacherRelated.experimentExists);
-  // 发布实验
-  router.post('/api/publishExperiment', controller.teacherRelated.publishExperiment);
-  // 查询课程与实验的绑定情况
-  router.post('/api/selectELBind', controller.teacherRelated.selectELBind);
-  // 实验课程绑定
-  router.post('/api/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
-  // 查看班级
-  router.post('/api/selectClass', controller.teacherRelated.selectClass);
+  // 查看班级是否存在
+  router.post('/api/teachers/selectClassExists', controller.teacherRelated.selectClassExists);
   // 创建班级
-  router.post('/api/createClass', controller.teacherRelated.createClass);
+  router.post('/api/teachers/createClass', controller.teacherRelated.createClass);
   // 删除班级
-  router.post('/api/deleteClass', controller.teacherRelated.deleteClass);
+  router.post('/api/teachers/deleteClass', controller.teacherRelated.deleteClass);
+  // 查看课程是否存在
+  router.post('/api/teachers/selectLessonExists', controller.teacherRelated.selectLessonExists);
+  // 添加课程
+  router.post('/api/teachers/createLesson', controller.teacherRelated.createLesson);
+  // 删除课程
+  router.post('/api/teachers/deleteLesson', controller.teacherRelated.deleteLesson);
+  // 查询班级与课程是否绑定
+  router.post('/api/teachers/isbindClassAndLesson', controller.teacherRelated.isbindClassAndLesson);
+  // 绑定班级与课程
+  router.post('/api/teachers/bindClassAndLesson', controller.teacherRelated.bindClassAndLesson);
+
+  // 待续。。。
+
+  // 通过班级查找实验
+  router.post('/api/teachers/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
+  // 查询实验是否存在
+  router.post('/api/teachers/experimentExists', controller.teacherRelated.experimentExists);
+  // 发布实验
+  router.post('/api/teachers/publishExperiment', controller.teacherRelated.publishExperiment);
+  // 查询课程与实验的绑定情况
+  router.post('/api/teachers/selectELBind', controller.teacherRelated.selectELBind);
+  // 实验课程绑定
+  router.post('/api/teachers/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
 
   /**
    * 公共部分
    */
-  // 查询所有班级
-  router.get('/api/public/selectAllClass', controller.publicRelated.selectAllClass);
+  // 查询用户信息
+  router.get('/api/public/selectUserInfo', controller.publicRelated.selectUserInfo);
+  // 更新答题
   router.post('/api/public/updateQuestionsContent', controller.publicRelated.updateQuestionsContent);
 
+  // 查询所有班级
+  router.get('/api/public/selectAllClass', controller.publicRelated.selectAllClass);
 };
