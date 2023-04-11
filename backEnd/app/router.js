@@ -67,19 +67,23 @@ module.exports = app => {
   router.post('/api/teachers/isbindClassAndLesson', controller.teacherRelated.isbindClassAndLesson);
   // 绑定班级与课程
   router.post('/api/teachers/bindClassAndLesson', controller.teacherRelated.bindClassAndLesson);
-
-  // 待续。。。
-
-  // 通过班级查找实验
-  router.post('/api/teachers/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
+  // 查询教师与课程是否绑定
+  router.post('/api/teachers/isbindTeacherAndLesson', controller.teacherRelated.isbindTeacherAndLesson);
+  // 绑定教师与课程
+  router.post('/api/teachers/bindTeacherAndLesson', controller.teacherRelated.bindTeacherAndLesson);
   // 查询实验是否存在
   router.post('/api/teachers/experimentExists', controller.teacherRelated.experimentExists);
   // 发布实验
-  router.post('/api/teachers/publishExperiment', controller.teacherRelated.publishExperiment);
+  router.post('/api/teachers/releaseExperiment', controller.teacherRelated.releaseExperiment);
+  // 查询课程绑定是否存在
+  router.post('/api/teachers/isbindExperimentLesson', controller.teacherRelated.isbindExperimentLesson);
+  // 实验课程绑定
+  router.post('/api/teachers/bindExperimentLesson', controller.teacherRelated.bindExperimentLesson);
+
+  // 通过班级查找实验
+  router.post('/api/teachers/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
   // 查询课程与实验的绑定情况
   router.post('/api/teachers/selectELBind', controller.teacherRelated.selectELBind);
-  // 实验课程绑定
-  router.post('/api/teachers/bindExperimentLessons', controller.teacherRelated.bindExperimentLessons);
 
   /**
    * 公共部分

@@ -122,19 +122,55 @@ class teacherRelated extends Service {
     }
   }
 
-  // 待续。。。
+  async isbindTeacherAndLesson(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.select('lt', { where: param });
+      if (res.length) {
+        return res;
+      }
+      return 0;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async bindTeacherAndLesson(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.insert('lt', param);
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
   async experimentExists(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
     const { app } = this;
     try {
       const res = await app.mysql.select('experiments', { where: { e_name: param.e_name } });
-      return res;
+      if (res.length) {
+        return res;
+      }
+      return 0;
     } catch (e) {
       console.log(e);
       return [];
     }
   }
 
-  async publishExperiment(param) {
+  async releaseExperiment(param) {
     const { app } = this;
     try {
       const res = await app.mysql.insert('experiments', param);
@@ -145,9 +181,35 @@ class teacherRelated extends Service {
     }
   }
 
+  async isbindExperimentLesson(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.select('el', { where: param });
+      if (res.length) {
+        return res;
+      }
+      return 0;
+    } catch (e) {
+      console.log(e);
+      return '实验与课程绑定失败！';
+    }
+  }
+
+  async bindExperimentLesson(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.insert('el', param);
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return '实验与课程绑定失败！';
+    }
+  }
+
+
   async selectExperimentsByClass(param) {
     const { app } = this;
-    const { c_id } = param;
+    // const { c_id } = param;
     try {
       const res = await app.mysql.select('classes');
       return res;
@@ -165,17 +227,6 @@ class teacherRelated extends Service {
     } catch (e) {
       console.log(e);
       return [];
-    }
-  }
-
-  async bindExperimentLessons(param) {
-    const { app } = this;
-    try {
-      const res = await app.mysql.insert('el', param);
-      return res.affectedRows;
-    } catch (e) {
-      console.log(e);
-      return '实验与课程绑定失败！';
     }
   }
 

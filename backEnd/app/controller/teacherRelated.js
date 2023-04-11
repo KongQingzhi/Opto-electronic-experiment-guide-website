@@ -179,7 +179,53 @@ class teacherRelated extends Send {
     this.ctx.body = json;
   }
 
-  // 待续。。。
+  async isbindTeacherAndLesson() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'isbindTeacherAndLesson');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '教师与课程已绑定！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '教师与课程未绑定',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+    return json;
+  }
+
+  async bindTeacherAndLesson() {
+    const flag = await this.isbindTeacherAndLesson();
+    let json = null;
+    if (flag.status) {
+      json = {
+        status: 0,
+        msg: '绑定失败,教师与课程已绑定！',
+        data: [],
+      };
+    } else {
+      const res = await this.sendRequest('POST', 'teacherRelated', 'bindTeacherAndLesson');
+      if (res) {
+        json = {
+          status: 1,
+          msg: '教师与课程绑定成功！',
+          data: res,
+        };
+      } else {
+        json = {
+          status: 0,
+          msg: '教师与课程绑定失败',
+          data: [],
+        };
+      }
+    }
+    this.ctx.body = json;
+  }
   async experimentExists() {
     const res = await this.sendRequest('POST', 'teacherRelated', 'experimentExists');
     let json = null;
@@ -200,26 +246,7 @@ class teacherRelated extends Send {
     return json;
   }
 
-  async selectExperimentsByClass() {
-    const res = await this.sendRequest('POST', 'teacherRelated', 'selectExperimentsByClass');
-    let json = null;
-    if (res.length) {
-      json = {
-        status: 1,
-        msg: '查询成功！',
-        data: res,
-      };
-    } else {
-      json = {
-        status: 0,
-        msg: '查询失败',
-        data: [],
-      };
-    }
-    this.ctx.body = json;
-  }
-
-  async publishExperiment() {
+  async releaseExperiment() {
     const flag = await this.experimentExists();
     let json = null;
     if (flag.status) {
@@ -229,7 +256,7 @@ class teacherRelated extends Send {
         data: [],
       };
     } else {
-      const res = await this.sendRequest('POST', 'teacherRelated', 'publishExperiment');
+      const res = await this.sendRequest('POST', 'teacherRelated', 'releaseExperiment');
       if (res) {
         json = {
           status: 1,
@@ -243,6 +270,73 @@ class teacherRelated extends Send {
           data: [],
         };
       }
+    }
+    this.ctx.body = json;
+  }
+
+  async isbindExperimentLesson() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'isbindExperimentLesson');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '实验与课程已绑定！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '实验与课程未绑定',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+    return json;
+  }
+
+  async bindExperimentLesson() {
+    const flag = await this.isbindExperimentLesson();
+    let json = null;
+    if (flag.status) {
+      json = {
+        status: 0,
+        msg: '实验与课程已绑定，请勿重复操作！',
+        data: [],
+      };
+    } else {
+      const res = await this.sendRequest('POST', 'teacherRelated', 'bindExperimentLesson');
+      if (res) {
+        json = {
+          status: 1,
+          msg: '实验与课程绑定成功！',
+          data: [],
+        };
+      } else {
+        json = {
+          status: 0,
+          msg: '实验与课程绑定失败',
+          data: [],
+        };
+      }
+    }
+    this.ctx.body = json;
+  }
+
+  async selectExperimentsByClass() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'selectExperimentsByClass');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
     }
     this.ctx.body = json;
   }
@@ -267,33 +361,6 @@ class teacherRelated extends Send {
     return json;
   }
 
-  async bindExperimentLessons() {
-    const flag = await this.selectELBind();
-    let json = null;
-    if (flag.status) {
-      json = {
-        status: 0,
-        msg: '课程与实验已绑定，请勿重复操作！',
-        data: [],
-      };
-    } else {
-      const res = await this.sendRequest('POST', 'teacherRelated', 'bindExperimentLessons');
-      if (res) {
-        json = {
-          status: 1,
-          msg: '绑定成功！',
-          data: [],
-        };
-      } else {
-        json = {
-          status: 0,
-          msg: '绑定失败',
-          data: [],
-        };
-      }
-    }
-    this.ctx.body = json;
-  }
 
 }
 

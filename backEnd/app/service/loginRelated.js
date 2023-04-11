@@ -20,7 +20,6 @@ class LoginRelated extends Service {
     }
     try {
       const res = await app.mysql.select(table, { where: query });
-      console.log(res);
       return res;
     } catch (e) {
       console.log(e);
