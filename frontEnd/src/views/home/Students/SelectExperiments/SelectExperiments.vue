@@ -1,17 +1,15 @@
 <template>
-    <div id="experimentsList">
-        <div v-for="item in data">
-            <div class="border-radius-sm border-grey text-grey title-4" style="padding: 0.5rem 1rem;">{{
-                item.lessons }}</div>
-            <div class="flex flex-wrap">
-                <ExperimentsCard v-for="index in 5" :item="item.experiments" />
-            </div>
+    <PageHeader title="我的实验" />
+        <div v-for="item in data" class="py-10">
+            <SectionHeader :title="item.lessons" :aside-title="item.lessons" />
+            <ExperimentsCard v-for="item in 4" :item="item" />
         </div>
-    </div>
 </template>
 
 <script lang="ts" setup>
 import ExperimentsCard from './ExperimentsCard.vue';
+import PageHeader from '../../../../components/PageHeader.vue';
+import SectionHeader from '../../../../components/SectionHeader.vue';
 const data = [
     {
         lessons: 'udzorhgbishiotgbhos',
@@ -42,6 +40,3 @@ const data = [
     }
 ]
 </script>
-<style lang="scss" scoped>
-
-</style>

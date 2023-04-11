@@ -1,6 +1,6 @@
 <template>
-    <div id="Register">
-        <div class="title-box px-2 title-2 font-weight">注 册</div>
+    <div id="Register" class="w-full">
+        <div class="text-center mb-4 px-2 text-2xl font-bold">注 册</div>
         <ElForm ref="ruleFormRef" :model="ruleForm" :rules="rules" label-position="top">
             <ElFormItem label="Account" prop="UserNo">
                 <ElInput v-model="ruleForm.UserNo" placeholder="学号" />
@@ -21,8 +21,8 @@
                 <ElInput type="password" v-model="ruleForm.UserPassword" placeholder="密码" />
             </ElFormItem>
         </ElForm>
-        <div class="bottom-btn">
-            <ButtonVue @btn-fn="onRegister(ruleFormRef)" btn-content="注 册" />
+        <div class="mt-2 text-center">
+            <ElButton type="primary" @click="onRegister(ruleFormRef)" >注 册</ElButton>
         </div>
     </div>
 </template>
@@ -32,7 +32,7 @@ import ButtonVue from '../../../components/button.vue';
 import { useRouter } from 'vue-router';
 import { ref, reactive } from 'vue';
 import { register } from '../../../api/user';
-import { ElMessage, ElRadioGroup, ElRadio, ElInput, ElFormItem, ElForm, ElCheckbox } from 'element-plus';
+import { ElMessage, ElRadioGroup, ElRadio, ElInput, ElFormItem, ElForm, ElButton } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
 const router = useRouter();
 const ruleFormRef = ref<FormInstance>()
@@ -80,20 +80,3 @@ const onRegister = async (formEl: FormInstance | undefined) => {
     })
 }
 </script>
-
-<style lang="scss" scoped>
-#Register {
-    width: 100%;
-
-    .title-box {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .bottom-btn {
-        margin-top: 2rem;
-        text-align: center;
-    }
-
-}
-</style>

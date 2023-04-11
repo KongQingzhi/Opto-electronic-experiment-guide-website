@@ -1,16 +1,19 @@
 <template>
-    <div id="User">
-        <div class="user-box border-radius-lg box-shadow px-2 py-2">
-            <div class="img-box py-2">
-                <img :src="src" alt="">
-                <div class="text-box py-2">
-                    <div class="title title-4 font-weight text-center">{{ buttonContent.title }}</div>
-                    <div class="content text-center text-grey">{{ buttonContent.asideTitle }}</div>
+    <div id="User" class="flex justify-center items-center h-screen">
+        <div class="w-full rounded-lg shadow-lg border-2 px-2 py-60 grid md:grid-cols-2 grid-cols-1">
+            <div class="col-span-1 text-center my-2">
+                <div class="flex justify-center mb-4">
+                    <img :src="src" class="w-full" />
                 </div>
-                <ButtonVue btn-icon="icon-sousuo" :btn-content="buttonContent.btnText" @btn-fn="buttonContent.btnFn">
-                </ButtonVue>
+                <div class="my-4">
+                    <div class="text-lg font-bold text-center">{{ buttonContent.title }}</div>
+                    <div class="text-center text-grey-500">{{ buttonContent.asideTitle }}</div>
+                </div>
+                <ElButton type="primary" @click="buttonContent.btnFn">
+                    {{ buttonContent.btnText }}
+                </ElButton>
             </div>
-            <div class="form-box">
+            <div class="col-span-1 px-28 flex items-center">
                 <router-view></router-view>
             </div>
         </div>
@@ -18,47 +21,30 @@
 </template>
 
 <script setup lang="ts">
+import { ElButton } from 'element-plus';
 import { ref, Ref, onMounted, reactive } from 'vue';
 import login from '../../assets/image/svg/login.svg';
 import register from '../../assets/image/svg/register.svg';
 import findPassword from '../../assets/image/svg/findPassword.svg';
-import ButtonVue from '../../components/button.vue';
 import router from '../../router';
 const imgList: string[] = [login, register, findPassword];
 const src: Ref<string> = ref(imgList[0]);
 const btnText: Ref<string[]> = ref(['去 注 册', '去 登 录']);
-const buttonContentList = [{
-    btnText: btnText.value[0],
-    btnFn: toRegister,
-    title: '新 用 户 ？',
-    asideTitle: '快点击下方按钮加入我们吧！'
-}, {
-    btnText: btnText.value[1],
-    btnFn: toLogin,
-    title: '已 有 帐 号？',
-    asideTitle: '快点击下方按钮登录吧！'
-}]
-const buttonContent = ref({
-    btnText: btnText.value[0],
-    btnFn: toRegister,
-    title: '新 用 户 ？',
-    asideTitle: '快点击下方按钮加入我们吧！'
-});
-function toLogin(): void {
+const toLogin = (): void => {
     router.push({
         path: '/login'
     })
     showImg()
 }
 
-function toRegister(): void {
+const toRegister = (): void => {
     router.push({
         path: '/register'
     })
     showImg()
 }
 
-function showImg() {
+const showImg = () => {
     router.afterEach((to, from) => {
         if (to.path == '/login') {
             buttonContent.value = buttonContentList[0];
@@ -83,54 +69,24 @@ function showImg() {
         src.value = imgList[2];
     }
 }
-
+const buttonContentList = [{
+    btnText: btnText.value[0],
+    btnFn: toRegister,
+    title: '新 用 户 ？',
+    asideTitle: '快点击下方按钮加入我们吧！'
+}, {
+    btnText: btnText.value[1],
+    btnFn: toLogin,
+    title: '已 有 帐 号？',
+    asideTitle: '快点击下方按钮登录吧！'
+}]
+const buttonContent = ref({
+    btnText: btnText.value[0],
+    btnFn: toRegister,
+    title: '新 用 户 ？',
+    asideTitle: '快点击下方按钮加入我们吧！'
+});
 onMounted(() => {
     showImg()
 })
 </script>
-
-<style lang="scss" scoped>
-
-.user-enter-active,
-.user-leave-active {
-    transition: opacity 2s ease;
-}
-
-.user-enter-from,
-.user-leave-from {
-    opacity: 0;
-}
-
-#User {
-    // @include disFlex(center, center);
-    height: 100vh;
-
-    .user-box {
-        // @include disFlex(center, center);
-        width: 60rem;
-        background-color: #fff;
-
-        .img-box {
-            // @include disFlex(center, center);
-            width: 28rem;
-
-            img {
-                width: 24rem;
-                height: 24rem;
-            }
-
-            .text-box {
-                // @include disFlex(center, center);
-                width: 28rem;
-            }
-        }
-
-        .form-box {
-            padding: 0 6rem;
-            width: 28rem;
-            display: flex;
-            justify-content: center;
-        }
-    }
-}
-</style>

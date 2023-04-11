@@ -1,6 +1,6 @@
 <template>
-    <div id="Login">
-        <div class="title-box px-2 title-2 font-weight">登 录</div>
+    <div id="Login" class="w-full">
+        <div class="text-center mb-4 px-2 text-2xl font-bold">登 录</div>
         <ElForm ref="ruleFormRef" :model="ruleForm" :rules="rules" label-position="top" size="large">
             <ElFormItem label="Account" prop="UserNo">
                 <ElInput v-model="ruleForm.UserNo" placeholder="账号" />
@@ -8,19 +8,18 @@
             <ElFormItem label="Password" prop="UserPassword">
                 <ElInput type="password" v-model="ruleForm.UserPassword" placeholder="密码" />
             </ElFormItem>
-            <div class="options">
+            <div class="flex justify-between">
                 <ElCheckbox v-model="ruleForm.Role" label="我是教师" name="type" />
                 <ElLink @click="toFindPassword">忘记密码？</ElLink>
             </div>
         </ElForm>
-        <div class="bottom-btn">
-            <ButtonVue @btn-fn="onLogin(ruleFormRef)" btn-content="登 录" />
+        <div class="mt-2 text-center">
+            <ElButton type="primary" @click="onLogin(ruleFormRef)">登 录</ElButton>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import ButtonVue from '../../../components/button.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { ref, reactive } from 'vue';
 import { login } from '../../../api/user';
@@ -74,24 +73,3 @@ function toFindPassword() {
 
 
 </script>
-
-<style lang="scss" scoped>
-#Login {
-    width: 100%;
-
-    .title-box {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .options {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .bottom-btn {
-        margin-top: 2rem;
-        text-align: center;
-    }
-}
-</style>

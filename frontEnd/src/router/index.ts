@@ -5,7 +5,7 @@ import Show from './show';
 import User from './user';
 import Home from './home';
 //2.创建路由表
-const routes:any = [
+const routes: any = [
     {
         path: '/',
         name: 'root',
@@ -13,7 +13,16 @@ const routes:any = [
     },
     Show,
     User,
-    Home
+    Home,
+    {
+        path: '/404',
+        name: '404',
+        component: () => import('../views/404/NotFound.vue')
+    },
+    {
+        path: '/:catchAll(.*)',
+        redirect: "/404",
+    }
 ];
 
 //3.创建路由对象

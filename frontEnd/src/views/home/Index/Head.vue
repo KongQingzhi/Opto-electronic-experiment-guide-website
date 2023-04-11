@@ -1,157 +1,68 @@
 <template>
-    <div id="Head">
-        <div class="logo-title">
-            <img src="../../../assets/image/faviorate.ico" alt="">
-            <div class="mx-1 title-4 font-weight">基于Vue.js的光电实验指导网</div>
+  <header class="mb-4 rounded-b-md border border-gray-200">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">Your Company</span>
+        <img class="h-8 w-auto" src="../../../assets/image/faviorate.ico" alt="" />
+      </a>
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          @click="mobileMenuOpen = true">
+          <span class="sr-only">Open main menu</span>
+          <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a v-for="item in navigation" :key="item.name" :href="item.href"
+          class="text-sm font-semibold leading-6 text-gray-900">{{ item.name }}</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span
+            aria-hidden="true">&rarr;</span></a>
+      </div>
+    </nav>
+    <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+      <div class="fixed inset-0 z-10" />
+      <DialogPanel
+        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="h-8 w-auto" src="../../../assets/image/faviorate.ico" alt="" />
+          </a>
+          <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+            <span class="sr-only">Close menu</span>
+            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+          </button>
         </div>
-        <div class="menu">
-            <div v-for="item in menuList" class="menu-item font-weight text-grey border-radius-sm mx-1">
-                {{ item }}
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 py-6">
+              <a v-for="item in navigation" :key="item.name" :href="item.href"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{
+                  item.name }}</a>
             </div>
-            <el-dropdown class="my-menu circle mx-2" size="large">
-                <img src="../../../assets/image/faviorate.ico" alt="">
-                <template #dropdown>
-                    <el-dropdown-menu>
-                        <el-dropdown-item v-for="item in myMenu">
-                            <i class="iconfont" :class="item.icon"></i>
-                            <span>{{ item.option }}</span></el-dropdown-item>
-                    </el-dropdown-menu>
-                </template>
-            </el-dropdown>
+            <div class="py-6">
+              <a href="#"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
+                in</a>
+            </div>
+          </div>
         </div>
-    </div>
+      </DialogPanel>
+    </Dialog>
+  </header>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ElButton, ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus';
-const menuList = ['11111', '22222', '32222', '42222'];
-const myMenu = [
-    {
-        option: '1',
-        icon: 'icon-arrow_right_circle_line'
-    },
-    {
-        option: '2',
-        icon: 'icon-navigation_line'
-    }, {
-        option: '3',
-        icon: 'icon-lightning_line'
-    }
+import { Dialog, DialogPanel } from '@headlessui/vue'
+import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
+
+const navigation = [
+  { name: 'Product', href: '#' },
+  { name: 'Features', href: '#' },
+  { name: 'Marketplace', href: '#' },
+  { name: 'Company', href: '#' },
 ]
+
+const mobileMenuOpen = ref(false)
 </script>
-
-<style lang="scss" scoped>
-.active {
-    background-color: blue;
-    color: #fff;
-    position: relative;
-
-    &::before {
-        content: '111';
-        position: absolute;
-        top: 2rem;
-        left: -1.6rem;
-        display: inline-block;
-        width: 8.7rem;
-        height: 4rem;
-        // background-color: rgb(255, 255, 255);
-        background: linear-gradient(0deg, #FFFFFF 25%, #53B3FF 75%);
-        clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    }
-}
-
-
-#Head {
-    width: 100%;
-    background-color: #fff;
-
-
-    .logo-title {
-
-        img {
-            width: 3rem;
-            margin: 1rem;
-        }
-
-    }
-
-    .menu {
-
-        .menu-item {
-            font-size: 1.2rem;
-            padding: 0.5rem 1rem;
-            // background-color: $primaryBlue;
-
-        }
-
-        .my-menu {
-            width: 3rem;
-            height: 3rem;
-            color: blue;
-        }
-    }
-}
-
-// @media only screen and (min-width: 1200px) {
-//     #Head {
-//         @include disFlex(space-between, center);
-
-//         .logo-title {
-//             @include disFlex(center, center);
-//         }
-
-//         .menu {
-//             @include disFlex(center, center);
-//         }
-//     }
-// }
-
-// @media only screen and (max-width: 1200px) {
-//     #Head {
-//         @include disFlex(space-between, center);
-
-//         .logo-title {
-//             @include disFlex(center, center);
-//         }
-
-//         .menu {
-//             @include disFlex(center, center);
-//         }
-//     }
-// }
-
-// @media only screen and (max-width: 992px) {
-//     #Head {
-//         @include disFlex(center, center);
-
-//         .logo-title {
-//             width: 100%;
-//             @include disFlex(space-between, center);
-//         }
-
-//         .menu {
-//             width: 100%;
-//             @include disFlex(center, center);
-//         }
-//     }
-// }
-
-// @media only screen and (max-width: 768px) {
-//     .App {
-//         width: 37rem;
-//     }
-// }
-
-// @media only screen and (max-width: 520px) {
-//     .App {
-//         width: 32rem;
-//     }
-// }
-
-// @media only screen and (max-width: 420px) {
-//     .App {
-//         width: 100%;
-//     }
-// }
-</style>

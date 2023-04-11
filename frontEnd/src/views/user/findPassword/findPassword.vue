@@ -1,6 +1,6 @@
 <template>
-    <div id="FindPassword">
-        <div class="title-box px-2 title-2 font-weight">找回密码</div>
+    <div id="FindPassword" class="w-full">
+        <div class="text-center mb-4 px-2 text-2xl font-bold">找回密码</div>
         <ElForm ref="ruleFormRef" :model="ruleForm" :rules="rules" label-position="top">
             <ElFormItem label="Account" prop="UserNo">
                 <ElInput v-model="ruleForm.UserNo" placeholder="账号" />
@@ -12,12 +12,16 @@
                 <ElInput type="email" v-model="ruleForm.s_email" placeholder="邮箱" />
             </ElFormItem>
             <ElFormItem label="VerifyCode" prop="verifyCode">
-                <ElInput style="width: 60%;" v-model="ruleForm.verifyCode" maxlength="6" placeholder="验证码" />
-                <ElButton style="margin-left: 1rem;" :disabled="btnDisabled" type="primary" @click="onVerify">
-                    {{ btnContent }}</ElButton>
+                <div class="grid grid-cols-7 w-full">
+                    <ElInput class="col-span-4" v-model="ruleForm.verifyCode" maxlength="6" placeholder="验证码" />
+                    <div class="col-span-1"></div>
+                    <ElButton class="col-span-2" :disabled="btnDisabled" type="primary" @click="onVerify">
+                        {{ btnContent }}
+                    </ElButton>
+                </div>
             </ElFormItem>
         </ElForm>
-        <div class="bottom-btn">
+        <div class="mt-2 text-center">
             <ElButton type="primary" @click="onRetrievePassword(ruleFormRef)">找回密码</ElButton>
         </div>
     </div>
@@ -26,7 +30,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { ref, reactive, computed, Ref } from 'vue';
-import ButtonVue from '../../../components/button.vue';
 import { ElMessage, ElRadioGroup, ElButton, ElRadio, ElInput, ElFormItem, ElForm, ElCheckbox } from 'element-plus';
 import type { FormInstance, FormRules } from 'element-plus';
 import { verify, retrievePassword } from '../../../api/user';
@@ -117,20 +120,3 @@ const onRetrievePassword = async (formEl: FormInstance | undefined) => {
 
 
 </script>
-
-<style lang="scss" scoped>
-#FindPassword {
-    width: 100%;
-
-    .title-box {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .bottom-btn {
-        margin-top: 2rem;
-        text-align: center;
-    }
-
-}
-</style>

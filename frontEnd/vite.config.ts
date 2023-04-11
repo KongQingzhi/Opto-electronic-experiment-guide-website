@@ -16,6 +16,12 @@ export default defineConfig({
         ws: false,
         changeOrigin: true,
         rewrite: (path) => path.replace(new RegExp(`^/dev-api`), '')
+      },
+      ['/bing']: {
+        target: 'https://cn.bing.com/HPImageArchive.aspx', //后端请求地址
+        ws: false,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(new RegExp(`^/bing`), '')
       }
     }
   }

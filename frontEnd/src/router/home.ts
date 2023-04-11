@@ -80,7 +80,7 @@ export default {
     component: homeVue,
     children: [
         students,
-        teachers
+        teachers,
     ]
 }
 
