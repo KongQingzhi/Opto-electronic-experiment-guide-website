@@ -26,6 +26,7 @@ class LoginRelated extends Send {
 
   async accountExists() {
     const res = await this.sendRequest('POST', 'loginRelated', 'accountExists');
+    console.log(res);
     let json = null;
     if (res) {
       json = {

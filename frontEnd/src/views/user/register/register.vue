@@ -10,19 +10,22 @@
             </ElFormItem>
             <ElFormItem label="性别" prop="s_gender">
                 <ElRadioGroup v-model="ruleForm.s_gender">
-                    <ElRadio label="男">男</ElRadio>
-                    <ElRadio label="女">女</ElRadio>
+                    <ElRadio label="1">男</ElRadio>
+                    <ElRadio label="0">女</ElRadio>
                 </ElRadioGroup>
             </ElFormItem>
             <ElFormItem label="Email" prop="s_email">
                 <ElInput type="email" v-model="ruleForm.s_email" placeholder="邮箱" />
+            </ElFormItem>
+            <ElFormItem label="Password" prop="s_tel">
+                <ElInput type="password" v-model="ruleForm.s_tel" placeholder="电话" />
             </ElFormItem>
             <ElFormItem label="Password" prop="UserPassword">
                 <ElInput type="password" v-model="ruleForm.UserPassword" placeholder="密码" />
             </ElFormItem>
         </ElForm>
         <div class="mt-2 text-center">
-            <ElButton type="primary" @click="onRegister(ruleFormRef)" >注 册</ElButton>
+            <ElButton type="primary" @click="onRegister(ruleFormRef)">注 册</ElButton>
         </div>
     </div>
 </template>
@@ -40,14 +43,16 @@ const ruleForm = reactive({
     UserNo: '',
     UserPassword: '',
     s_name: '',
-    s_gender: '男',
+    s_gender: 1,
     s_email: '',
+    s_tel: '',
     Role: false
 })
 const rules = reactive<FormRules>({
     UserNo: [{ required: true, message: '请输入账号', trigger: 'blur' }],
     UserPassword: [{ required: true, message: '请输入密码', trigger: 'blur' }],
     s_name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+    s_tel: [{ required: true, message: '请输入电话', trigger: 'blur' }],
     s_gender: [{ required: true, message: '请输入性别', trigger: 'change' }],
     s_email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }],
 })

@@ -1,5 +1,5 @@
 <template>
-    <div id="students">
+    <div class="">
         <router-view></router-view>
     </div>
 </template>

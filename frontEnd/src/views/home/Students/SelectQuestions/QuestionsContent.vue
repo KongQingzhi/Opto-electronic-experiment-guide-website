@@ -1,21 +1,33 @@
 <template>
-    <div id="questionsContent">
-        <h3 class="text-center my-1">1111111111111111111111111111</h3>
-        <div class="my-1">
-            <span class="mx-2">任课教师：ggfhhfxgndfgndfndfg</span>
-            <span class="mx-2">上课教师：zhgsfsfgnfsghnsfgfs</span>
-        </div>
-        <hr>
-        <div class="content my-1">afdhsghsfghnfsgjndfndsgthsthndf</div>
-        <ElInput v-model="replay" type="textarea"  autosize></ElInput>
-        <div class="text-center my-2">
-            <ElButton v-if="1" type="primary">提交</ElButton>
+    <div v-if="!question"></div>
+    <div v-else>
+        <PageHeader :button="false" button-text="123" title="123" />
+        <div class="grid  grid-cols-5 px-5 my-1 gap-10">
+            <div class=" leading-8 col-span-5 lg:col-span-3">
+                {{ question.q_content }}
+            </div>
+            <div class="hidden lg:block py-16 col-span-2">
+                <img class="h-[35rem] rounded-xl object-cover" :src="imgSrc" alt="">
+            </div>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ElInput } from 'element-plus';
+import { useRouter, useRoute } from 'vue-router';
+import PageHeader from '../../../../components/PageHeader.vue';
+import { questionsContent } from '../../../../api/students';
 import { ref } from 'vue';
-const replay = ref('');
+import axios from 'axios';
+const router = useRouter();
+const route = useRoute();
+const question = ref();
+questionsContent({ s_no: JSON.parse(sessionStorage.getItem('user') as string).s_no, q_finish: route.query.q_finish, q_id: route.query.q_id }).then(res => {
+    console.log(res.data.data);
+    question.value = res.data.data[0];
+})
+const imgSrc = ref('');
+axios.get('/bing?n=8&format=js&idx=0').then(res => {
+    imgSrc.value = 'https://www.bing.com' + res.data.images[(Math.random() * 7).toFixed(0)].url;
+})
 </script>

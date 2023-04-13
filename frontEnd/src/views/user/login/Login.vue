@@ -52,6 +52,15 @@ const onLogin = async (formEl: FormInstance | undefined) => {
                     })
                     sessionStorage.setItem('user', JSON.stringify(data[0]));
                     sessionStorage.setItem('role', JSON.stringify(ruleForm.Role));
+                    if (ruleForm.Role) {
+                        router.push({
+                            path:'/teachers/'
+                        })
+                    } else {
+                            router.push({
+                            name:'myInfo'
+                        })
+                    }
                 } else {
                     ElMessage({
                         message: msg,

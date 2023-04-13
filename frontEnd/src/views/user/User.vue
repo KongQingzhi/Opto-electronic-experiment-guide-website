@@ -1,6 +1,6 @@
 <template>
     <div id="User" class="flex justify-center items-center h-screen">
-        <div class="w-full rounded-lg shadow-lg border-2 px-2 py-60 grid md:grid-cols-2 grid-cols-1">
+        <div class="w-full px-2 py-60 grid md:grid-cols-2 grid-cols-1">
             <div class="col-span-1 text-center my-2">
                 <div class="flex justify-center mb-4">
                     <img :src="src" class="w-full" />

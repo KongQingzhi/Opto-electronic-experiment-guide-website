@@ -16,20 +16,20 @@ class studentRelated extends Service {
     }
   }
 
-  async bindClass(param) {
-    if (JSON.stringify(param) === '{}') {
-      return 0;
-    }
-    const { app } = this;
-    const { s_no, c_id } = param;
-    try {
-      const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
-      return res.affectedRows;
-    } catch (e) {
-      console.log(e);
-      return 0;
-    }
-  }
+  // async bindClass(param) {
+  //   if (JSON.stringify(param) === '{}') {
+  //     return 0;
+  //   }
+  //   const { app } = this;
+  //   const { s_no, c_id } = param;
+  //   try {
+  //     const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
+  //     return res.affectedRows;
+  //   } catch (e) {
+  //     console.log(e);
+  //     return 0;
+  //   }
+  // }
 
   async selectExperiments(param) {
     if (JSON.stringify(param) === '{}') {
@@ -37,7 +37,7 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT l_name, l_time, e_name, e_content, e_files, e_time, t_name, t_tel, t_pro, r_buid, r_no  FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id WHERE s.s_no=?', [ param.s_no ]);
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_id, e_name, e_content, e_files, e_time, t_name, t_tel, t_pro, r_build, r_no  FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id WHERE s.s_no=?', [ param.s_no ]);
       return res;
     } catch (e) {
       console.log(e);
@@ -51,7 +51,7 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT e_name, e_content, e_time, e_files, t_name, t_tel, t_pro, r_buid, r_no  FROM  experiments e LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id WHERE e.e_id = ?', [ param.e_id ]);
+      const res = await app.mysql.query('SELECT e_name, e_content, e_time, e_files, t_name, t_tel, t_pro, r_build, r_no  FROM  experiments e LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id WHERE e.e_id = ?', [ param.e_id ]);
       return res;
     } catch (e) {
       console.log(e);
@@ -65,7 +65,7 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id RIGHT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no = ?', [ param.s_no ]);
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id RIGHT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id AND qs.s_no = ? LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no=?', [ param.s_no, param.s_no ]);
       return res;
     } catch (e) {
       console.log(e);
@@ -79,7 +79,11 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT q_content, q_reply, q_reserve, q_finish, q_grade  from questions q LEFT JOIN qs ON q.q_id = qs.q_id WHERE s_no = ? AND q.q_id = ?', [ param.s_no, param.q_id ]);
+      if (Number(param.q_finish)) {
+        const res = await app.mysql.query('SELECT q_content, q_reply, q_reserve, q_finish, q_grade  from questions q LEFT JOIN qs ON q.q_id = qs.q_id WHERE s_no = ? AND q.q_id = ?', [ param.s_no, param.q_id ]);
+        return res;
+      }
+      const res = await app.mysql.select('questions', { where: { q_id: param.q_id } });
       return res;
     } catch (e) {
       console.log(e);

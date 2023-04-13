@@ -1,5 +1,5 @@
 const Send = require('../utils/sendRequest');
-
+const groupByLesson = require('../utils/group');
 class studentRelated extends Send {
   async updateUserInfo() {
     const res = await this.sendRequest('POST', 'studentRelated', 'updateUserInfo');
@@ -20,24 +20,24 @@ class studentRelated extends Send {
     this.ctx.body = json;
   }
 
-  async bindClass() {
-    let json = null;
-    const res = await this.sendRequest('POST', 'studentRelated', 'bindClass');
-    if (res) {
-      json = {
-        status: 1,
-        msg: '绑定成功！',
-        data: [],
-      };
-    } else {
-      json = {
-        status: 0,
-        msg: '绑定失败！',
-        data: [],
-      };
-    }
-    this.ctx.body = json;
-  }
+  // async bindClass() {
+  //   let json = null;
+  //   const res = await this.sendRequest('POST', 'studentRelated', 'bindClass');
+  //   if (res) {
+  //     json = {
+  //       status: 1,
+  //       msg: '绑定成功！',
+  //       data: [],
+  //     };
+  //   } else {
+  //     json = {
+  //       status: 0,
+  //       msg: '绑定失败！',
+  //       data: [],
+  //     };
+  //   }
+  //   this.ctx.body = json;
+  // }
 
   async selectExperiments() {
     const res = await this.sendRequest('GET', 'studentRelated', 'selectExperiments');
@@ -46,7 +46,7 @@ class studentRelated extends Send {
       json = {
         status: 1,
         msg: '查询成功！',
-        data: res,
+        data: groupByLesson(res),
       };
     } else {
       json = {
@@ -84,7 +84,7 @@ class studentRelated extends Send {
       json = {
         status: 1,
         msg: '查询成功！',
-        data: res,
+        data: groupByLesson(res),
       };
     } else {
       json = {

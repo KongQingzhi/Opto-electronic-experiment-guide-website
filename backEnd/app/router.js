@@ -25,7 +25,7 @@ module.exports = app => {
   // 更新信息
   router.post('/api/students/updateUserInfo', controller.studentRelated.updateUserInfo);
   // 绑定班级
-  router.post('/api/students/bindClass', controller.studentRelated.bindClass);
+  // router.post('/api/students/bindClass', controller.studentRelated.bindClass);
   // 查看实验
   router.get('/api/students/selectExperiments', controller.studentRelated.selectExperiments);
   // 查看实验内容

@@ -69,7 +69,7 @@ const teachers = {
     children: [
         {
             path: 'myinfo',
-            name: 'myinfo',
+            name: '',
             component: myInfoVue
         },
     ]

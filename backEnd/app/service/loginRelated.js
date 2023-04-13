@@ -20,7 +20,10 @@ class LoginRelated extends Service {
     }
     try {
       const res = await app.mysql.select(table, { where: query });
-      return res;
+      if (res.length) {
+        return res;
+      }
+      return 0;
     } catch (e) {
       console.log(e);
       return 0;
@@ -45,7 +48,10 @@ class LoginRelated extends Service {
     }
     try {
       const res = await app.mysql.select(table, { where: query });
-      return res;
+      if (res.length) {
+        return res;
+      }
+      return 0;
     } catch (e) {
       console.log(e);
       return 0;
@@ -60,6 +66,7 @@ class LoginRelated extends Service {
       s_email: param.s_email,
       s_name: param.s_name,
       s_gender: param.s_gender,
+      s_tel: param.s_tel,
     };
     try {
       const res = await app.mysql.insert('students', query);
