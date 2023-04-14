@@ -3,8 +3,7 @@
     <div class="text-center title-5">{{ item.title }}</div>
     <div id="myEcharts" ref="myChart"></div>
     <div class="text-center">
-      <ElButton v-if="1" type="primary">提交</ElButton>
-      <div class="text-center title-5">{{ item.eq_grade }}</div>
+      <div class="text-center title-5">{{ e_grade + q_grade }}</div>
     </div>
   </div>
 </template>
@@ -15,6 +14,8 @@ import { ElButton } from 'element-plus';
 import { Ref, onMounted, onUnmounted, ref } from 'vue';
 const props = defineProps<{ item: { title: string, q_grade: number, e_grade: number, eq_grade: number } }>();
 const myChart: Ref<HTMLElement | undefined> = ref();
+const q_grade = ref(props.item.q_grade || 0);
+const e_grade = ref(props.item.e_grade || 0);
 onMounted(() => {
   let chart = echarts.init(myChart.value as HTMLElement);
   const option = {
@@ -32,9 +33,9 @@ onMounted(() => {
           show: false
         },
         data: [
-          { value: props.item.q_grade, name: '试题' },
-          { value: props.item.e_grade, name: '操作' },
-          { value: 200 - props.item.eq_grade, name: '未得' },
+          { value: q_grade.value, name: '试题' },
+          { value: e_grade.value, name: '操作' },
+          { value: 200 - q_grade.value - e_grade.value, name: '未得' },
         ],
         radius: ['40%', '70%']
       }

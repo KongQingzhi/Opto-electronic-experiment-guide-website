@@ -1,24 +1,3 @@
-<!-- <template>
-    <div class="questions-card position-relative border-radius-sm my-1 mx-1">
-        <div class="content-card position-relative">
-            <div class="mask"></div>
-            <div class="content">
-                <div class="text-center my-2 title-5">123</div>
-                <div class="text-center">
-                    <i class="iconfont icon-ziliao" style="font-size: 5rem;"></i>
-                </div>
-                <div class="text-center my-2">
-                    <div class="text-center" v-if="1">45656456</div>
-                    <ElButton v-if="!1" type="primary">123456</ElButton>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
-<script lang="ts" setup>
-import { ElButton } from 'element-plus';
-</script> -->
 <template>
     <div class="mx-auto mt-8 w-full" @click="handleClick">
         <article

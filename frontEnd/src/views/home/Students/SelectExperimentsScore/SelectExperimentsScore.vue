@@ -1,44 +1,24 @@
 <template>
-  <div class="flex flex-wrap">
-    <ExperimentsScoreCard :item="item" v-for="item in card"></ExperimentsScoreCard>
+  <div v-if="!experimentsScoreList"></div>
+  <div v-else>
+    <PageHeader :button="false" button-text="l" title="实验成绩" />
+    <div v-for="item in experimentsScoreList" class="py-10">
+      <SectionHeader :title="item.l_name" :aside-title="item.l_name" />
+      <div class="flex flex-wrap">
+        <ExperimentsScoreCard :item="items" v-for="items in item.list"></ExperimentsScoreCard>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import PageHeader from '../../../../components/PageHeader.vue';
 import ExperimentsScoreCard from './ExperimentsScoreCard.vue';
-
-const card = [{
-  title: '实验1',
-  e_grade: 12,
-  q_grade: 52,
-  eq_grade: 64
-}, {
-  title: '实验1',
-  e_grade: 52,
-  q_grade: 52,
-  eq_grade: 104
-}, {
-  title: '实验1',
-  e_grade: 77,
-  q_grade: 52,
-  eq_grade: 129
-}, {
-  title: '实验1',
-  e_grade: 12,
-  q_grade: 25,
-  eq_grade: 37
-}, {
-  title: '实验1',
-  e_grade: 72,
-  q_grade: 82,
-  eq_grade: 154
-}, {
-  title: '实验1',
-  e_grade: 72,
-  q_grade: 32,
-  eq_grade: 104
-}]
+import SectionHeader from '../../../../components/SectionHeader.vue';
+import { selectExperimentsScore } from '../../../../api/students';
+import { ref } from 'vue';
+const experimentsScoreList = ref();
+selectExperimentsScore({ s_no: JSON.parse(sessionStorage.getItem('user') as string).s_no }).then(res => {
+  experimentsScoreList.value = res.data.data;
+})
 </script>
-
-<style lang="scss" scoped>
-</style>

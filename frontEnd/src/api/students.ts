@@ -45,3 +45,28 @@ export function questionsContent(data: any) {
         params: data,
     });
 }
+
+export function replyQuestions(data: any) {
+    return request({
+        method: "post",
+        url: "/api/students/replyQuestions",
+        data: data,
+    });
+}
+
+
+export function selectExperimentsScore(data: any) {
+    return request({
+        method: "get",
+        url: "/api/students/selectExperimentsScore",
+        params: data,
+    });
+}
+
+export function selectLessonsScore(data: any) {
+    return request({
+        method: "get",
+        url: "/api/students/selectLessonsScore",
+        params: data,
+    });
+}

@@ -115,6 +115,26 @@ class studentRelated extends Send {
     this.ctx.body = json;
   }
 
+  async replyQuestions() {
+    const res = await this.sendRequest('POST', 'studentRelated', 'replyQuestions');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '答题完成！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '答题失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+
   async selectExperimentsScore() {
     const res = await this.sendRequest('GET', 'studentRelated', 'selectExperimentsScore');
     let json = null;
@@ -122,7 +142,7 @@ class studentRelated extends Send {
       json = {
         status: 1,
         msg: '查询成功！',
-        data: res,
+        data: groupByLesson(res),
       };
     } else {
       json = {
@@ -141,7 +161,7 @@ class studentRelated extends Send {
       json = {
         status: 1,
         msg: '查询成功！',
-        data: res,
+        data: groupByLesson(res),
       };
     } else {
       json = {

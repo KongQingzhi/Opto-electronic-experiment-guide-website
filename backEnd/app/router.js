@@ -34,6 +34,8 @@ module.exports = app => {
   router.get('/api/students/selectQuestions', controller.studentRelated.selectQuestions);
   // 查看答题内容
   router.get('/api/students/questionsContent', controller.studentRelated.questionsContent);
+  // 答题
+  router.post('/api/students/replyQuestions', controller.studentRelated.replyQuestions);
   // 查看实验成绩
   router.get('/api/students/selectExperimentsScore', controller.studentRelated.selectExperimentsScore);
   // 查看课程成绩

@@ -1,13 +1,9 @@
 <template>
     <div class="lessons-score-card flex justify-between box-shadow border-radius-sm my-1">
         <div class="lessons-left mx-1">
-            <div class="text-center title-3 my-2">{{ item.title }}</div>
+            <div class="text-center title-3 my-2">{{ props.title }}</div>
             <div class="my-2">
-                若光束是由经典粒子组成，将光束照射于一条狭缝，通过狭缝后，冲击于探测屏，则在探射屏应该会观察到对应于狭缝尺寸与形状的图样。可是，实际进行这单缝实验时，探测屏会显示出衍射图样，光束会被展开，狭缝越狭窄，则展开角度越大。
-            </div>
-            <div class="text-center">
-                <ElButton v-if="1" type="primary">提交</ElButton>
-                <div class="text-center title-5"></div>
+                {{ props.content }}
             </div>
         </div>
         <div id="myEcharts" ref="myChart"></div>
@@ -16,10 +12,13 @@
 
 <script lang="ts" setup>
 import * as echarts from 'echarts'
-import { ElButton } from 'element-plus';
-import { Ref, onMounted, onUnmounted, ref } from 'vue';
-const props = defineProps<{ item: { title: string } }>();
+import { Ref,  onMounted, onUnmounted, ref } from 'vue';
+import router from '../../../../router';
+const props = defineProps<{ item: any, content: string, title: string }>();
 const myChart: Ref<HTMLElement | undefined> = ref();
+const list = props.item.list;
+console.log(list);
+
 onMounted(() => {
     let chart = echarts.init(myChart.value as HTMLElement);
     const option = {
@@ -38,7 +37,7 @@ onMounted(() => {
         xAxis: [
             {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                data: list.map((items: any) => { return items.e_name }),
                 axisTick: {
                     alignWithLabel: true
                 }
@@ -51,10 +50,10 @@ onMounted(() => {
         ],
         series: [
             {
-                name: 'Direct',
+                name: '分数',
                 type: 'bar',
                 barWidth: '40%',
-                data: [80, 52, 66, 80, 95, 50, 31]
+                data: list.map((items: any) => { return items.e_grade + items.q_grade }),
             }
         ]
     };

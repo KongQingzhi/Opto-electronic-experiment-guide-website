@@ -7,7 +7,7 @@ const groupByLesson = array => {
   }
   array.forEach(element => {
     if (newArray.length === 0) {
-      newArray.push({ l_name: element.l_name, list: [ element ] });
+      newArray.push({ l_name: element.l_name, l_content: element.l_content, list: [ element ] });
     } else {
       const flag = newArray.some(item => {
         if (item.l_name === element.l_name) {
@@ -17,7 +17,7 @@ const groupByLesson = array => {
         return false;
       });
       if (!flag) {
-        newArray.push({ l_name: element.l_name, list: [ element ] });
+        newArray.push({ l_name: element.l_name, l_content: element.l_content, list: [ element ] });
       }
     }
   });
