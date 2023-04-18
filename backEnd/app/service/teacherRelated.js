@@ -181,6 +181,20 @@ class teacherRelated extends Service {
     }
   }
 
+  async deleteExperiment(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.delete('experiments', { e_id: param.e_id });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
   async isbindExperimentLesson(param) {
     const { app } = this;
     try {
@@ -206,6 +220,52 @@ class teacherRelated extends Service {
     }
   }
 
+  async releaseQuestion(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.insert('questions', param);
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+
+  async deleteQuestion(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.delete('questions', { q_id: param.q_id });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async questionScoring(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.insert('qs', param);
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+  async experimentScoring(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.insert('es', param);
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
 
   // async selectExperimentsByClass(param) {
   //   const { app } = this;

@@ -11,9 +11,13 @@ import selectExperimentsScoreVue from "../views/home/Students/SelectExperimentsS
 import experimentsScoreContentVue from "../views/home/Students/SelectExperimentsScore/ExperimentsScoreContent.vue";
 import selectLessonsScoreVue from "../views/home/Students/SelectLessonsScore/SelectLessonsScore.vue";
 
-// import experimentsListVue from "../views/home/ExperimentsList/ExperimentsList.vue";
-// import experimentsReleaseVue from "../views/home/ExperimentsRelease/ExperimentsRelease.vue";
-// import ExperimentsScoreVue from "../views/home/ExperimentsScore/ExperimentsScore.vue";
+import CreateClassesVue from "../views/home/Teachers/CreateClasses/CreateClasses.vue";
+import CreateLessonsVue from "../views/home/Teachers/CreateLessons/CreateLessons.vue";
+import SelectAllExperimentsVue from "../views/home/Teachers/SelectExeriments/SelectExperiments.vue";
+import ReleaseExperimentsVue from "../views/home/Teachers/ReleaseExperiments/ReleaseExperiments.vue";
+import SelectAllQuestionsVue from "../views/home/Teachers/SelectQuestions/SelectQuestions.vue";
+import ReleaseQuestionsVue from "../views/home/Teachers/ReleaseQuestions/ReleaseQuestions.vue";
+
 const students = {
     path: 'students',
     name: 'students',
@@ -68,9 +72,34 @@ const teachers = {
     component: teachersVue,
     children: [
         {
-            path: 'myinfo',
-            name: '',
-            component: myInfoVue
+            path: 'CreateClasses',
+            name: 'CreateClasses',
+            component: CreateClassesVue
+        },
+        {
+            path: 'CreateLessons',
+            name: 'CreateLessons',
+            component: CreateLessonsVue
+        },
+         {
+            path: 'SelectAllExperiments',
+            name: 'SelectAllExperiments',
+            component: SelectAllExperimentsVue
+        },
+          {
+            path: 'ReleaseExperiments',
+            name: 'ReleaseExperiments',
+            component: ReleaseExperimentsVue
+        },
+          {
+            path: 'SelectAllQuestions',
+            name: 'SelectAllQuestions',
+            component: SelectAllQuestionsVue
+        },
+          {
+            path: 'ReleaseQuestions',
+            name: 'ReleaseQuestions',
+            component: ReleaseQuestionsVue
         },
     ]
 }

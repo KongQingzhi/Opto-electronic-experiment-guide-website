@@ -50,7 +50,52 @@ class publicRelated extends Service {
   async selectAllClass() {
     const { app } = this;
     try {
-      const res = await app.mysql.select('classes');
+      const res = await app.mysql.query('SELECT c_id, c_name, t.t_no, t_name, t_tel, t_pro FROM classes c LEFT JOIN teachers t ON c.t_no = t.t_no');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+
+  async selectAllLesson() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT l_id, l_name, l_time FROM lessons');
+      // const res = await app.mysql.query('SELECT c.c_id, c_name,cl.l_id,l_name,l_time,t.t_no,t.t_name,t_pro,t_tel,t.t_super FROM classes c RIGHT JOIN cl ON c.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN lt ON l.l_id = lt.l_id LEFT JOIN teachers t ON lt.t_no = t.t_no');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+
+  async selectAllRooms() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.select('rooms');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+
+  async selectAllExperiments() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT e.e_id, e_name, e_content, e_files, e_time, t_name, t_tel, t_pro, r_build, r_no FROM experiments e LEFT JOIN teachers t ON e.t_no = t.t_no LEFT JOIN rooms r ON e.r_id = r.r_id');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+
+  async selectAllQuestions() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT q.q_id, q_content, e_name, t_name, t_tel FROM questions q LEFT JOIN experiments e ON q.e_id = e.e_id LEFT JOIN teachers t ON q.t_no = t.t_no');
       return res;
     } catch (e) {
       console.log(e);
@@ -58,5 +103,6 @@ class publicRelated extends Service {
     }
   }
 }
+
 
 module.exports = publicRelated;

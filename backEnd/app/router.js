@@ -77,11 +77,21 @@ module.exports = app => {
   router.post('/api/teachers/experimentExists', controller.teacherRelated.experimentExists);
   // 发布实验
   router.post('/api/teachers/releaseExperiment', controller.teacherRelated.releaseExperiment);
+  // 删除实验
+  router.post('/api/teachers/deleteExperiment', controller.teacherRelated.deleteExperiment);
   // 查询课程绑定是否存在
   router.post('/api/teachers/isbindExperimentLesson', controller.teacherRelated.isbindExperimentLesson);
   // 实验课程绑定
   router.post('/api/teachers/bindExperimentLesson', controller.teacherRelated.bindExperimentLesson);
-
+  // 发布试题
+  router.post('/api/teachers/releaseQuestion', controller.teacherRelated.releaseQuestion);
+  // 删除试题
+  router.post('/api/teachers/deleteQuestion', controller.teacherRelated.deleteQuestion);
+  // 试题评分
+  router.post('/api/teachers/questionScoring', controller.teacherRelated.questionScoring);
+  // 实验评分
+  router.post('/api/teachers/experimentScoring', controller.teacherRelated.experimentScoring);
+  // --------------
   // 通过班级查找实验
   router.post('/api/teachers/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
   // 查询课程与实验的绑定情况
@@ -97,4 +107,12 @@ module.exports = app => {
 
   // 查询所有班级
   router.get('/api/public/selectAllClass', controller.publicRelated.selectAllClass);
+  // 查询所有课程
+  router.get('/api/public/selectAllLesson', controller.publicRelated.selectAllLesson);
+  // 查询所有教室
+  router.get('/api/public/selectAllRooms', controller.publicRelated.selectAllRooms);
+  // 查询所有实验
+  router.get('/api/public/selectAllExperiments', controller.publicRelated.selectAllExperiments);
+  // 查询所有试题
+  router.get('/api/public/selectAllQuestions', controller.publicRelated.selectAllQuestions);
 };

@@ -1,9 +1,6 @@
 <template>
-    <div>
-        123456
-    </div>
+    <router-view></router-view>
 </template>
 
 <script lang="ts" setup>
-
 </script>

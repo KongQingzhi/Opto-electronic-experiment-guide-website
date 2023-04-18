@@ -274,6 +274,25 @@ class teacherRelated extends Send {
     this.ctx.body = json;
   }
 
+  async deleteExperiment() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteExperiment');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
   async isbindExperimentLesson() {
     const res = await this.sendRequest('POST', 'teacherRelated', 'isbindExperimentLesson');
     let json = null;
@@ -318,6 +337,82 @@ class teacherRelated extends Send {
           data: [],
         };
       }
+    }
+    this.ctx.body = json;
+  }
+
+  async releaseQuestion() {
+    let json = null;
+    const res = await this.sendRequest('POST', 'teacherRelated', 'releaseQuestion');
+    if (res) {
+      json = {
+        status: 1,
+        msg: '发布成功！',
+        data: [],
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '发布失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async deleteQuestion() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteQuestion');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async questionScoring() {
+    let json = null;
+    const res = await this.sendRequest('POST', 'teacherRelated', 'questionScoring');
+    if (res) {
+      json = {
+        status: 1,
+        msg: '打分成功！',
+        data: [],
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '打分失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async experimentScoring() {
+    let json = null;
+    const res = await this.sendRequest('POST', 'teacherRelated', 'experimentScoring');
+    if (res) {
+      json = {
+        status: 1,
+        msg: '打分成功！',
+        data: [],
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '打分失败',
+        data: [],
+      };
     }
     this.ctx.body = json;
   }
