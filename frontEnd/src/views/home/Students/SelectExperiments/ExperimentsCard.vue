@@ -22,7 +22,7 @@
                             </time>
                         </div>
                     </h3>
-                    <p class="mt-5 text-sm leading-6 text-gray-600">{{ props.experimentsItem.e_content }}</p>
+                    <p class="mt-5 text-sm leading-6 text-gray-600" v-html="props.experimentsItem.e_content"></p>
                 </div>
                 <div class="mt-6 flex justify-between border-t border-gray-900/5 pt-6">
                     <div class="relative flex props.experimentsItems-center gap-x-4">

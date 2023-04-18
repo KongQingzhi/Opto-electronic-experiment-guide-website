@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 sm:px- lg:px-28">
+    <div class="p-4 sm:px-">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
                 <h1 class="text-base font-semibold leading-6 text-gray-900">课程列表</h1>

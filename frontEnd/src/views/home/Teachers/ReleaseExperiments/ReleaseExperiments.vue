@@ -2,7 +2,7 @@
     <div class="p-2 ">
         <PageHeader :button="false" button-text="" title="发布实验" />
         <Loading v-if="!roomsList" />
-        <div v-else class="grid mt-10 px-20 grid-cols-1 mx-auto gap-x-8 gap-y-8 md:grid-cols-3">
+        <div v-else class="grid mt-10 px-5 grid-cols-1 mx-auto gap-x-8 gap-y-8 md:grid-cols-3">
             <div class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-3">
                 <div class="px-4 py-6 sm:p-8">
                     <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-7">

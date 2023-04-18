@@ -26,42 +26,62 @@ const students = {
         {
             path: 'myInfo',
             name: 'myInfo',
-            component: myInfoVue
+            component: myInfoVue,
+            meta: {
+                title: '我的信息',
+                role: 0
+            }
         },
         {
             path: 'selectExperiments',
             name: 'selectExperiments',
             component: selectExperimentsVue,
+            meta: {
+                title: '查询实验',
+                role: 0
+            }
         },
         {
             path: 'experimentsContent',
             name: 'experimentsContent',
-            component: experimentsContentVue
+            component: experimentsContentVue,
         },
         {
             path: 'selectQuestions',
             name: 'selectQuestions',
-            component: selectQuestionsVue
+            component: selectQuestionsVue,
+            meta: {
+                title: '查询试题',
+                role: 0
+            }
         },
         {
             path: 'questionsContent',
             name: 'questionsContent',
-            component: questionsContentVue
+            component: questionsContentVue,
         },
         {
             path: 'selectExperimentsScore',
             name: 'selectExperimentsScore',
-            component: selectExperimentsScoreVue
+            component: selectExperimentsScoreVue,
+            meta: {
+                title: '实验成绩',
+                role: 0
+            }
         },
         {
             path: 'experimentsScoreContent',
             name: 'experimentsScoreContent',
-            component: experimentsScoreContentVue
+            component: experimentsScoreContentVue,
         },
         {
             path: 'selectLessonsScore',
             name: 'selectLessonsScore',
-            component: selectLessonsScoreVue
+            component: selectLessonsScoreVue,
+            meta: {
+                title: '课程成绩',
+                role: 0
+            }
         },
     ]
 }
@@ -74,32 +94,56 @@ const teachers = {
         {
             path: 'CreateClasses',
             name: 'CreateClasses',
-            component: CreateClassesVue
+            component: CreateClassesVue,
+            meta: {
+                title: '创建班级',
+                role: 1
+            }
         },
         {
             path: 'CreateLessons',
             name: 'CreateLessons',
-            component: CreateLessonsVue
+            component: CreateLessonsVue,
+            meta: {
+                title: '创建课程',
+                role: 1
+            }
         },
-         {
+        {
             path: 'SelectAllExperiments',
             name: 'SelectAllExperiments',
-            component: SelectAllExperimentsVue
+            component: SelectAllExperimentsVue,
+            meta: {
+                title: '查看实验',
+                role: 1
+            }
         },
-          {
+        {
             path: 'ReleaseExperiments',
             name: 'ReleaseExperiments',
-            component: ReleaseExperimentsVue
+            component: ReleaseExperimentsVue,
+            meta: {
+                title: '发布实验',
+                role: 1
+            }
         },
-          {
+        {
             path: 'SelectAllQuestions',
             name: 'SelectAllQuestions',
-            component: SelectAllQuestionsVue
+            component: SelectAllQuestionsVue,
+            meta: {
+                title: '查看试题',
+                role: 1
+            }
         },
-          {
+        {
             path: 'ReleaseQuestions',
             name: 'ReleaseQuestions',
-            component: ReleaseQuestionsVue
+            component: ReleaseQuestionsVue,
+            meta: {
+                title: '发布试题',
+                role: 1
+            }
         },
     ]
 }

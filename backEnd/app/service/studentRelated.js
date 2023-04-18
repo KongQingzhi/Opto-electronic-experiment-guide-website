@@ -111,7 +111,7 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, e.e_id, es.e_grade, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN es ON e.e_id = es.e_id LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no = ?', [ param.s_no ]);
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, e.e_id, es.e_grade, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN es ON e.e_id = es.e_id AND es.s_no=? LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no=?', [ param.s_no, param.s_no ]);
       return res;
     } catch (e) {
       console.log(e);
