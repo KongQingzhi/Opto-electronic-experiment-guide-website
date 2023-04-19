@@ -125,3 +125,27 @@ export function experimentScoring(data: any) {
         data: data,
     });
 }
+export function deleteClassAndLesson(data: any) {
+    return request({
+        method: "post",
+        url: "/api/teachers/deleteClassAndLesson",
+        data: data,
+    });
+}
+
+export function deleteLessonAndTeacher(data: any) {
+    return request({
+        method: "post",
+        url: "/api/teachers/deleteLessonAndTeacher",
+        data: data,
+    });
+}
+
+export function deleteLessonAndExperiment(data: any) {
+    return request({
+        method: "post",
+        url: "/api/teachers/deleteLessonAndExperiment",
+        data: data,
+    });
+}
+

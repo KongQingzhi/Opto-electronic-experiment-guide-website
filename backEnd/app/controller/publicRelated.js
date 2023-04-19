@@ -135,6 +135,81 @@ class publicRelated extends Send {
     this.ctx.body = json;
   }
 
+
+  async selectAllTeachers() {
+    const res = await this.sendRequest('GET', 'publicRelated', 'selectAllTeachers');
+    let json = null;
+    if (res.length) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async selectClassAndLesson() {
+    const res = await this.sendRequest('GET', 'publicRelated', 'selectClassAndLesson');
+    let json = null;
+    if (res.length) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+  async selectLessonAndTeacher() {
+    const res = await this.sendRequest('GET', 'publicRelated', 'selectLessonAndTeacher');
+    let json = null;
+    if (res.length) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+  async selectLessonAndExperiment() {
+    const res = await this.sendRequest('GET', 'publicRelated', 'selectLessonAndExperiment');
+    let json = null;
+    if (res.length) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
 }
 
 module.exports = publicRelated;

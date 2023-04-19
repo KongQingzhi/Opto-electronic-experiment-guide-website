@@ -29,3 +29,27 @@ export function selectAllQuestions() {
         url: "/api/public/selectAllQuestions",
     });
 }
+export function selectAllTeachers() {
+    return request({
+        method: "get",
+        url: "/api/public/selectAllTeachers",
+    });
+}
+export function selectClassAndLesson() {
+    return request({
+        method: "get",
+        url: "/api/public/selectClassAndLesson",
+    });
+}
+export function selectLessonAndTeacher() {
+    return request({
+        method: "get",
+        url: "/api/public/selectLessonAndTeacher",
+    });
+}
+export function selectLessonAndExperiment() {
+    return request({
+        method: "get",
+        url: "/api/public/selectLessonAndExperiment",
+    });
+}

@@ -267,6 +267,46 @@ class teacherRelated extends Service {
     }
   }
 
+  async deleteClassAndLesson(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.delete('cl', { cl_id: param.cl_id });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+  async deleteLessonAndTeacher(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.delete('lt', { lt_id: param.lt_id });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+  async deleteLessonAndExperiment(param) {
+    if (JSON.stringify(param) === '{}') {
+      return 0;
+    }
+    const { app } = this;
+    try {
+      const res = await app.mysql.delete('el', { el_id: param.el_id });
+      return res.affectedRows;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
   // async selectExperimentsByClass(param) {
   //   const { app } = this;
   //   // const { c_id } = param;

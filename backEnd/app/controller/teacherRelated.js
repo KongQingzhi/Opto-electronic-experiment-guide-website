@@ -456,6 +456,62 @@ class teacherRelated extends Send {
     return json;
   }
 
+  async deleteClassAndLesson() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteClassAndLesson');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async deleteLessonAndTeacher() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteLessonAndTeacher');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async deleteLessonAndExperiment() {
+    const res = await this.sendRequest('POST', 'teacherRelated', 'deleteLessonAndExperiment');
+    let json = null;
+    if (res) {
+      json = {
+        status: 1,
+        msg: '删除成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '删除失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
 
 }
 

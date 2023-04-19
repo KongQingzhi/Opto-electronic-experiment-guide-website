@@ -17,6 +17,11 @@ import SelectAllExperimentsVue from "../views/home/Teachers/SelectExeriments/Sel
 import ReleaseExperimentsVue from "../views/home/Teachers/ReleaseExperiments/ReleaseExperiments.vue";
 import SelectAllQuestionsVue from "../views/home/Teachers/SelectQuestions/SelectQuestions.vue";
 import ReleaseQuestionsVue from "../views/home/Teachers/ReleaseQuestions/ReleaseQuestions.vue";
+import BindRelateVue from "../views/home/Teachers/BindRelate/BindRelate.vue";
+import BindClassAndLessonVue from "../views/home/Teachers/BindRelate/BindClassAndLesson.vue";
+import BindExperimentLessonVue from "../views/home/Teachers/BindRelate/BindExperimentLesson.vue";
+import BindTeacherAndLessonVue from "../views/home/Teachers/BindRelate/BindTeacherAndLesson.vue";
+
 
 const students = {
     path: 'students',
@@ -144,6 +149,30 @@ const teachers = {
                 title: '发布试题',
                 role: 1
             }
+        },
+        {
+            path: 'BindRelate',
+            name: 'BindRelate',
+            component: BindRelateVue,
+            meta: {
+                title: '绑定相关',
+                role: 1
+            }
+        },
+        {
+            path: 'BindClassAndLesson',
+            name: 'BindClassAndLesson',
+            component: BindClassAndLessonVue,
+        },
+        {
+            path: 'BindExperimentLesson',
+            name: 'BindExperimentLesson',
+            component: BindExperimentLessonVue,
+        },
+        {
+            path: 'BindTeacherAndLesson',
+            name: 'BindTeacherAndLesson',
+            component: BindTeacherAndLessonVue,
         },
     ]
 }

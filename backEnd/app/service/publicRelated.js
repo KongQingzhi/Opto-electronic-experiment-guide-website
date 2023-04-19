@@ -102,6 +102,47 @@ class publicRelated extends Service {
       return [];
     }
   }
+
+  async selectAllTeachers() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.select('teachers');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+  async selectClassAndLesson() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT cl_id, cl.c_id, cl.l_id, c_name, l_name, l_time FROM cl LEFT JOIN classes c ON cl.c_id = c.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+  async selectLessonAndTeacher() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT lt_id, lt.l_id, l_name, l_time, t_name, t_tel FROM	lt LEFT JOIN lessons l ON l.l_id = lt.l_id LEFT JOIN teachers t ON lt.t_no = t.t_no');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
+  async selectLessonAndExperiment() {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT el_id, el.l_id, e_name, e_time, l_name, l_time FROM el LEFT JOIN experiments e ON e.e_id = el.e_id LEFT JOIN lessons l ON l.l_id = el.l_id');
+      return res;
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  }
 }
 
 

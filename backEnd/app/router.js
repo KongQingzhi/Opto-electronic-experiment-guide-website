@@ -91,6 +91,14 @@ module.exports = app => {
   router.post('/api/teachers/questionScoring', controller.teacherRelated.questionScoring);
   // 实验评分
   router.post('/api/teachers/experimentScoring', controller.teacherRelated.experimentScoring);
+  // 删除班级与课程
+  router.post('/api/teachers/deleteClassAndLesson', controller.teacherRelated.deleteClassAndLesson);
+  // 删除课程与教师
+  router.post('/api/teachers/deleteLessonAndTeacher', controller.teacherRelated.deleteLessonAndTeacher);
+  // 删除实验与课程
+  router.post('/api/teachers/deleteLessonAndExperiment', controller.teacherRelated.deleteLessonAndExperiment);
+
+
   // --------------
   // 通过班级查找实验
   router.post('/api/teachers/selectExperimentsByClass', controller.teacherRelated.selectExperimentsByClass);
@@ -115,4 +123,14 @@ module.exports = app => {
   router.get('/api/public/selectAllExperiments', controller.publicRelated.selectAllExperiments);
   // 查询所有试题
   router.get('/api/public/selectAllQuestions', controller.publicRelated.selectAllQuestions);
+  // 查询所有教师
+  router.get('/api/public/selectAllTeachers', controller.publicRelated.selectAllTeachers);
+  // 查询班级与课程
+  router.get('/api/public/selectClassAndLesson', controller.publicRelated.selectClassAndLesson);
+  // 查询课程与教师
+  router.get('/api/public/selectLessonAndTeacher', controller.publicRelated.selectLessonAndTeacher);
+  // 查询实验与课程
+  router.get('/api/public/selectLessonAndExperiment', controller.publicRelated.selectLessonAndExperiment);
+
+
 };
