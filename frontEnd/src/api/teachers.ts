@@ -111,10 +111,25 @@ export function deleteQuestion(data: any) {
         data: data,
     });
 }
+export function selectStudentsQuestionGradeByTeacher(data: any) {
+    return request({
+        method: "get",
+        url: "/api/teachers/selectStudentsQuestionGradeByTeacher",
+        data: data,
+    });
+}
+
 export function questionScoring(data: any) {
     return request({
         method: "post",
         url: "/api/teachers/questionScoring",
+        data: data,
+    });
+}
+export function selectStudentsExperimentGradeByTeacher(data: any) {
+    return request({
+        method: "get",
+        url: "/api/teachers/selectStudentsExperimentGradeByTeacher",
         data: data,
     });
 }

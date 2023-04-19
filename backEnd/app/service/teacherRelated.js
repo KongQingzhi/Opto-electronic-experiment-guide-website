@@ -246,20 +246,49 @@ class teacherRelated extends Service {
     }
   }
 
+  async selectStudentsQuestionGradeByTeacher(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT lt_id, l_name, e_name,qs.q_id,qs.s_no,q_finish,q_grade,s_name FROM lt LEFT JOIN lessons l ON lt.l_id = l.l_id LEFT JOIN el ON el.l_id = lt.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON el.e_id = q.e_id RIGHT JOIN qs ON q.q_id = qs.q_id LEFT JOIN students s ON qs.s_no = s.s_no WHERE lt.t_no = ?;', [ param.t_no ]);
+      if (res.length) {
+        return res;
+      }
+      return 0;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
   async questionScoring(param) {
     const { app } = this;
     try {
-      const res = await app.mysql.insert('qs', param);
+      const res = await app.mysql.update('qs', param, { where: { qs_id: param.qs_id } });
       return res.affectedRows;
     } catch (e) {
       console.log(e);
       return 0;
     }
   }
+
+  async selectStudentsExperimentGradeByTeacher(param) {
+    const { app } = this;
+    try {
+      const res = await app.mysql.query('SELECT es_id, l_name, e_name, es.s_no, s_name ,e_grade FROM lt LEFT JOIN lessons l ON lt.l_id = l.l_id LEFT JOIN el ON el.l_id = lt.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN es ON es.e_id = e.e_id LEFT JOIN students s ON es.s_no = s.s_no WHERE lt.t_no = ?', [ param.t_no ]);
+      if (res.length) {
+        return res;
+      }
+      return 0;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
   async experimentScoring(param) {
     const { app } = this;
     try {
-      const res = await app.mysql.insert('es', param);
+      const res = await app.mysql.update('es', param, { where: { es_id: param.es_id } });
       return res.affectedRows;
     } catch (e) {
       console.log(e);

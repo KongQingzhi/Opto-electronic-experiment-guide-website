@@ -87,8 +87,12 @@ module.exports = app => {
   router.post('/api/teachers/releaseQuestion', controller.teacherRelated.releaseQuestion);
   // 删除试题
   router.post('/api/teachers/deleteQuestion', controller.teacherRelated.deleteQuestion);
+  // 通过教师查找学生试题成绩
+  router.get('/api/teachers/selectStudentsQuestionGradeByTeacher', controller.teacherRelated.selectStudentsQuestionGradeByTeacher);
   // 试题评分
   router.post('/api/teachers/questionScoring', controller.teacherRelated.questionScoring);
+  // 通过教师查找学生实验成绩
+  router.get('/api/teachers/selectStudentsExperimentGradeByTeacher', controller.teacherRelated.selectStudentsExperimentGradeByTeacher);
   // 实验评分
   router.post('/api/teachers/experimentScoring', controller.teacherRelated.experimentScoring);
   // 删除班级与课程
@@ -97,7 +101,6 @@ module.exports = app => {
   router.post('/api/teachers/deleteLessonAndTeacher', controller.teacherRelated.deleteLessonAndTeacher);
   // 删除实验与课程
   router.post('/api/teachers/deleteLessonAndExperiment', controller.teacherRelated.deleteLessonAndExperiment);
-
 
   // --------------
   // 通过班级查找实验

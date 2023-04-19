@@ -379,6 +379,25 @@ class teacherRelated extends Send {
     this.ctx.body = json;
   }
 
+  async selectStudentsQuestionGradeByTeacher() {
+    let json = null;
+    const res = await this.sendRequest('GET', 'teacherRelated', 'selectStudentsQuestionGradeByTeacher');
+    if (res) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
   async questionScoring() {
     let json = null;
     const res = await this.sendRequest('POST', 'teacherRelated', 'questionScoring');
@@ -392,6 +411,25 @@ class teacherRelated extends Send {
       json = {
         status: 0,
         msg: '打分失败',
+        data: [],
+      };
+    }
+    this.ctx.body = json;
+  }
+
+  async selectStudentsExperimentGradeByTeacher() {
+    let json = null;
+    const res = await this.sendRequest('GET', 'teacherRelated', 'selectStudentsExperimentGradeByTeacher');
+    if (res) {
+      json = {
+        status: 1,
+        msg: '查询成功！',
+        data: res,
+      };
+    } else {
+      json = {
+        status: 0,
+        msg: '查询失败',
         data: [],
       };
     }

@@ -21,7 +21,7 @@ import BindRelateVue from "../views/home/Teachers/BindRelate/BindRelate.vue";
 import BindClassAndLessonVue from "../views/home/Teachers/BindRelate/BindClassAndLesson.vue";
 import BindExperimentLessonVue from "../views/home/Teachers/BindRelate/BindExperimentLesson.vue";
 import BindTeacherAndLessonVue from "../views/home/Teachers/BindRelate/BindTeacherAndLesson.vue";
-
+import ScoreRelateVue from "../views/home/Teachers/ScoreRelate/ScoreRelate.vue";
 
 const students = {
     path: 'students',
@@ -173,6 +173,15 @@ const teachers = {
             path: 'BindTeacherAndLesson',
             name: 'BindTeacherAndLesson',
             component: BindTeacherAndLessonVue,
+        },
+        {
+            path: 'ScoreRelate',
+            name: 'ScoreRelate',
+            component: ScoreRelateVue,
+            meta: {
+                title: '评分',
+                role: 1
+            }
         },
     ]
 }

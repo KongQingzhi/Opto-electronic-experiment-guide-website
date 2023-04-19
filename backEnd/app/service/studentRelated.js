@@ -6,9 +6,11 @@ class studentRelated extends Service {
       return 0;
     }
     const { app } = this;
-    const { s_no } = param;
+    const { s_no, c_id } = param;
     try {
       const res = await app.mysql.update('students', param, { where: { s_no } });
+      await app.mysql.query('INSERT INTO ls(l_id,s_no) SELECT l_id, ? FROM cl WHERE c_id = ?', [ s_no, c_id ]);
+      await app.mysql.query('INSERT INTO es(e_id,s_no) SELECT e_id, ? FROM cl LEFT JOIN el ON cl.l_id = el.l_id WHERE c_id = ?;', [ s_no, c_id ]);
       return res.affectedRows;
     } catch (e) {
       console.log(e);
