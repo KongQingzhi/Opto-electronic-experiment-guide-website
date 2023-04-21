@@ -21,8 +21,9 @@ import BindRelateVue from "../views/home/Teachers/BindRelate/BindRelate.vue";
 import BindClassAndLessonVue from "../views/home/Teachers/BindRelate/BindClassAndLesson.vue";
 import BindExperimentLessonVue from "../views/home/Teachers/BindRelate/BindExperimentLesson.vue";
 import BindTeacherAndLessonVue from "../views/home/Teachers/BindRelate/BindTeacherAndLesson.vue";
-import ScoreRelateVue from "../views/home/Teachers/ScoreRelate/ScoreRelate.vue";
-
+import ExperiementsScoreVue from "../views/home/Teachers/ExperimentsScore.vue/ExperimentsScore.vue"
+import QuestionsScoreVue from "../views/home/Teachers/QuestionsScore/QuestionScore.vue"
+import QuestionsScoreContentVue from "../views/home/Teachers/QuestionsScore/QuestionScoreContent.vue";
 const students = {
     path: 'students',
     name: 'students',
@@ -175,13 +176,26 @@ const teachers = {
             component: BindTeacherAndLessonVue,
         },
         {
-            path: 'ScoreRelate',
-            name: 'ScoreRelate',
-            component: ScoreRelateVue,
+            path: 'ExperiementsScore',
+            name: 'ExperiementsScore',
+            component: ExperiementsScoreVue,
             meta: {
-                title: '评分',
+                title: '实验评分',
                 role: 1
             }
+        },
+        {
+            path: 'QuestionsScore',
+            name: 'QuestionsScore',
+            component: QuestionsScoreVue,
+            meta: {
+                title: '试题评分',
+                role: 1
+            }
+        },{
+            path: 'QuestionsScoreContent',
+            name: 'QuestionsScoreContent',
+            component: QuestionsScoreContentVue,
         },
     ]
 }

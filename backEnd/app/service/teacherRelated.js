@@ -188,6 +188,9 @@ class teacherRelated extends Service {
     const { app } = this;
     try {
       const res = await app.mysql.delete('experiments', { e_id: param.e_id });
+      await app.mysql.delete('es', { e_id: param.e_id });
+      await app.mysql.delete('el', { e_id: param.e_id });
+      await app.mysql.delete('questions', { e_id: param.e_id });
       return res.affectedRows;
     } catch (e) {
       console.log(e);
@@ -199,6 +202,7 @@ class teacherRelated extends Service {
     const { app } = this;
     try {
       const res = await app.mysql.select('el', { where: param });
+      await app.mysql.query('INSERT INTO es(e_id,s_no) SELECT ?, s_no FROM students WHERE c_id = ?', [ param.e_id, param.l_id ]);
       if (res.length) {
         return res;
       }
@@ -213,6 +217,7 @@ class teacherRelated extends Service {
     const { app } = this;
     try {
       const res = await app.mysql.insert('el', param);
+      await app.mysql.query('INSERT INTO es(s_no,e_id) SELECT s_no, ? FROM cl LEFT JOIN students s ON cl.c_id = s.c_id WHERE cl.l_id = ?', [ param.e_id, param.l_id ]);
       return res.affectedRows;
     } catch (e) {
       console.log(e);
@@ -249,7 +254,7 @@ class teacherRelated extends Service {
   async selectStudentsQuestionGradeByTeacher(param) {
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT lt_id, l_name, e_name,qs.q_id,qs.s_no,q_finish,q_grade,s_name FROM lt LEFT JOIN lessons l ON lt.l_id = l.l_id LEFT JOIN el ON el.l_id = lt.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON el.e_id = q.e_id RIGHT JOIN qs ON q.q_id = qs.q_id LEFT JOIN students s ON qs.s_no = s.s_no WHERE lt.t_no = ?;', [ param.t_no ]);
+      const res = await app.mysql.query('SELECT qs_id, l_name, e_name,qs.q_id,qs.s_no,q_finish,q_grade,s_name FROM lt LEFT JOIN lessons l ON lt.l_id = l.l_id LEFT JOIN el ON el.l_id = lt.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON el.e_id = q.e_id RIGHT JOIN qs ON q.q_id = qs.q_id LEFT JOIN students s ON qs.s_no = s.s_no WHERE lt.t_no = ?;', [ param.t_no ]);
       if (res.length) {
         return res;
       }

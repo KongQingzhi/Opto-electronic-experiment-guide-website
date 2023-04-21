@@ -6,32 +6,30 @@ class studentRelated extends Service {
       return 0;
     }
     const { app } = this;
-    const { s_no, c_id } = param;
+    const { s_no } = param;
     try {
+      if (!param.c_id) {
+        const res = await app.mysql.update('students', param, { where: { s_no } });
+        return res.affectedRows;
+      }
+      const info = await app.mysql.select('students', { where: { s_no } });
+      const { c_id } = info;
+      if (c_id) {
+        const res = await app.mysql.update('students', param, { where: { s_no } });
+        return res.affectedRows;
+      }
       const res = await app.mysql.update('students', param, { where: { s_no } });
-      await app.mysql.query('INSERT INTO ls(l_id,s_no) SELECT l_id, ? FROM cl WHERE c_id = ?', [ s_no, c_id ]);
-      await app.mysql.query('INSERT INTO es(e_id,s_no) SELECT e_id, ? FROM cl LEFT JOIN el ON cl.l_id = el.l_id WHERE c_id = ?;', [ s_no, c_id ]);
+      await app.mysql.query('INSERT INTO ls(l_id,s_no) SELECT l_id, ? FROM cl WHERE c_id = ?', [ s_no, param.c_id ]);
+      await app.mysql.query('INSERT INTO es(e_id,s_no) SELECT e_id, ? FROM cl LEFT JOIN el ON cl.l_id = el.l_id WHERE c_id = ?;', [ s_no, param.c_id ]);
+      await app.mysql.query('INSERT INTO qs(q_id,s_no) SELECT q_id, ? FROM cl LEFT JOIN el ON cl.l_id = el.l_id RIGHT JOIN questions q ON el.e_id = q.e_id WHERE c_id = ?', [ s_no, param.c_id ]);
       return res.affectedRows;
+
+
     } catch (e) {
       console.log(e);
       return 0;
     }
   }
-
-  // async bindClass(param) {
-  //   if (JSON.stringify(param) === '{}') {
-  //     return 0;
-  //   }
-  //   const { app } = this;
-  //   const { s_no, c_id } = param;
-  //   try {
-  //     const res = await app.mysql.update('students', { c_id }, { where: { s_no } });
-  //     return res.affectedRows;
-  //   } catch (e) {
-  //     console.log(e);
-  //     return 0;
-  //   }
-  // }
 
   async selectExperiments(param) {
     if (JSON.stringify(param) === '{}') {
@@ -67,7 +65,7 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id RIGHT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id AND qs.s_no = ? LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no=?', [ param.s_no, param.s_no ]);
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id RIGHT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id AND qs.s_no = ? LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no= ? ', [ param.s_no, param.s_no ]);
       return res;
     } catch (e) {
       console.log(e);
@@ -99,6 +97,12 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
+      const question = await app.mysql.select('qs', { where: { s_no: param.s_no, q_id: param.q_id } });
+      console.log(question);
+      if (question.length) {
+        const res = await app.mysql.update('qs', param);
+        return res.affectedRows;
+      }
       const res = await app.mysql.insert('qs', param);
       return res.affectedRows;
     } catch (e) {
@@ -113,7 +117,7 @@ class studentRelated extends Service {
     }
     const { app } = this;
     try {
-      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, e.e_id, es.e_grade, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id LEFT JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id LEFT JOIN es ON e.e_id = es.e_id AND es.s_no=? LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no=?', [ param.s_no, param.s_no ]);
+      const res = await app.mysql.query('SELECT l_name, l_time, e.e_name, e.e_id, es.e_grade, q.q_id, q_finish, q_grade, t_name FROM students s LEFT JOIN cl ON s.c_id = cl.c_id LEFT JOIN lessons l ON cl.l_id = l.l_id LEFT JOIN el ON l.l_id = el.l_id INNER JOIN experiments e ON el.e_id = e.e_id LEFT JOIN questions q ON e.e_id = q.e_id LEFT JOIN qs ON q.q_id = qs.q_id AND qs.s_no = ? LEFT JOIN es ON e.e_id = es.e_id  AND es.s_no= ? LEFT JOIN teachers t ON q.t_no = t.t_no WHERE s.s_no= ? ;', [ param.s_no, param.s_no, param.s_no ]);
       return res;
     } catch (e) {
       console.log(e);

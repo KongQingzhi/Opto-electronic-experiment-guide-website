@@ -11,9 +11,7 @@
                 <span class="col-span-1 mx-2">教室号：{{ experiment.r_no }}</span>
             </div>
             <div class="grid  grid-cols-5 px-5 my-1 gap-10">
-                <div class=" leading-8 col-span-5 lg:col-span-3">
-                    {{ experiment.e_content }}
-                </div>
+                <div v-html="experiment.e_content" class="e_content leading-8 col-span-5 lg:col-span-3"></div>
                 <div class="hidden lg:block py-16 col-span-2">
                     <img class="h-[35rem] rounded-xl object-cover" :src="imgSrc" alt="">
                 </div>
@@ -35,7 +33,13 @@ experimentsContent({ e_id: route.query.e_id }).then(res => {
     experiment.value = res.data.data[0];
 })
 const imgSrc = ref('');
-axios.get('/bing?n=8&format=js&idx=0').then(res => {    
+axios.get('/bing?n=8&format=js&idx=0').then(res => {
     imgSrc.value = 'https://www.bing.com' + res.data.images[(Math.random() * 7).toFixed(0)].url;
 })
 </script>
+<style>
+.e_content p {
+    text-indent: 2em;
+    margin: 0.5rem 0;
+}
+</style>

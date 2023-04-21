@@ -115,7 +115,7 @@ export function selectStudentsQuestionGradeByTeacher(data: any) {
     return request({
         method: "get",
         url: "/api/teachers/selectStudentsQuestionGradeByTeacher",
-        data: data,
+        params: data,
     });
 }
 
@@ -130,7 +130,7 @@ export function selectStudentsExperimentGradeByTeacher(data: any) {
     return request({
         method: "get",
         url: "/api/teachers/selectStudentsExperimentGradeByTeacher",
-        data: data,
+        params: data,
     });
 }
 export function experimentScoring(data: any) {

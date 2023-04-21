@@ -54,7 +54,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
                     sessionStorage.setItem('role', JSON.stringify(ruleForm.Role));
                     if (ruleForm.Role) {
                         router.push({
-                            path:'/teachers/'
+                            name:'CreateClasses'
                         })
                     } else {
                             router.push({
