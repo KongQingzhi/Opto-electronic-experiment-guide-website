@@ -1,6 +1,6 @@
 <template>
     <PageHeader title="绑定课程与实验" />
-    <Loading v-if="!lessonAndExperimentList" />
+    <Loading v-if="!lessonsList" />
     <div v-else class="p-4 sm:px-">
         <div v-if="Number(user.t_super)" class="flex">
             <select class="border py-1 px-6 rounded-md outline-none" v-model="l_id">

@@ -1,23 +1,16 @@
 <template>
     <div class="lessons-score-card flex justify-between box-shadow border-radius-sm my-1">
-        <div class="lessons-left mx-1">
-            <div class="text-center title-3 my-2">{{ props.title }}</div>
-            <div class="my-2">
-                {{ props.content }}
-            </div>
-        </div>
         <div id="myEcharts" ref="myChart"></div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import * as echarts from 'echarts'
-import { Ref,  onMounted, onUnmounted, ref } from 'vue';
+import { Ref, onMounted, onUnmounted, ref } from 'vue';
 import router from '../../../../router';
-const props = defineProps<{ item: any, content: string, title: string }>();
+const props = defineProps<{ item: any, title: string }>();
 const myChart: Ref<HTMLElement | undefined> = ref();
 const list = props.item.list;
-console.log(list);
 
 onMounted(() => {
     let chart = echarts.init(myChart.value as HTMLElement);
@@ -37,7 +30,7 @@ onMounted(() => {
         xAxis: [
             {
                 type: 'category',
-                data: list.map((items: any) => { return items.e_name }),
+                data: list.map((items: any) => { return (items.e_name).substring(0, 6) }),
                 axisTick: {
                     alignWithLabel: true
                 }
@@ -74,7 +67,7 @@ onUnmounted(() => {
     }
 
     #myEcharts {
-        width: 30rem;
+        width: 100%;
         height: 20rem;
         margin: 0 auto;
     }

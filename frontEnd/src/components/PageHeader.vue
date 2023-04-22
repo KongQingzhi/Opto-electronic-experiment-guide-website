@@ -6,14 +6,12 @@
             </h2>
         </div>
         <div v-if="props.button" class="mt-4 flex md:ml-4 md:mt-0">
-            <button type="button" @click="emit('clickButton')"
-                class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                {{ props.buttonText }}
-            </button>
+            <ElButton @click="emit('clickButton')" type="primary"> {{ props.buttonText }}</ElButton>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
+import { ElButton } from 'element-plus';
 const props = withDefaults(defineProps<{
     title: string,
     buttonText: string,

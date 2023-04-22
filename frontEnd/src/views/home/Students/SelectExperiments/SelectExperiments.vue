@@ -3,7 +3,7 @@
     <div v-else>
         <PageHeader :button="false" button-text="l" title="我的实验" />
         <div v-for="item in experimentsList" class="py-10">
-            <SectionHeader :title="item.l_name" :aside-title="item.l_name" />
+            <SectionHeader :title="item.l_name" aside-title="" />
             <ExperimentsCard :experiments-item="items" v-for="items in item.list" />
         </div>
     </div>

@@ -2,8 +2,8 @@
   <div v-if="!experimentsScoreList"></div>
   <div v-else>
     <PageHeader :button="false" button-text="l" title="实验成绩" />
-    <div v-for="item in experimentsScoreList" class="py-10">
-      <SectionHeader :title="item.l_name" :aside-title="item.l_name" />
+    <div v-for="item in experimentsScoreList" class="pt-5">
+      <SectionHeader :title="item.l_name" aside-title="" />
       <div class="flex flex-wrap">
         <ExperimentsScoreCard :item="items" v-for="items in item.list"></ExperimentsScoreCard>
       </div>

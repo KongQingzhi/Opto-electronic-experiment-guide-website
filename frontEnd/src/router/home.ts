@@ -8,7 +8,6 @@ import experimentsContentVue from "../views/home/Students/SelectExperiments/Expe
 import selectQuestionsVue from "../views/home/Students/SelectQuestions/SelectQuestions.vue";
 import questionsContentVue from "../views/home/Students/SelectQuestions/QuestionsContent.vue"
 import selectExperimentsScoreVue from "../views/home/Students/SelectExperimentsScore/SelectExperimentsScore.vue"
-import experimentsScoreContentVue from "../views/home/Students/SelectExperimentsScore/ExperimentsScoreContent.vue";
 import selectLessonsScoreVue from "../views/home/Students/SelectLessonsScore/SelectLessonsScore.vue";
 
 import CreateClassesVue from "../views/home/Teachers/CreateClasses/CreateClasses.vue";
@@ -74,11 +73,6 @@ const students = {
                 title: '实验成绩',
                 role: 0
             }
-        },
-        {
-            path: 'experimentsScoreContent',
-            name: 'experimentsScoreContent',
-            component: experimentsScoreContentVue,
         },
         {
             path: 'selectLessonsScore',

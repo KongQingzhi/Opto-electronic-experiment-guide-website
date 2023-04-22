@@ -99,8 +99,6 @@ const handleRelease = () => {
     const r_id = roomsName.value;
     const e_time = experimentTime.value;
     const user = JSON.parse(sessionStorage.getItem('user') as string);
-    console.log(e_name, e_content, r_id, e_time);
-
     if (!(e_name && e_content && r_id && e_time)) {
         ElMessage({
             message: '请检查实验名、教室、实验简介是否填写完成',

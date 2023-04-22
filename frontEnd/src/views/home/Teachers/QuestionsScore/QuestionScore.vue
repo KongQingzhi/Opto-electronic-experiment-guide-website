@@ -1,5 +1,5 @@
 <template>
-  <PageHeader title="试卷评分" />
+  <PageHeader :button="false" button-text="" title="试卷评分" />
   <Loading v-if="!questionAndStudentsScoreList" />
   <div v-else class="mt-8 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -49,8 +49,6 @@ const refetch = async () => {
     const { msg, data, status } = res.data;
     if (status) {
       questionAndStudentsScoreList.value = data;
-      console.log(questionAndStudentsScoreList.value);
-
     } else {
       ElMessage({
         message: msg,
@@ -58,30 +56,6 @@ const refetch = async () => {
       })
     }
   })
-}
-const handleScore = async (id: number) => {
-  if (qs_id.value !== id) {
-    qs_id.value = id;
-
-  } else {
-    questionScoring({ qs_id: qs_id.value, e_grade: q_grade.value }).then(res => {
-      const { msg, data, status } = res.data;
-      if (status) {
-        ElMessage({
-          message: msg,
-          type: 'success',
-        })
-        qs_id.value = 0;
-        q_grade.value = 0;
-        refetch();
-      } else {
-        ElMessage({
-          message: msg,
-          type: 'error',
-        })
-      }
-    })
-  }
 }
 onMounted(() => {
   refetch();

@@ -2,11 +2,10 @@
     <div class="mt-4 space-y-5 lg:mt-5 lg:space-y-10">
         <article class="w-full relative isolate flex flex-col gap-8 lg:flex-row">
             <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-                <img :src="imgSrc" alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" />
+                <img src="../../../../assets/image/png/2.png" alt="" class="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover" />
                 <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
             </div>
             <div class="min-w-2/3">
-
                 <div class="group relative">
                     <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                         <p>
@@ -22,9 +21,10 @@
                             </time>
                         </div>
                     </h3>
-                    <p class="mt-5 text-sm leading-6 text-gray-600" v-html="props.experimentsItem.e_content"></p>
+                    <p class="my-5 text-sm leading-6  overflow-hidden h-36 text-gray-600"
+                        v-html="props.experimentsItem.e_content"></p>
                 </div>
-                <div class="mt-6 flex justify-between border-t border-gray-900/5 pt-6">
+                <div class="flex justify-between border-t border-gray-900/5">
                     <div class="relative flex props.experimentsItems-center gap-x-4">
                         <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                             alt="" class="h-10 w-10 rounded-full bg-gray-50" />
@@ -35,7 +35,7 @@
                                     {{ props.experimentsItem.t_name }}
                                 </a>
                             </p>
-                            <p class="text-gray-600">{{ props.experimentsItem.e_time }}</p>
+                            <p class="text-gray-600">{{ props.experimentsItem.t_tel }}</p>
                         </div>
                     </div>
                     <div class="">

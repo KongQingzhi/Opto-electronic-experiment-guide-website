@@ -79,7 +79,6 @@ class studentRelated extends Send {
 
   async selectQuestions() {
     const res = await this.sendRequest('GET', 'studentRelated', 'selectQuestions');
-    console.log(res);
     let json = null;
     if (res) {
       json = {
