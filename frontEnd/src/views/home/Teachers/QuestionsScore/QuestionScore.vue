@@ -21,8 +21,9 @@
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ item.s_no }}</td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ item.s_name }}</td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ item.q_grade }}</td>
-              <td v-if="item.q_finish == 1" class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                <RouterLink :to="{ name: 'QuestionsScoreContent', query: item }">
+              <td v-if="item.q_finish == 1"
+                class="whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                <RouterLink :to="{ name: 'QuestionsScoreContent', query: { ...route.query, ...item } }">
                   <ElButton type="primary">打分</ElButton>
                 </RouterLink>
               </td>
@@ -38,10 +39,11 @@
 import PageHeader from '../../../../components/PageHeader.vue';
 import { ref, onMounted } from 'vue';
 import { selectStudentsQuestionGradeByTeacher } from '../../../../api/teachers';
-import { questionScoring } from '../../../../api/teachers';
 import { ElMessage, ElButton } from 'element-plus';
+import { useRoute } from 'vue-router';
 const qs_id = ref(0);
 const q_grade = ref(0);
+const route = useRoute();
 const user = JSON.parse(sessionStorage.getItem('user') as string);
 const questionAndStudentsScoreList = ref();
 const refetch = async () => {

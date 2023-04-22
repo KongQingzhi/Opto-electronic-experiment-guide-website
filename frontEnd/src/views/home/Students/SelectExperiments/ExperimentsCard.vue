@@ -48,17 +48,19 @@
 </template>
 <script lang="ts" setup>
 import { ElButton } from 'element-plus';
-import { useRouter } from 'vue-router';
+import { useRouter , useRoute } from 'vue-router';
 import axios from 'axios';
 import { ref } from 'vue';
 const props = defineProps<{
     experimentsItem: any
 }>();
 const router = useRouter();
+const route = useRoute();
 const handleClick = () => {
     router.push({
         name: 'experimentsContent',
         query: {
+            ...route.query,
             e_id: props.experimentsItem.e_id
         }
     })

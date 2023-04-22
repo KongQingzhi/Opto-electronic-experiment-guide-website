@@ -23,6 +23,20 @@ import BindTeacherAndLessonVue from "../views/home/Teachers/BindRelate/BindTeach
 import ExperiementsScoreVue from "../views/home/Teachers/ExperimentsScore.vue/ExperimentsScore.vue"
 import QuestionsScoreVue from "../views/home/Teachers/QuestionsScore/QuestionScore.vue"
 import QuestionsScoreContentVue from "../views/home/Teachers/QuestionsScore/QuestionScoreContent.vue";
+import {
+    UserCircleIcon,
+    MagnifyingGlassIcon,
+    ClipboardIcon,
+    FlagIcon,
+    SwatchIcon,
+    HomeIcon,
+    BookOpenIcon,
+    CloudArrowUpIcon,
+    CursorArrowRaysIcon,
+    CheckIcon,
+    PlusIcon,
+    DocumentChartBarIcon
+} from '@heroicons/vue/24/outline'
 const students = {
     path: 'students',
     name: 'students',
@@ -34,7 +48,8 @@ const students = {
             component: myInfoVue,
             meta: {
                 title: '我的信息',
-                role: 0
+                role: 0,
+                icon: UserCircleIcon
             }
         },
         {
@@ -43,7 +58,8 @@ const students = {
             component: selectExperimentsVue,
             meta: {
                 title: '查询实验',
-                role: 0
+                role: 0,
+                icon: MagnifyingGlassIcon
             }
         },
         {
@@ -57,7 +73,8 @@ const students = {
             component: selectQuestionsVue,
             meta: {
                 title: '查询试题',
-                role: 0
+                role: 0,
+                icon: ClipboardIcon
             }
         },
         {
@@ -71,7 +88,8 @@ const students = {
             component: selectExperimentsScoreVue,
             meta: {
                 title: '实验成绩',
-                role: 0
+                role: 0,
+                icon: FlagIcon
             }
         },
         {
@@ -80,7 +98,8 @@ const students = {
             component: selectLessonsScoreVue,
             meta: {
                 title: '课程成绩',
-                role: 0
+                role: 0,
+                icon: SwatchIcon
             }
         },
     ]
@@ -97,7 +116,8 @@ const teachers = {
             component: CreateClassesVue,
             meta: {
                 title: '创建班级',
-                role: 1
+                role: 1,
+                icon: HomeIcon
             }
         },
         {
@@ -106,7 +126,8 @@ const teachers = {
             component: CreateLessonsVue,
             meta: {
                 title: '创建课程',
-                role: 1
+                role: 1,
+                icon: BookOpenIcon
             }
         },
         {
@@ -115,7 +136,8 @@ const teachers = {
             component: SelectAllExperimentsVue,
             meta: {
                 title: '查看实验',
-                role: 1
+                role: 1,
+                icon: MagnifyingGlassIcon
             }
         },
         {
@@ -124,7 +146,8 @@ const teachers = {
             component: ReleaseExperimentsVue,
             meta: {
                 title: '发布实验',
-                role: 1
+                role: 1,
+                icon: CloudArrowUpIcon
             }
         },
         {
@@ -133,7 +156,8 @@ const teachers = {
             component: SelectAllQuestionsVue,
             meta: {
                 title: '查看试题',
-                role: 1
+                role: 1,
+                icon: ClipboardIcon
             }
         },
         {
@@ -142,7 +166,8 @@ const teachers = {
             component: ReleaseQuestionsVue,
             meta: {
                 title: '发布试题',
-                role: 1
+                role: 1,
+                icon: PlusIcon 
             }
         },
         {
@@ -151,7 +176,8 @@ const teachers = {
             component: BindRelateVue,
             meta: {
                 title: '绑定相关',
-                role: 1
+                role: 1,
+                icon: CursorArrowRaysIcon
             }
         },
         {
@@ -175,7 +201,8 @@ const teachers = {
             component: ExperiementsScoreVue,
             meta: {
                 title: '实验评分',
-                role: 1
+                role: 1,
+                icon:CheckIcon
             }
         },
         {
@@ -184,9 +211,10 @@ const teachers = {
             component: QuestionsScoreVue,
             meta: {
                 title: '试题评分',
-                role: 1
+                role: 1,
+                icon: DocumentChartBarIcon
             }
-        },{
+        }, {
             path: 'QuestionsScoreContent',
             name: 'QuestionsScoreContent',
             component: QuestionsScoreContentVue,

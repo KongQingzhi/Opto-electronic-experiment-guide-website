@@ -217,7 +217,7 @@ class teacherRelated extends Service {
     const { app } = this;
     try {
       const res = await app.mysql.insert('el', param);
-      await app.mysql.query('INSERT INTO es(s_no,e_id) SELECT s_no, ? FROM cl LEFT JOIN students s ON cl.c_id = s.c_id WHERE cl.l_id = ?', [ param.e_id, param.l_id ]);
+      await app.mysql.query('INSERT INTO es(s_no,e_id) SELECT s_no, ? FROM cl RIGHT JOIN students s ON cl.c_id = s.c_id WHERE cl.l_id = ?', [ param.e_id, param.l_id ]);
       return res.affectedRows;
     } catch (e) {
       console.log(e);
@@ -226,13 +226,12 @@ class teacherRelated extends Service {
   }
 
   async releaseQuestion(param) {
-    console.log(param);
     const { app } = this;
     try {
       const res = await app.mysql.insert('questions', param);
       const questions = await app.mysql.select('questions', { where: { e_id: param.e_id, q_content: param.q_content } });
       const { q_id } = questions[0];
-      await app.mysql.query('INSERT INTO qs(s_no,q_id) SELECT s_no , ? FROM cl LEFT JOIN students s ON cl.c_id = s.c_id  LEFT JOIN el ON el.l_id = cl.l_id WHERE el.e_id = ?', [ q_id, param.e_id ]);
+      await app.mysql.query('INSERT INTO qs(s_no,q_id) SELECT s_no , ? FROM cl RIGHT JOIN students s ON cl.c_id = s.c_id  LEFT JOIN el ON el.l_id = cl.l_id WHERE el.e_id = ?', [ q_id, param.e_id ]);
       return res.affectedRows;
     } catch (e) {
       console.log(e);

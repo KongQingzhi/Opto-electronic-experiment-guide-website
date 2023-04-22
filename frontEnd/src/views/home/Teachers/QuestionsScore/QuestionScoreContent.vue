@@ -10,8 +10,8 @@
                 <div class="leading-6">
                     {{ question.q_content }}
                 </div>
-                <textarea rows="4" name="comment" id="comment" disabled v-if="question.q_reply"
-                    class=" mt-5 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ question.q_reply }}</textarea>
+                <p v-if="question.q_reply"
+                    class=" mt-5 block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ question.q_reply }}</p>
                 <div v-if="Number(route.query.q_finish)" class="flex mt-6">
                     <input rows="4" name="comment" id="comment" v-model="q_grade"
                         class="block mr-5 rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />

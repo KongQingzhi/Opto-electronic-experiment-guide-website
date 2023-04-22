@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import { ElButton } from 'element-plus';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import axios from 'axios';
 import { ref, toRefs } from 'vue';
 const props = defineProps<{
@@ -41,10 +41,12 @@ const props = defineProps<{
 const num = (Math.random() * 6).toFixed(0);
 const { questionsItem: item } = toRefs(props)
 const router = useRouter();
+const route = useRoute();
 const handleClick = () => {
     router.push({
         name: 'questionsContent',
         query: {
+            ...route.query,
             q_id: props.questionsItem.q_id,
             q_finish: props.questionsItem.q_finish || 0,
         }
