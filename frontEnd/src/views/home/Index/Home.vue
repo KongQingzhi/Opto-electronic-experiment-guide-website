@@ -6,7 +6,7 @@
                 <Aside />
             </div>
             <div class="col-span-10">
-                <div class="rounded-md p-10 shadow-md overflow-hidden">
+                <div class="rounded-md px-10 py-5 shadow-lg overflow-hidden">
                     <router-view></router-view>
                 </div>
             </div>

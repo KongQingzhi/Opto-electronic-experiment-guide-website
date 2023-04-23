@@ -2,15 +2,14 @@
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl sm:text-center">
-                <h2 class="text-base font-semibold leading-7 text-indigo-600">Everything you need</h2>
-                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">No server? No problem.</p>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis.</p>
+                <h2 class="text-base font-semibold leading-7 text-indigo-600">每个学生都需要</h2>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">没时间？没问题！</p>
+                <p class="mt-6 text-lg leading-8 text-gray-600">使用光电实验指导网站大大节省你的时间</p>
             </div>
         </div>
         <div class="relative overflow-hidden pt-16">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <img src="https://tailwindui.com/img/component-images/project-app-screenshot.png" alt="App screenshot"
+                <img src="../../../assets/image/png/index1.png" alt="App screenshot"
                     class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10" width="2432" height="1442" />
                 <div class="relative" aria-hidden="true">
                     <div class="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]" />
@@ -46,33 +45,33 @@ import {
 
 const features = [
     {
-        name: 'Push to deploy.',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+        name: '查看课程',
+        description: '进入页面，你可以看到所以课程',
         icon: CloudArrowUpIcon,
     },
     {
-        name: 'SSL certificates.',
-        description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+        name: '查看实验',
+        description: '点击实验，你可以看到实验分布',
         icon: LockClosedIcon,
     },
     {
-        name: 'Simple queues.',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
+        name: '学习实验',
+        description: '进入实验，你可以看到实验细节',
         icon: ArrowPathIcon,
     },
     {
-        name: 'Advanced security.',
-        description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+        name: '回答试题',
+        description: '通过试题，你可以了解你的不足',
         icon: FingerPrintIcon,
     },
     {
-        name: 'Powerful API.',
-        description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+        name: '管理实验',
+        description: '管理实验，你可以更加轻松',
         icon: Cog6ToothIcon,
     },
     {
-        name: 'Database backups.',
-        description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ',
+        name: '管理试题',
+        description: '管理试题，你可以更加方便',
         icon: ServerIcon,
     },
 ]

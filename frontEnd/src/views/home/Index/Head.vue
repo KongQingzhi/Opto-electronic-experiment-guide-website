@@ -1,5 +1,5 @@
 <template>
-  <header class="mb-4 rounded-b-md shadow bg-white">
+  <header class="mb-4 rounded-b-md shadow border border-indigo-200 bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <a href="#" class="-m-1.5 p-1.5">
         <span class="sr-only">Your Company</span>
@@ -51,10 +51,10 @@ import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
-  { name: '首页', href: 'Home' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: '首 页', href: 'Home' },
+  { name: '班 级', href: '#' },
+  { name: '课 程', href: '#' },
+  { name: '我 的', href: '#' },
 ]
 
 const mobileMenuOpen = ref(false)

@@ -12,9 +12,8 @@
         </div>
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-xl text-center">
-                <h2 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Testimonials</h2>
-                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">We have worked with thousands of
-                    amazing people</p>
+                <h2 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600">管理</h2>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">我们希望你可以在这里更轻松的工作</p>
             </div>
             <div
                 class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
@@ -57,9 +56,9 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 const featuredTestimonial = {
-    body: 'Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.',
+    body: '我从未想到过，工作也可以如此简单！',
     author: {
         name: 'Brenna Goyette',
         handle: 'brennagoyette',
@@ -72,7 +71,7 @@ const testimonials = [
     [
         [
             {
-                body: 'Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.',
+                body: '我使用这个网站进行开展实验，我真的好后悔，后悔知道的太晚。',
                 author: {
                     name: 'Leslie Alexander',
                     handle: 'lesliealexander',
@@ -84,7 +83,7 @@ const testimonials = [
         ],
         [
             {
-                body: 'Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut officia rem nulla blanditiis.',
+                body: '在网站中发布实验和试题，大大节省了我和学生们的时间，这让我有时间去做自己的事',
                 author: {
                     name: 'Lindsay Walton',
                     handle: 'lindsaywalton',
@@ -98,7 +97,7 @@ const testimonials = [
     [
         [
             {
-                body: 'Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae saepe corrupti.',
+                body: '学生们都很乐意使用这个网站学习，他们认为这才是年轻人的方式',
                 author: {
                     name: 'Tom Cook',
                     handle: 'tomcook',
@@ -110,7 +109,7 @@ const testimonials = [
         ],
         [
             {
-                body: 'Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.',
+                body: '学生们可以在这里更直观的看到自己的成长，总而更加努力',
                 author: {
                     name: 'Leonard Krasner',
                     handle: 'leonardkrasner',
